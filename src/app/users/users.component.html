@@ -1,0 +1,75 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  
+    <section class="content-header">
+      <h1>
+        Users
+        <!-- <small>Version 2.0</small> -->
+        
+        <a *ngIf="can_add_new" class="btn btn-sm btn-primary" routerLink="/user" role="button"><i class="fa fa-plus-circle"></i> Add New</a>
+        
+      </h1>
+      
+    </section>
+  
+    <section class="content">
+  
+      <div class="row">
+  
+        <div class="col-md-12">
+          <div class="box box-primary">
+  
+            <div class="box-body">
+    
+                <div *ngIf="users_data != null">
+                    <p-dataTable [lazy]="true" [value]="users_data.data" [rows]="users_data.per_page" 
+                    [paginator]="true" [pageLinks]="5"  
+                    [totalRecords]="users_data.total" (onLazyLoad)="loadLazy($event)">
+                        <p-header>List of Users</p-header>
+                        <p-column field="name" header="Name"></p-column>
+                        <p-column field="email" header="User ID"></p-column>
+                        <p-column field="is_admin" header="Is Admin">
+                          <ng-template  let-col let-user="rowData" pTemplate="body">
+                              <div class="text-center">
+                                  <span class="label {{ user[col.field] == 1 ? 'label-success' : 'label-danger' }}">
+                                      {{ user[col.field] == 1 ? 'Yes' : 'No' }}
+                                  </span>
+                              </div>
+                          </ng-template>
+                        </p-column>
+                        <p-column field="is_activated" header="Is Activated">
+                            <ng-template  let-col let-user="rowData" pTemplate="body">
+                                <div class="text-center">
+                                    <span class="label {{ user[col.field] == 1 ? 'label-success' : 'label-danger' }}">
+                                        {{ user[col.field] == 1 ? 'Yes' : 'No' }}
+                                    </span>
+                                </div>
+                            </ng-template>
+                          </p-column>
+                          <p-column field="id" header="Action">
+                              <ng-template  let-col let-user="rowData" pTemplate="body">
+                                  <div class="text-center">
+                                      <a *ngIf="can_edit" class="btn btn-xs btn-primary" routerLink="/user/{{user[col.field]}}" role="button"> <i class="fa fa-edit"></i> Edit</a>
+                                  </div>
+                              </ng-template>
+                            </p-column>
+                        
+                    </p-dataTable>
+                </div>
+
+              
+
+
+              
+            </div>
+    
+          </div>
+        </div>
+  
+      </div>
+  
+    </section>
+  
+    
+  </div>
+  <!-- /.content-wrapper -->

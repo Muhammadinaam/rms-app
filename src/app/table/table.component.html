@@ -1,0 +1,83 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  
+    <section class="content-header">
+      <h1>
+        Table
+        <!-- <small>Version 2.0</small> -->
+        
+        
+        
+      </h1>
+      
+    </section>
+  
+    <section class="content">
+  
+      <div class="row">
+  
+        <div class="col-md-12">
+          <div class="box box-primary">
+  
+            <div class="box-body">
+    
+                <form #f="ngForm" (ngSubmit)="onSubmit(f.value, form_type)" class="form-horizontal" role="form">
+              
+                    
+                    
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="portion">Portion / Floor:</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="portion" name="portion" [(ngModel)]="table.portion" #portion_input=ngModel required>
+                          <div class="validation-error" *ngIf="portion_input.errors?.required"> 
+                              Should not be empty.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-10">
+                        Portions:
+                        <ul>
+                          <li *ngFor="let portion of portions">
+                            
+                            <button type="button" (click)="selectPortion(portion.portion)" class="btn btn-xs btn-default">{{portion.portion}}</button>
+                            
+                          </li>
+                        </ul>
+                      </div>
+  
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="name">Table Number / Name</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="table.name"
+                           #name_input=ngModel required>
+  
+                          <div class="validation-error" *ngIf="name_input.errors?.required"> 
+                              Should not be empty.
+                          </div>
+                        </div>
+                      </div>
+  
+                      
+                    
+                
+                    <div class="form-group">
+                      <div class="col-sm-10 col-sm-offset-2">
+                        <button type="submit" [disabled]="!f.form.valid || is_loading" class="btn btn-primary">Submit</button>
+                      </div>
+                    </div>
+                </form>        
+              
+            </div>
+    
+          </div>
+        </div>
+  
+      </div>
+  
+    </section>
+  
+    
+  </div>
+  <!-- /.content-wrapper -->

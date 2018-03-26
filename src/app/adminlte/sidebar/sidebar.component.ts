@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { ConfigService } from '../../config.service';
+import 'rxjs/add/operator/retryWhen';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  user:any;
+  menus:any;
+
+  constructor(private authService: AuthService, private http:HttpClient, private config:ConfigService) { }
 
   ngOnInit() {
+
+    this.authService.getLoggedInUserInfo()
+      .subscribe(
+        (data)=>{
+          this.user = data;
+        }
+      );
+
+    this.http.get(this.config.base_url + '/api/get-menus')
+      //.retryWhen( error => error.delay(2000) )
+      .subscribe(
+        (data)=>{
+          this.menus = data;
+        }
+      );
   }
 
 }

@@ -1127,3 +1127,7 @@ throw new Error('AdminLTE requires jQuery')
   });
 
 }(jQuery);
+
+function getAdminLTE() {
+  return $.AdminLTE
+}
