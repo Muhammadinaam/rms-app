@@ -3,7 +3,7 @@
 @import "../node_modules/primeng/resources/primeng.min.css";
 
 .validation-error {
-    padding: 10px;
+    padding: 2px;
     background-color: #fb9191;
     color: white;
 }

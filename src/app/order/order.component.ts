@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { OrdersService } from '../services/orders.service';
 import { AuthService } from '../services/auth.service';
 import { TablesService } from '../services/tables.service';
+import { ItemsService } from '../services/items.service';
 
 @Component({
   selector: 'app-order',
@@ -15,11 +16,20 @@ export class OrderComponent implements OnInit {
   order: any = {
     id: null,
     order_type: 1,
+    order_details: Array(),
   };
   order_types:any = Array();
   free_tables:any = Array();
+
+  new_item = {
+    id:0,
+    qty:1,
+    rate:0
+  };
+
   is_loading: boolean = false;
 
+  items:any = Array();
 
   constructor(
     private router: Router,
@@ -27,6 +37,7 @@ export class OrderComponent implements OnInit {
     private ordersService: OrdersService,
     private tablesService: TablesService,
     private authService: AuthService,
+    private itemsService: ItemsService
   ) { }
 
   ngOnInit() {
@@ -57,6 +68,10 @@ export class OrderComponent implements OnInit {
     this.is_loading = true;
     this.tablesService.getFreeTables()
       .subscribe(data => { this.free_tables = data; this.is_loading = false; });
+
+    this.is_loading = true;
+    this.itemsService.getItems()
+      .subscribe(data => {this.items = data; this.is_loading = false;});
   }
 
   onSubmit(value, form_type) {
@@ -78,6 +93,18 @@ export class OrderComponent implements OnInit {
           }
         }
       );
+  }
+
+  newItemChanged(event:any)
+  {
+    let item_id = event.target.value;
+    let item = this.items.filter( item => parseInt(item.id) === parseInt(item_id) )[0];
+    this.new_item.rate = item.price;
+  }
+
+  addNewItem()
+  {
+    if( this.new_item. )
   }
 
 }
