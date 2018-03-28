@@ -13,6 +13,7 @@ export class ItemComponent implements OnInit {
   form_type="New";
   item:any = {
     id: null,
+    category: '',
     name: '',
     code: '',
     unit: '',
