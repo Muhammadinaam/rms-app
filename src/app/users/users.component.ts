@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { HttpClient } from '@angular/common/http';
-import { ConfigService } from '../config.service';
+import { ConfigService } from '../services/config.service';
 import { LazyLoadEvent } from 'primeng/primeng';
 import { AuthService } from '../services/auth.service';
 

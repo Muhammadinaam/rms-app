@@ -22,6 +22,10 @@ export class TablesService {
     return this.http.get(this.config.base_url + '/api/get-portions');
   }
 
+  getFreeTables() {
+    return this.http.get(this.config.base_url + '/api/free_tables');
+  }
+
   saveUserData(data, id?)
   {
     let fd = new FormData();

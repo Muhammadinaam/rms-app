@@ -15,7 +15,7 @@ import { SidebarComponent } from './adminlte/sidebar/sidebar.component';
 import { FooterComponent } from './adminlte/footer/footer.component';
 import { ContentComponent } from './adminlte/content/content.component';
 import { LoginComponent } from './login/login.component';
-import { ConfigService } from './config.service';
+import { ConfigService } from './services/config.service';
 import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { AuthService } from './services/auth.service';
@@ -28,10 +28,12 @@ import { UsersService } from './services/users.service';
 import { KeysPipe } from './keys.pipe';
 import { TablesComponent } from './tables/tables.component';
 import { TableComponent } from './table/table.component';
-import { TablesService } from './tables.service';
-import { ItemsService } from './items.service';
+import { TablesService } from './services/tables.service';
+import { ItemsService } from './services/items.service';
 import { ItemsComponent } from './items/items.component';
 import { ItemComponent } from './item/item.component';
+import { OrderComponent } from './order/order.component';
+import { OrdersService } from './services/orders.service';
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { ItemComponent } from './item/item.component';
     TablesComponent,
     TableComponent,
     ItemsComponent,
-    ItemComponent
+    ItemComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,7 @@ import { ItemComponent } from './item/item.component';
     ConfigService, 
     AuthService, 
     AuthGuardService, 
-    UsersService, TablesService, ItemsService
+    UsersService, TablesService, ItemsService, OrdersService
   ],
   bootstrap: [AppComponent]
 })

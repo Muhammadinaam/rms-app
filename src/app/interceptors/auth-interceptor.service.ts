@@ -8,7 +8,7 @@ import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/scan';
-import { ConfigService } from '../config.service';
+import { ConfigService } from '../services/config.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 

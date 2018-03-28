@@ -1,0 +1,104 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <section class="content-header">
+        <h1>
+            Order
+            <!-- <small>Version 2.0</small> -->
+
+        </h1>
+
+    </section>
+
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="box box-primary">
+
+                    <div style="background-color:#ecf0f5;" class="box-body">
+
+                        <form #f="ngForm" (ngSubmit)="onSubmit(f.value, form_type)" class="form-horizontal" role="form">
+
+                            <div class="col-sm-6">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Order Information</h3>
+                                    </div>
+
+                                    <div class="box-body">
+
+                                        <div class="form-group">
+                                            <label for="order_type" class="col-sm-2 control-label">Order Type:</label>
+                                            <div class="col-sm-10">
+                                                <select name="order_type" id="order_type" class="form-control" [(ngModel)]="order.order_type" required="required" #order_type_input=ngModel>
+                                                    <option *ngFor="let order_type of order_types" [value]="order_type.id">{{order_type.name}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div *ngIf="order_type_input.value == '1'" class="form-group">
+                                            <label for="table" class="col-sm-2 control-label">Table:</label>
+                                            <div class="col-sm-10">
+                                                <select name="table" id="table" class="form-control" [(ngModel)]="order.table" #table_input=ngModel [required]="false">
+                                                    <option *ngFor="let free_table of free_tables" [value]="free_table.id">{{ free_table.portion + ' | ' + free_table.name }}</option>
+                                                </select>
+                                                <div class="validation-error" *ngIf="table_input.errors?.required">
+                                                    Should not be empty.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="order_type_input.value == '2' || order_type_input.value == '3'" class="col-sm-6">
+                                <div class="box box-danger">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Customer Information</h3>
+                                    </div>
+
+                                    <div class="box-body">
+
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="category">Category</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="category" name="category" [(ngModel)]="item.category" #category_input=ngModel required>
+                                                <div class="validation-error" *ngIf="category_input.errors?.required">
+                                                    Should not be empty.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <button type="submit" [disabled]="!f.form.valid || is_loading" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+</div>
+<!-- /.content-wrapper -->

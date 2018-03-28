@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ConfigService } from '../config.service';
+import { ConfigService } from '../services/config.service';
 import 'rxjs/add/operator/finally';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';

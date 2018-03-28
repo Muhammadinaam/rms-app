@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { ConfigService } from '../../config.service';
+import { ConfigService } from '../../services/config.service';
 import 'rxjs/add/operator/retryWhen';
 
 @Component({

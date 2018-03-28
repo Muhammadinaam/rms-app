@@ -9,6 +9,8 @@ import { TablesComponent } from './tables/tables.component';
 import { TableComponent } from './table/table.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemComponent } from './item/item.component';
+import { OrderComponent } from './order/order.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,7 +19,10 @@ const routes: Routes = [
     path: '',
     canActivate: [AuthGuardService],
     children: [
+      
       { path: '', component: TablesAndOrdersComponent },
+      { path: 'add-order', component: OrderComponent },
+      
       
       { path: 'users', component: UsersComponent},
       { path: 'user', component: UserFormComponent},

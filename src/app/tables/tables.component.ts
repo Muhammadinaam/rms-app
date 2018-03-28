@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { TablesService } from '../tables.service';
+import { TablesService } from '../services/tables.service';
 
 @Component({
   selector: 'app-tables',
