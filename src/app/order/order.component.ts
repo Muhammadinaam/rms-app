@@ -18,12 +18,13 @@ export class OrderComponent implements OnInit {
     order_type: 1,
     order_details: Array(),
   };
+  deleted_details:any = Array();
   order_types:any = Array();
   free_tables:any = Array();
 
   new_item = {
     id:0,
-    qty:1,
+    qty:0,
     rate:0
   };
 
@@ -37,7 +38,7 @@ export class OrderComponent implements OnInit {
     private ordersService: OrdersService,
     private tablesService: TablesService,
     private authService: AuthService,
-    private itemsService: ItemsService
+    private itemsService: ItemsService,
   ) { }
 
   ngOnInit() {
@@ -79,7 +80,7 @@ export class OrderComponent implements OnInit {
 
     let id = this.form_type == "New" ? null : this.order.id;
 
-    this.ordersService.saveOrder(value, id)
+    this.ordersService.saveOrder(this.order, this.deleted_details, id)
       .finally(
         () => { this.is_loading = false; }
       )
@@ -102,9 +103,49 @@ export class OrderComponent implements OnInit {
     this.new_item.rate = item.price;
   }
 
+  removeItem(i)
+  {
+    let r = confirm("Are you sure to delete the item?");
+
+    if( r != true )
+    {
+      return; 
+    }
+
+    let removed_items = this.order.order_details.splice(i, 1);
+    this.deleted_details.push( removed_items[0] );
+    
+  }
+
   addNewItem()
   {
-    if( this.new_item. )
+    if( this.new_item.id == 0 || this.new_item.qty == 0 )
+    {
+      alert("Please specify Item and Qty");
+      return;
+    }
+
+    
+    let item = this.items.filter(item => parseInt(item.id) == this.new_item.id )[0];
+    this.order.order_details.push(
+      {
+        detail_id: null,
+        item_id: this.new_item.id,
+        item_name: item.name,
+        qty: this.new_item.qty,
+        rate: this.new_item.rate,
+      }
+    );
+
+    
+    //reset
+    this.new_item = {
+      id:0,
+      qty:0,
+      rate:0
+    }
+
+
   }
 
 }

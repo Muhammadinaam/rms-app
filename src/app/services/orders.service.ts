@@ -21,18 +21,19 @@ export class OrdersService {
 
   
 
-  saveOrder(data, id?)
+  saveOrder(order, deleted_details, id?)
   {
     let fd = new FormData();
 
-    for (let key in data) {
-      let value = data[key];
-      // Use `key` and `value`
-      fd.append(key, value);
-    }
+    fd.append('order', JSON.stringify(order));
+    fd.append('deleted_details', JSON.stringify(deleted_details));
+
+
 
     if (id == null)  // new order
+    {
       return this.http.post(this.config.base_url + '/api/orders', fd);
+    }
     else {
       fd.append('_method', 'PUT');
       return this.http.post(this.config.base_url + '/api/orders/' + id, fd);

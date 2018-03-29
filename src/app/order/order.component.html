@@ -19,7 +19,7 @@
 
                     <div style="background-color:#ecf0f5;" class="box-body">
 
-                        <form #f="ngForm" (ngSubmit)="onSubmit(f.value, form_type)" class="form-horizontal" role="form">
+                        <form #f="ngForm" (ngSubmit)="onSubmit(f.value, form_type)" (keydown.enter)="$event.preventDefault()" class="form-horizontal" role="form">
 
                             <div class="row">
                                 <div class="col-sm-6">
@@ -40,17 +40,17 @@
                                             </div>
 
                                             <ng-template let-table_required [ngTemplateOutletContext]="{ $implicit: order_type_input.value == '1' }" [ngTemplateOutlet]="table" #table>
-                                            <div *ngIf="table_required" class="form-group">
-                                                <label for="table" class="col-sm-2 control-label">Table:</label>
-                                                <div class="col-sm-10">
-                                                    <select name="table" id="table" class="form-control input-md" [(ngModel)]="order.table" #table_input=ngModel [required]="table_required">
+                                                <div *ngIf="table_required" class="form-group">
+                                                    <label for="table" class="col-sm-2 control-label">Table:</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="table" id="table" class="form-control input-md" [(ngModel)]="order.table" #table_input=ngModel [required]="table_required">
                                                         <option *ngFor="let free_table of free_tables" [value]="free_table.id">{{ free_table.portion + ' | ' + free_table.name }}</option>
                                                     </select>
-                                                    <div class="validation-error" *ngIf="table_input.errors?.required">
-                                                        Should not be empty.
+                                                        <div class="validation-error" *ngIf="table_input.errors?.required">
+                                                            Should not be empty.
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             </ng-template>
 
                                         </div>
@@ -59,64 +59,61 @@
 
                                 <ng-template let-cust_info_required [ngTemplateOutletContext]="{ $implicit: order_type_input.value == '2' || order_type_input.value == '3' }" [ngTemplateOutlet]="customer" #customer>
                                     <div *ngIf="cust_info_required" class="col-sm-6">
-                                            <div class="box box-danger">
-                                                <div class="box-header with-border">
-                                                    <h3 class="box-title">Customer Information</h3>
+                                        <div class="box box-danger">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Customer Information</h3>
+                                            </div>
+
+                                            <div class="box-body">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-2" for="deliver_to_name">Name</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control input-md" id="deliver_to_name" name="deliver_to_name" [(ngModel)]="order.deliver_to_name" #deliver_to_name_input=ngModel [required]="cust_info_required">
+                                                        <div class="validation-error" *ngIf="deliver_to_name_input.errors?.required">
+                                                            Should not be empty.
+                                                        </div>
+                                                    </div>
                                                 </div>
-            
-                                                <div class="box-body">
-            
+
+                                                <ng-template let-delivery_info_required [ngTemplateOutletContext]="{ $implicit: order_type_input.value == '3' }" [ngTemplateOutlet]="delivery" #delivery>
+
                                                     <div class="form-group">
-                                                        <label class="control-label col-sm-2" for="deliver_to_name">Name</label>
+                                                        <label class="control-label col-sm-2" for="deliver_to_phone">Phone</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control input-md" id="deliver_to_name" name="deliver_to_name" 
-                                                            [(ngModel)]="order.deliver_to_name" #deliver_to_name_input=ngModel [required]="cust_info_required">
-                                                            <div class="validation-error" *ngIf="deliver_to_name_input.errors?.required">
+                                                            <input type="text" class="form-control input-md" id="deliver_to_phone" name="deliver_to_phone" [(ngModel)]="order.deliver_to_phone" #deliver_to_phone_input=ngModel [required]="delivery_info_required">
+                                                            <div class="validation-error" *ngIf="deliver_to_phone_input.errors?.required">
                                                                 Should not be empty.
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <ng-template let-delivery_info_required [ngTemplateOutletContext]="{ $implicit: order_type_input.value == '3' }" [ngTemplateOutlet]="delivery" #delivery>
-
-                                                        <div class="form-group">
-                                                            <label class="control-label col-sm-2" for="deliver_to_phone">Phone</label>
-                                                            <div class="col-sm-10">
-                                                                <input type="text" class="form-control input-md" id="deliver_to_phone" name="deliver_to_phone" 
-                                                                [(ngModel)]="order.deliver_to_phone" #deliver_to_phone_input=ngModel [required]="delivery_info_required">
-                                                                <div class="validation-error" *ngIf="deliver_to_phone_input.errors?.required">
-                                                                    Should not be empty.
-                                                                </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-sm-2" for="deliver_to_address">Address</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control input-md" id="deliver_to_address" name="deliver_to_address" [(ngModel)]="order.deliver_to_address" #deliver_to_address_input=ngModel [required]="delivery_info_required">
+                                                            <div class="validation-error" *ngIf="deliver_to_address_input.errors?.required">
+                                                                Should not be empty.
                                                             </div>
                                                         </div>
+                                                    </div>
 
-                                                        <div class="form-group">
-                                                            <label class="control-label col-sm-2" for="deliver_to_address">Address</label>
-                                                            <div class="col-sm-10">
-                                                                <input type="text" class="form-control input-md" id="deliver_to_address" name="deliver_to_address" 
-                                                                [(ngModel)]="order.deliver_to_address" #deliver_to_address_input=ngModel [required]="delivery_info_required">
-                                                                <div class="validation-error" *ngIf="deliver_to_address_input.errors?.required">
-                                                                    Should not be empty.
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                </ng-template>
 
-                                                    </ng-template>
 
-                                                    
 
-            
-                                                </div>
+
                                             </div>
                                         </div>
+                                    </div>
                                 </ng-template>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    
+
                                     <div class="box box-warning">
-                                        
+
                                         <div class="box-header with-border">
                                             <h3 class="box-title">Items</h3>
                                         </div>
@@ -138,20 +135,22 @@
                                                         <td>{{ order_detail.item_name }}</td>
                                                         <td>{{ order_detail.qty }}</td>
                                                         <td>{{ order_detail.rate }}</td>
-                                                        <td>{{ order_detail.amount }}</td>
-                                                        <td>{{ i }}</td>
+                                                        <td>{{ order_detail.qty * order_detail.rate }}</td>
+                                                        <td>
+                                                            <button (click)="removeItem(i)" type="button" class="btn btn-danger"><i class="fa fa-times-circle"></i></button>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
 
                                                 <tfoot>
                                                     <tr>
                                                         <td>
-                                                            <select (change)="newItemChanged($event)"  [(ngModel)]="new_item.id" [ngModelOptions]="{standalone: true}" class="form-control input-md">
+                                                            <select id="new_item_select" (change)="newItemChanged($event)" [(ngModel)]="new_item.id" [ngModelOptions]="{standalone: true}" class="form-control input-md">
                                                                 <option *ngFor="let item of items" [value]="item.id">{{item.code + " | " + item.name + " ("+item.unit+")" }}</option>
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input  type="number" min=0 [(ngModel)]="new_item.qty" [ngModelOptions]="{standalone: true}" class="form-control input-md">
+                                                            <input type="number" min=0 [(ngModel)]="new_item.qty" [ngModelOptions]="{standalone: true}" class="form-control input-md">
                                                         </td>
                                                         <td>
                                                             <input type="number" [(ngModel)]="new_item.rate" [ngModelOptions]="{standalone: true}" class="form-control input-md" readonly>
@@ -164,17 +163,17 @@
                                                         </td>
                                                     </tr>
                                                 </tfoot>
-                                            </table>                                            
+                                            </table>
 
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                             </div>
-                            
-                            
-                            
+
+
+
 
 
 
