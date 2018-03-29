@@ -91,6 +91,7 @@ export class OrderComponent implements OnInit {
           alert(data['message']);
           if (data['success'] == true) {
             this.router.navigate(['/']);
+            
           }
         }
       );
@@ -138,14 +139,18 @@ export class OrderComponent implements OnInit {
     );
 
     
-    //reset
+    this.resetNewItem();
+
+
+  }
+
+  resetNewItem()
+  {
     this.new_item = {
       id:0,
       qty:0,
       rate:0
-    }
-
-
+    };
   }
 
 }
