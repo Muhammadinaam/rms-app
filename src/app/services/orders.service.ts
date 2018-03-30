@@ -40,4 +40,9 @@ export class OrdersService {
     }
   }
 
+  getOpenOrders()
+  {
+    return this.http.get(this.config.base_url + '/api/open-orders');
+  }
+
 }
