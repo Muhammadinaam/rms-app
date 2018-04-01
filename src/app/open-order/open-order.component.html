@@ -1,0 +1,100 @@
+<div class="open-order">
+    <span class="label label-success">{{order.order_type}}</span>
+
+    <p *ngIf="order.portion != null">Portion/Floor: <b>{{order.portion}}</b></p>
+    <p *ngIf="order.table_name != null">Table: <b>{{order.table_name}}</b></p>
+    <p *ngIf="order.deliver_to_name != null">Customer: <b>{{order.deliver_to_name}}</b></p>
+    <p *ngIf="order.deliver_to_phone != null">Phone: <b>{{order.deliver_to_phone}}</b></p>
+    <p *ngIf="order.deliver_to_address != null">Address: <b>{{order.deliver_to_address}}</b></p>
+
+    <hr style="margin:2px">
+
+    <p>Status: 
+        <span 
+            class="label {{ order.order_status_slug == 'pending' ? 'label-danger' : 'label-success' }}">
+            {{order.order_status}}
+        </span>
+    </p>
+    <a (click)="showChangeStatusModal()" class="btn btn-primary btn-xs btn-block" role="button">Change Status</a>
+
+    
+
+    <p *ngIf="order.order_status_slug == 'pending'">Time: 
+        <b class="{{order.elapsed_minutes >= 20 ? 'text-red' : ''}}">{{order.elapsed_minutes}} minute(s)</b>
+    </p>
+
+    <hr style="margin:2px">
+
+    
+
+    
+    <a class="btn btn-primary btn-xs btn-block" routerLink="/edit-order/{{order.id}}" role="button">Edit Order</a>
+    <a class="btn btn-primary btn-xs btn-block" role="button">Print for Customer</a>
+    <a (click)="showCloseOrderModal()" class="btn btn-primary btn-xs btn-block" role="button">Close Order</a>
+
+
+    <p-dialog width="350" (onShow)="onModalShow($event)" (onHide)="onModalHide($event)" header="Change Order Status" [modal]="true" [(visible)]="is_change_status_modal_visible">
+      
+      
+      <div class="form-group">
+        <label for="status" class=" control-label">Status:</label>
+        <div class="">
+          <select #status_input name="abc" id="status" class="form-control" required="required">
+            <option value="1">Pending</option>
+            <option value="2">Served</option>
+            <option value="4">Cancel Bill</option>
+          </select>
+        </div>
+      
+      
+        <button (click)="changeStatus(order.id, status_input.value)" type="button" class="btn btn-block btn-primary">Change Status</button>
+
+      </div>
+
+        
+        
+    </p-dialog>
+
+    <p-dialog width="350" (onShow)="onModalShow($event)" (onHide)="onModalHide($event)" header="Close Order" [modal]="true" [(visible)]="is_close_order_modal_visible">
+      
+      <h3><small>Order Amount: </small> {{order.order_amount_inc_st | currency:'Rs.' }}</h3>
+      <br>
+      <div class="form-group">
+        <label for="received_through" class="control-label">Received Through:</label>
+        <div class="">
+          <select #received_through_input name="received_through" id="received_through" class="form-control" required="required">
+            <option value="0"></option>
+            <option value="Cash">Cash</option>
+            <option value="Card">Card</option>
+          </select>
+          
+        </div>
+        <div class="validation-error" *ngIf="received_through_input.value == 0">
+            Should not be empty.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="received_amount" class="control-label">Received Through:</label>
+        <div class="">
+          <input [(ngModel)]="received_amount" type="number" name="received_amount" id="received_amount" class="form-control" value="" required="required" pattern="" title="">
+        </div>
+        <div class="validation-error" *ngIf="received_amount < order.order_amount_inc_st">
+            Received Amount is less than Order Amount.
+        </div>
+      </div>
+
+      
+      <h3><small>Balance: </small> {{ received_amount - order.order_amount_inc_st | currency:'Rs.' }}</h3>
+        
+      <br><br>
+      <button [disabled]="received_through_input.value == 0 || received_amount < order.order_amount_inc_st" (click)="closeOrder(order.id, received_through_input.value)" type="button" class="btn btn-block btn-primary">Close Order</button>
+
+
+      
+
+    </p-dialog>
+
+
+    
+</div>

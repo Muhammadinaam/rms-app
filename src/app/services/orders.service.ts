@@ -10,8 +10,7 @@ export class OrdersService {
 
   getOrderById(id)
   {
-    alert('Function not implemented in orders service' );
-    return Observable.of('abc');
+    return this.http.get(this.config.base_url + '/api/orders/' + id + '/edit');
   }
 
   getOrderTypes()
@@ -43,6 +42,24 @@ export class OrdersService {
   getOpenOrders()
   {
     return this.http.get(this.config.base_url + '/api/open-orders');
+  }
+
+  changeOrderStatus(order_id, status)
+  {
+    let data = new FormData();
+    data.append('order_id', order_id);
+    data.append('status', status);
+
+    return this.http.post(this.config.base_url + '/api/change-order-status', data);
+  }
+
+  closeOrder(order_id, received_through)
+  {
+    let data = new FormData();
+    data.append('order_id', order_id);
+    data.append('received_through', received_through);
+
+    return this.http.post(this.config.base_url + '/api/close-order', data);
   }
 
 }

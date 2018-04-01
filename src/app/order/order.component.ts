@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OrdersService } from '../services/orders.service';
 import { AuthService } from '../services/auth.service';
 import { TablesService } from '../services/tables.service';
 import { ItemsService } from '../services/items.service';
+import { SettingsService } from '../services/settings.service';
 
 @Component({
   selector: 'app-order',
@@ -22,6 +23,8 @@ export class OrderComponent implements OnInit {
   order_types:any = Array();
   free_tables:any = Array();
 
+  sales_tax_rate:any;
+
   new_item = {
     id:0,
     qty:0,
@@ -29,6 +32,8 @@ export class OrderComponent implements OnInit {
   };
 
   is_loading: boolean = false;
+
+  total_order_amount_interval:any;
 
   items:any = Array();
 
@@ -39,6 +44,7 @@ export class OrderComponent implements OnInit {
     private tablesService: TablesService,
     private authService: AuthService,
     private itemsService: ItemsService,
+    private settingsService: SettingsService
   ) { }
 
   ngOnInit() {
@@ -73,6 +79,32 @@ export class OrderComponent implements OnInit {
     this.is_loading = true;
     this.itemsService.getItems()
       .subscribe(data => {this.items = data; this.is_loading = false;});
+
+    this.is_loading = true;
+    this.settingsService.getSettingBySlug('sales_tax_rate')
+      .subscribe(data => {
+        this.is_loading = false;
+        this.sales_tax_rate = data['value'];
+      });
+
+    this.total_order_amount_interval = setInterval(()=>{
+      this.order.order_amount_ex_st = 0;
+      this.order.order_details.forEach(element => {
+        this.order.order_amount_ex_st += element.qty * element.rate;
+      });
+
+      this.order.sales_tax = this.order.order_amount_ex_st * this.sales_tax_rate / 100;
+      this.order.order_amount_inc_st = this.order.order_amount_ex_st + this.order.sales_tax;
+
+    }, 100);
+  }
+
+  ngOnDestroy()
+  {
+    if( this.total_order_amount_interval )
+    {
+      clearInterval(this.total_order_amount_interval);
+    }
   }
 
   onSubmit(value, form_type) {

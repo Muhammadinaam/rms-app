@@ -10,6 +10,7 @@ import { TableComponent } from './table/table.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemComponent } from './item/item.component';
 import { OrderComponent } from './order/order.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,9 @@ const routes: Routes = [
       
       { path: '', component: TablesAndOrdersComponent },
       { path: 'add-order', component: OrderComponent },
+      { path: 'edit-order/:id', component: OrderComponent },
       
+      { path: 'settings', component: SettingsComponent },
       
       { path: 'users', component: UsersComponent},
       { path: 'user', component: UserFormComponent},

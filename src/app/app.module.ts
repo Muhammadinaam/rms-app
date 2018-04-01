@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { SlimLoadingBarModule } from "ng2-slim-loading-bar";
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DataTableModule, Button } from 'primeng/primeng';
+import {DialogModule} from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
 
@@ -34,6 +35,9 @@ import { ItemsComponent } from './items/items.component';
 import { ItemComponent } from './item/item.component';
 import { OrderComponent } from './order/order.component';
 import { OrdersService } from './services/orders.service';
+import { OpenOrderComponent } from './open-order/open-order.component';
+import { SettingsComponent } from './settings/settings.component';
+import { SettingsService } from './services/settings.service';
 
 
 @NgModule({
@@ -52,7 +56,9 @@ import { OrdersService } from './services/orders.service';
     TableComponent,
     ItemsComponent,
     ItemComponent,
-    OrderComponent
+    OrderComponent,
+    OpenOrderComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +68,7 @@ import { OrdersService } from './services/orders.service';
     AppRoutingModule,
     PaginationModule.forRoot(),
     DataTableModule,
+    DialogModule,
     BrowserAnimationsModule,
     ButtonModule
   ],
@@ -71,7 +78,7 @@ import { OrdersService } from './services/orders.service';
     ConfigService, 
     AuthService, 
     AuthGuardService, 
-    UsersService, TablesService, ItemsService, OrdersService
+    UsersService, TablesService, ItemsService, OrdersService, SettingsService
   ],
   bootstrap: [AppComponent]
 })
