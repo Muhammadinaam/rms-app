@@ -91,4 +91,10 @@ export class OpenOrderComponent implements OnInit {
       });
   }
 
+  printForCustomer(order_id)
+  {
+    this.ordersService.printForCustomer(order_id)
+      .subscribe();
+  }
+
 }

@@ -62,4 +62,9 @@ export class OrdersService {
     return this.http.post(this.config.base_url + '/api/close-order', data);
   }
 
+  printForCustomer(order_id)
+  {
+    return this.http.post(this.config.base_url + '/api/print-for-customer/' + order_id, null);
+  }
+
 }

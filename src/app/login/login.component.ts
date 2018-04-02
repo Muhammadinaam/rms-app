@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   http_error_message = "";
   is_loading = false;
 
-  username:string = "abc@abc.com";
-  password:string = "123456";
+  username:string = "";
+  password:string = "";
 
   constructor(private http: HttpClient, 
               private config: ConfigService, 
