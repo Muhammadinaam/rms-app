@@ -38,6 +38,7 @@ import { OrdersService } from './services/orders.service';
 import { OpenOrderComponent } from './open-order/open-order.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsService } from './services/settings.service';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { SettingsService } from './services/settings.service';
     ItemComponent,
     OrderComponent,
     OpenOrderComponent,
-    SettingsComponent
+    SettingsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

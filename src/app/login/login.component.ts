@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
           if(data['access_token'] != '')
           {
             localStorage.setItem("access_token", data['access_token']);
-            this.router.navigate(['']);
+            this.router.navigate(['table-and-orders']);
           }
         },
         (err)=>{

@@ -1,3 +1,4 @@
 - change password
 - print of Edited Order
 - Reprint order for kitchens
+- table reservation system

@@ -1,69 +1,52 @@
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><b>Akonxo</b> RMS</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <!-- <p class="login-box-msg">Sign in to start your session</p> -->
+
+        <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+            <div class="form-group has-feedback">
+                <input type="email" class="form-control" name="username" [(ngModel)]="username" #username_input="ngModel" placeholder="Email" required email>
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 
 
+                <div class="validation-error" *ngIf="username_input.errors?.email">
+                    Email not valid.
+                </div>
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" >
-  
-        
-  
-    <section class="content" style="width:100%;">
-  
-        <div class="login-box">
-            <div class="login-logo">
-              <a href="#"><b>Akonxo</b> RMS</a>
             </div>
-            <!-- /.login-logo -->
-            <div class="login-box-body">
-              <!-- <p class="login-box-msg">Sign in to start your session</p> -->
-          
-              <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
-                <div class="form-group has-feedback">
-                  <input type="email" class="form-control" name="username" [(ngModel)]="username" #username_input="ngModel" placeholder="Email" required email >
-                  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        
-                  
-                  <div class="validation-error" *ngIf="username_input.errors?.email"> 
-                      Email not valid.
-                  </div>
-        
+
+
+
+
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" name="password" [(ngModel)]="password" #password_input="ngModel" placeholder="Password" required>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+
+                <div class="validation-error" *ngIf="password_input.errors?.required">
+                    Password should not be empty.
                 </div>
-                
-        
-                
-        
-                <div class="form-group has-feedback">
-                  <input type="password" class="form-control" name="password" [(ngModel)]="password" #password_input="ngModel" placeholder="Password" required >
-                  <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        
-                  <div class="validation-error" *ngIf="password_input.errors?.required"> 
-                      Password should not be empty.
-                  </div>
-        
-                </div>
-                <div class="row">
-                  
-                  <div class="col-xs-12">
+
+            </div>
+            <div class="row">
+
+                <div class="col-xs-12">
                     <button type="submit" [disabled]="!f.form.valid || is_loading" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                  </div>
-                  
-        
                 </div>
-              </form>
-          
-              
-              <br>
-              <div *ngIf="http_error_message != ''" class="alert alert-danger">
-                <strong>Login Failed, Error: </strong> {{http_error_message}}
-              </div>
-              
-          
-            </div>
-            <!-- /.login-box-body -->
-          </div>
-  
-    </section>
-  
-    
-  </div>
-  <!-- /.content-wrapper -->
 
+
+            </div>
+        </form>
+
+
+        <br>
+        <div *ngIf="http_error_message != ''" class="alert alert-danger">
+            <strong>Login Failed, Error: </strong> {{http_error_message}}
+        </div>
+
+
+    </div>
+    <!-- /.login-box-body -->
+</div>

@@ -1,9 +1,2 @@
 <ng2-slim-loading-bar></ng2-slim-loading-bar>
-<div class="wrapper">
-    <app-header *ngIf="is_logged_in == true"></app-header>
-    <app-sidebar *ngIf="is_logged_in == true"></app-sidebar>    
-    <router-outlet></router-outlet>
-    <app-footer *ngIf="is_logged_in == true"></app-footer>
-</div>
-
-
+<router-outlet></router-outlet>

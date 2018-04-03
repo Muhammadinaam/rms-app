@@ -122,7 +122,7 @@ export class OrderComponent implements OnInit {
 
           alert(data['message']);
           if (data['success'] == true) {
-            this.router.navigate(['/']);
+            this.router.navigate(['/table-and-orders']);
             
           }
         }

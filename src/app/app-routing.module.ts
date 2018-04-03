@@ -11,6 +11,7 @@ import { ItemsComponent } from './items/items.component';
 import { ItemComponent } from './item/item.component';
 import { OrderComponent } from './order/order.component';
 import { SettingsComponent } from './settings/settings.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
@@ -18,10 +19,11 @@ const routes: Routes = [
 
   {
     path: '',
+    component: HomeComponent,
     canActivate: [AuthGuardService],
     children: [
       
-      { path: '', component: TablesAndOrdersComponent },
+      { path: 'table-and-orders', component: TablesAndOrdersComponent },
       { path: 'add-order', component: OrderComponent },
       { path: 'edit-order/:id', component: OrderComponent },
       
