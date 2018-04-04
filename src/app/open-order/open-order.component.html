@@ -28,6 +28,7 @@
 
 
     <a class="btn btn-primary btn-xs btn-block" routerLink="/edit-order/{{order.id}}" role="button">Edit Order</a>
+    <a (click)="reprintForKitchens(order.id)" class="btn btn-warning btn-xs btn-block" role="button">Re-print for Kitchens</a>
     <a (click)="printForCustomer(order.id)" class="btn btn-primary btn-xs btn-block" role="button">Print for Customer</a>
     <a (click)="showCloseOrderModal()" class="btn btn-primary btn-xs btn-block" role="button">Close Order</a>
 

@@ -97,4 +97,19 @@ export class OpenOrderComponent implements OnInit {
       .subscribe();
   }
 
+  reprintForKitchens(order_id)
+  {
+    let r = confirm("Are you sure to reprint order for kitchens?")
+
+    if(  r != true)
+    {
+      return;
+    }
+
+    this.ordersService.reprintForKitchens(order_id)
+      .subscribe();
+
+    
+  }
+
 }

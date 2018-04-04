@@ -67,4 +67,9 @@ export class OrdersService {
     return this.http.post(this.config.base_url + '/api/print-for-customer/' + order_id, null);
   }
 
+  reprintForKitchens(order_id)
+  {
+    return this.http.post(this.config.base_url + '/api/reprint-for-kitchens/' + order_id, null);
+  }
+
 }
