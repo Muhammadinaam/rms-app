@@ -39,6 +39,9 @@ import { OpenOrderComponent } from './open-order/open-order.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsService } from './services/settings.service';
 import { HomeComponent } from './home/home.component';
+import { SalesReportComponent } from './reports/sales-report/sales-report.component';
+import { CollectionReportComponent } from './reports/collection-report/collection-report.component';
+import { ReportsService } from './services/reports.service';
 
 
 @NgModule({
@@ -60,7 +63,9 @@ import { HomeComponent } from './home/home.component';
     OrderComponent,
     OpenOrderComponent,
     SettingsComponent,
-    HomeComponent
+    HomeComponent,
+    SalesReportComponent,
+    CollectionReportComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +85,7 @@ import { HomeComponent } from './home/home.component';
     ConfigService, 
     AuthService, 
     AuthGuardService, 
-    UsersService, TablesService, ItemsService, OrdersService, SettingsService
+    UsersService, TablesService, ItemsService, OrdersService, SettingsService, ReportsService
   ],
   bootstrap: [AppComponent]
 })
