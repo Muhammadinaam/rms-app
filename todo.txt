@@ -1,3 +1,5 @@
 - change password
-- Reprint order for kitchens
+- Print Cancelled order
+- Fix edit order
+- Two reports
 - table reservation system
