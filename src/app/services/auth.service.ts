@@ -71,4 +71,14 @@ export class AuthService {
     return this.http.get(this.config.base_url + permissions_url);
   }
 
+  changePassword(old_password:string, new_password:string)
+  {
+    let fd = new FormData();
+
+    fd.append('old_password', old_password);
+    fd.append('new_password', new_password);
+
+    return this.http.post(this.config.base_url + '/api/change-password', fd);
+  }
+
 }

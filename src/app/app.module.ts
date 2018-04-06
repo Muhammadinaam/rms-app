@@ -42,6 +42,7 @@ import { HomeComponent } from './home/home.component';
 import { SalesReportComponent } from './reports/sales-report/sales-report.component';
 import { CollectionReportComponent } from './reports/collection-report/collection-report.component';
 import { ReportsService } from './services/reports.service';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { ReportsService } from './services/reports.service';
     SettingsComponent,
     HomeComponent,
     SalesReportComponent,
-    CollectionReportComponent
+    CollectionReportComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

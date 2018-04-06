@@ -14,6 +14,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { HomeComponent } from './home/home.component';
 import { SalesReportComponent } from './reports/sales-report/sales-report.component';
 import { CollectionReportComponent } from './reports/collection-report/collection-report.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,8 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuardService],
     children: [
+
+      { path: 'change-password', component: ChangePasswordComponent},
       
       { path: 'table-and-orders', component: TablesAndOrdersComponent },
       { path: 'add-order', component: OrderComponent },
