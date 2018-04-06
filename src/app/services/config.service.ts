@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { config } from '../../assets/config';
 
 @Injectable()
 export class ConfigService {
@@ -11,6 +12,11 @@ export class ConfigService {
     client_secret: 'dRcXHre5hNEiIjGJXqriwykZym5Eh0NRF7OjqPCk',
   };
 
-  constructor() { }
+  constructor() {
+    
+    this.base_url = config.base_url;
+    this.auth_data = config.auth_data;
+
+  }
 
 }
