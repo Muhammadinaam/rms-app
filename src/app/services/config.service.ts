@@ -14,8 +14,10 @@ export class ConfigService {
 
   constructor() {
     
+    
     this.base_url = config.base_url;
     this.auth_data = config.auth_data;
+    
 
   }
 
