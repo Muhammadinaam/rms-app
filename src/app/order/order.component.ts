@@ -78,7 +78,11 @@ export class OrderComponent implements OnInit {
 
     this.is_loading = true;
     this.itemsService.getItems()
-      .subscribe(data => {this.items = data; this.is_loading = false;});
+      .subscribe(data => {
+        this.items = data; 
+        this.items.splice(0,0,this.new_item);
+        this.is_loading = false;
+      });
 
     this.is_loading = true;
     this.settingsService.getSettingBySlug('sales_tax_rate')
@@ -131,9 +135,10 @@ export class OrderComponent implements OnInit {
 
   newItemChanged(event:any)
   {
-    let item_id = event.target.value;
-    let item = this.items.filter( item => parseInt(item.id) === parseInt(item_id) )[0];
-    this.new_item.rate = item.price;
+    this.new_item.rate = event.value.price;
+    // let item_id = event.target.value;
+    // let item = this.items.filter( item => parseInt(item.id) === parseInt(item_id) )[0];
+    // this.new_item.rate = item.price;
   }
 
   removeItem(i)
@@ -169,6 +174,8 @@ export class OrderComponent implements OnInit {
         rate: this.new_item.rate,
       }
     );
+
+    this.new_item.qty = 0;
 
     
     this.resetNewItem();

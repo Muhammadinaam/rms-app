@@ -6,8 +6,10 @@ import { SlimLoadingBarModule } from "ng2-slim-loading-bar";
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DataTableModule, Button } from 'primeng/primeng';
 import {DialogModule} from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
 
 
 import { AppComponent } from './app.component';
@@ -67,7 +69,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     HomeComponent,
     SalesReportComponent,
     CollectionReportComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,8 +80,10 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     PaginationModule.forRoot(),
     DataTableModule,
     DialogModule,
+    DropdownModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
+    CalendarModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true},
