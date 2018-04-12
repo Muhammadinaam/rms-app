@@ -15,4 +15,15 @@ export class SalesReportComponent implements OnInit {
   ngOnInit() {
   }
 
+  showReport(event:any)
+  {
+    alert(event.from);
+    var from = event.from.toLocaleDateString();
+    var to = event.to.toLocaleDateString().slice(0, 19).replace('T', ' ');
+
+    alert(from);
+
+
+  }
+
 }

@@ -45,6 +45,7 @@ import { SalesReportComponent } from './reports/sales-report/sales-report.compon
 import { CollectionReportComponent } from './reports/collection-report/collection-report.component';
 import { ReportsService } from './services/reports.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { DatesFilterComponent } from './dates-filter/dates-filter.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     SalesReportComponent,
     CollectionReportComponent,
     ChangePasswordComponent,
+    DatesFilterComponent,
   ],
   imports: [
     BrowserModule,
