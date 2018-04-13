@@ -12,6 +12,7 @@ export class OpenOrderComponent implements OnInit {
 
   is_change_status_modal_visible=false;
   is_close_order_modal_visible=false;
+  is_discount_modal_visible=false;
   received_amount=0;
 
   
@@ -35,6 +36,11 @@ export class OpenOrderComponent implements OnInit {
   showCloseOrderModal()
   {
     this.is_close_order_modal_visible=true;
+  }
+
+  showDiscountModal()
+  {
+    this.is_discount_modal_visible=true;
   }
 
   onModalShow(event)

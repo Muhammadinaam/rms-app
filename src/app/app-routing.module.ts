@@ -12,9 +12,9 @@ import { ItemComponent } from './item/item.component';
 import { OrderComponent } from './order/order.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HomeComponent } from './home/home.component';
-import { SalesReportComponent } from './reports/sales-report/sales-report.component';
 import { CollectionReportComponent } from './reports/collection-report/collection-report.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { SalesByItemReportComponent } from './reports/sales-by-item-report/sales-by-item-report.component';
 
 
 const routes: Routes = [
@@ -46,7 +46,7 @@ const routes: Routes = [
       { path: 'item', component: ItemComponent},
       { path: 'item/:id', component: ItemComponent},
 
-      { path: 'sales-report', component: SalesReportComponent },
+      { path: 'sales-by-item-report', component: SalesByItemReportComponent },
       { path: 'collection-report', component: CollectionReportComponent },
 
     ]

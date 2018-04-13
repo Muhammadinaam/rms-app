@@ -29,9 +29,21 @@
 
     <a class="btn btn-primary btn-xs btn-block" routerLink="/edit-order/{{order.id}}" role="button">Edit Order</a>
     <a (click)="reprintForKitchens(order.id)" class="btn btn-warning btn-xs btn-block" role="button">Re-print for Kitchens</a>
+    <a (click)="showDiscountModal()" class="btn btn-danger btn-xs btn-block" role="button">Discount</a>
     <a (click)="printForCustomer(order.id)" class="btn btn-primary btn-xs btn-block" role="button">Print for Customer</a>
     <a (click)="showCloseOrderModal()" class="btn btn-primary btn-xs btn-block" role="button">Close Order</a>
 
+    <p-dialog width="350" (onShow)="onModalShow($event)" (onHide)="onModalHide($event)" header="Discount" [modal]="true" [(visible)]="is_discount_modal_visible">
+
+
+        <div class="form-group">
+            todo
+
+        </div>
+
+
+
+    </p-dialog>
 
     <p-dialog width="350" (onShow)="onModalShow($event)" (onHide)="onModalHide($event)" header="Change Order Status" [modal]="true" [(visible)]="is_change_status_modal_visible">
 
@@ -40,10 +52,10 @@
             <label for="status" class=" control-label">Status:</label>
             <div class="">
                 <select #status_input name="abc" id="status" class="form-control" required="required">
-            <option value="1">Pending</option>
-            <option value="2">Served</option>
-            <option value="4">Cancel Bill</option>
-          </select>
+                    <option value="1">Pending</option>
+                    <option value="2">Served</option>
+                    <option value="4">Cancel Bill</option>
+                </select>
             </div>
 
 

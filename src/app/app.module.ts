@@ -41,11 +41,12 @@ import { OpenOrderComponent } from './open-order/open-order.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsService } from './services/settings.service';
 import { HomeComponent } from './home/home.component';
-import { SalesReportComponent } from './reports/sales-report/sales-report.component';
 import { CollectionReportComponent } from './reports/collection-report/collection-report.component';
 import { ReportsService } from './services/reports.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { DatesFilterComponent } from './dates-filter/dates-filter.component';
+import { SalesByItemReportComponent } from './reports/sales-by-item-report/sales-by-item-report.component';
+import { HelperService } from './services/helper.service';
 
 
 @NgModule({
@@ -68,10 +69,10 @@ import { DatesFilterComponent } from './dates-filter/dates-filter.component';
     OpenOrderComponent,
     SettingsComponent,
     HomeComponent,
-    SalesReportComponent,
     CollectionReportComponent,
     ChangePasswordComponent,
     DatesFilterComponent,
+    SalesByItemReportComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,7 +94,7 @@ import { DatesFilterComponent } from './dates-filter/dates-filter.component';
     ConfigService, 
     AuthService, 
     AuthGuardService, 
-    UsersService, TablesService, ItemsService, OrdersService, SettingsService, ReportsService
+    UsersService, TablesService, ItemsService, OrdersService, SettingsService, ReportsService, HelperService
   ],
   bootstrap: [AppComponent]
 })
