@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ReportsService } from '../../services/reports.service';
 
 @Component({
-  selector: 'app-sales-by-item-report',
-  templateUrl: './sales-by-item-report.component.html',
-  styleUrls: ['./sales-by-item-report.component.css']
+  selector: 'app-sales-by-order-report',
+  templateUrl: './sales-by-order-report.component.html',
+  styleUrls: ['./sales-by-order-report.component.css']
 })
-export class SalesByItemReportComponent implements OnInit {
+export class SalesByOrderReportComponent implements OnInit {
 
-  report_data:any;
+  report_data;
 
   constructor(
     private reportsService: ReportsService
@@ -19,7 +19,7 @@ export class SalesByItemReportComponent implements OnInit {
 
   showReport(event:any)
   {
-    this.reportsService.salesReportByItem(event.from, event.to)
+    this.reportsService.salesReportByOrder(event.from, event.to)
       .subscribe( data => { this.report_data = data; } );
   }
 

@@ -3,6 +3,7 @@
 
     <p *ngIf="order.portion != null">Portion/Floor: <b>{{order.portion}}</b></p>
     <p *ngIf="order.table_name != null">Table: <b>{{order.table_name}}</b></p>
+    <p *ngIf="order.cover != null">Cover: <b>{{order.cover | number:'1.0-0' }}</b></p>
     <p *ngIf="order.deliver_to_name != null">Customer: <b>{{order.deliver_to_name}}</b></p>
     <p *ngIf="order.deliver_to_phone != null">Phone: <b>{{order.deliver_to_phone}}</b></p>
     <p *ngIf="order.deliver_to_address != null">Address: <b>{{order.deliver_to_address}}</b></p>
@@ -29,7 +30,11 @@
 
     <a class="btn btn-primary btn-xs btn-block" routerLink="/edit-order/{{order.id}}" role="button">Edit Order</a>
     <a (click)="reprintForKitchens(order.id)" class="btn btn-warning btn-xs btn-block" role="button">Re-print for Kitchens</a>
+    
+    <!--
     <a (click)="showDiscountModal()" class="btn btn-danger btn-xs btn-block" role="button">Discount</a>
+    -->
+    
     <a (click)="printForCustomer(order.id)" class="btn btn-primary btn-xs btn-block" role="button">Print for Customer</a>
     <a (click)="showCloseOrderModal()" class="btn btn-primary btn-xs btn-block" role="button">Close Order</a>
 
@@ -37,8 +42,7 @@
 
 
         <div class="form-group">
-            todo
-
+            Coming Soon...
         </div>
 
 
