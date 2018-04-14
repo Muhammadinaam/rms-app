@@ -129,10 +129,10 @@
                                             <thead>
                                                 <tr>
                                                     <th>Item</th>
-                                                    <th style="width:100px;">Qty</th>
+                                                    <th style="width:150px;">Qty</th>
                                                     <th style="width:100px;">Rate</th>
                                                     <th style="width:100px;">Amount</th>
-                                                    <th style="width:100px;">Add / Remove</th>
+                                                    <th style="width:50px;">Add / Remove</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -160,7 +160,17 @@
 
                                                     </td>
                                                     <td>
-                                                        <input type="number" min=0 [(ngModel)]="new_item.qty" [ngModelOptions]="{standalone: true}" class="form-control input-md">
+
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button (click)="decreaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-minus-circle"></i> </button>
+                                                            </span>
+                                                            <input class="text-center" type="number" min=0 [(ngModel)]="new_item.qty" [ngModelOptions]="{standalone: true}" class="form-control input-md">
+                                                            <span class="input-group-btn">
+                                                                <button (click)="increaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-plus-circle"></i> </button>
+                                                            </span>
+                                                        </div>
+
                                                     </td>
                                                     <td>
                                                         <input type="number" [(ngModel)]="new_item.rate" [ngModelOptions]="{standalone: true}" class="form-control input-md" readonly>

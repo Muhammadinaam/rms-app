@@ -27,7 +27,7 @@ export class OrderComponent implements OnInit {
 
   new_item = {
     id:0,
-    qty:0,
+    qty:1,
     rate:0
   };
 
@@ -136,6 +136,7 @@ export class OrderComponent implements OnInit {
   newItemChanged(event:any)
   {
     this.new_item.rate = event.value.price;
+    this.new_item.qty = 1;
     // let item_id = event.target.value;
     // let item = this.items.filter( item => parseInt(item.id) === parseInt(item_id) )[0];
     // this.new_item.rate = item.price;
@@ -175,7 +176,7 @@ export class OrderComponent implements OnInit {
       }
     );
 
-    this.new_item.qty = 0;
+    this.new_item.qty = 1;
 
     
     this.resetNewItem();
@@ -187,9 +188,25 @@ export class OrderComponent implements OnInit {
   {
     this.new_item = {
       id:0,
-      qty:0,
+      qty:1,
       rate:0
     };
   }
+
+  decreaseNewQty()
+  {
+    this.new_item.qty--;
+
+    if (this.new_item.qty < 0)
+    {
+      this.new_item.qty = 0;
+    }
+  }
+
+  increaseNewQty()
+  {
+    this.new_item.qty++;
+  }
+
 
 }
