@@ -118,4 +118,46 @@ export class OpenOrderComponent implements OnInit {
     
   }
 
+  discountPercentBlur(event:any)
+  {
+    let discount_percent = event.target.value;
+    this.order.discount = this.order.order_amount_before_discount * discount_percent / 100;
+    this.calculateOrderAmounts();
+  }
+
+  discountAmountBlur(event:any)
+  {
+    this.order.discount = event.target.value;
+    this.calculateOrderAmounts();
+  }
+
+  calculateOrderAmounts()
+  {
+    let sales_tax_rate = this.order.sales_tax / this.order.order_amount_ex_st * 100;
+
+    this.order.order_amount_ex_st = this.order.order_amount_before_discount - this.order.discount;
+    this.order.sales_tax = this.order.order_amount_ex_st * sales_tax_rate / 100;
+    this.order.order_amount_inc_st = this.order.order_amount_ex_st - this.order.sales_tax;
+  }
+
+  saveDiscount()
+  {
+    if ( this.order.order_amount_before_discount*1 < this.order.discount*1 )
+    {
+      alert('Discount is greater than Order Amount');
+      return;
+    }
+
+    this.ordersService.saveDiscount(this.order)
+      .subscribe(data => 
+        { 
+          alert(data['message']);
+          if( data['success'] == true )
+          {
+            this.is_discount_modal_visible = false;
+          }
+        }
+      );
+  }
+
 }

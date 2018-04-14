@@ -30,22 +30,56 @@
 
     <a class="btn btn-primary btn-xs btn-block" routerLink="/edit-order/{{order.id}}" role="button">Edit Order</a>
     <a (click)="reprintForKitchens(order.id)" class="btn btn-warning btn-xs btn-block" role="button">Re-print for Kitchens</a>
-    
-    <!--
+
     <a (click)="showDiscountModal()" class="btn btn-danger btn-xs btn-block" role="button">Discount</a>
-    -->
-    
+
     <a (click)="printForCustomer(order.id)" class="btn btn-primary btn-xs btn-block" role="button">Print for Customer</a>
     <a (click)="showCloseOrderModal()" class="btn btn-primary btn-xs btn-block" role="button">Close Order</a>
 
     <p-dialog width="350" (onShow)="onModalShow($event)" (onHide)="onModalHide($event)" header="Discount" [modal]="true" [(visible)]="is_discount_modal_visible">
 
 
-        <div class="form-group">
-            Coming Soon...
-        </div>
+        <table class="table table-hover table-condensed table-bordered">
+            <tbody>
+
+                <tr>
+                    <td>Order Amount</td>
+                    <td class="text-right">{{order.order_amount_before_discount | currency:' ' }}</td>
+                </tr>
+
+                <tr>
+                    <td>Discount (%)</td>
+                    <td class="text-right">
+                        <input (blur)="discountPercentBlur($event)" style="text-align: right;" min="0" [value]="order.discount / order.order_amount_before_discount * 100 | number:'1.2-2'" type="number" name="discount_percent" id="discount_percent" class="form-control">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Discount Amount</td>
+                    <td class="text-right">
+                        <input (blur)="discountAmountBlur($event)" style="text-align: right;" min="0" [value]="order.discount | number:'1.2-2'" type="number" name="discount_amount" id="discount_amount" class="form-control">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Amount Exc. ST</td>
+                    <td class="text-right">{{order.order_amount_ex_st | currency:' ' }}</td>
+                </tr>
+
+                <tr>
+                    <td>Sales Tax</td>
+                    <td class="text-right">{{order.sales_tax | currency:' ' }}</td>
+                </tr>
+
+                <tr>
+                    <td>Amount Inc. ST</td>
+                    <td class="text-right">{{order.order_amount_inc_st | currency:' ' }}</td>
+                </tr>
+            </tbody>
+        </table>
 
 
+        <button (click)="saveDiscount()" type="button" class="btn btn-block btn-primary">Save</button>
 
     </p-dialog>
 
