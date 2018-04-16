@@ -15,9 +15,9 @@
                 <div class="box-body">
 
                     <div class="hidden-print">
-                            <app-dates-filter (onShowBtnClicked)="showReport($event)"></app-dates-filter>    
+                        <app-dates-filter (onShowBtnClicked)="showReport($event)"></app-dates-filter>
                     </div>
-                    
+
 
                     <div class="box box-success">
                         <div class="box-header with-border">
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="box-body">
-                            
+
                             <table class="table table-condensed table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -44,11 +44,11 @@
 
                                 <tfoot *ngIf="report_data == null || report_data.length == 0">
                                     <tr>
-                                        <td colspan="10">No Data Found</td>
+                                        <td colspan="10" class="text-center"><b>No Data Found</b></td>
                                     </tr>
                                 </tfoot>
                             </table>
-                            
+
                         </div>
                     </div>
 

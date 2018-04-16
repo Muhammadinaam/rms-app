@@ -125,56 +125,72 @@
 
                                     <div class="box-body">
 
-                                        <table class="table table-bordered table-condensed table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Item</th>
-                                                    <th style="width:100px;">Qty</th>
-                                                    <th style="width:100px;">Rate</th>
-                                                    <th style="width:100px;">Amount</th>
-                                                    <th style="width:100px;">Add / Remove</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let order_detail of order.order_details; let i = index;">
-                                                    <td>{{ order_detail.item_name }}</td>
-                                                    <td>{{ order_detail.qty }}</td>
-                                                    <td>{{ order_detail.rate }}</td>
-                                                    <td>{{ order_detail.qty * order_detail.rate }}</td>
-                                                    <td>
-                                                        <button (click)="removeItem(i)" type="button" class="btn btn-danger"><i class="fa fa-times-circle"></i></button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
+                                        
 
-                                            <tfoot>
-                                                <tr>
-                                                    <td>
-                                                        <!-- <select id="new_item_select" (change)="newItemChanged($event)" [(ngModel)]="new_item.id" [ngModelOptions]="{standalone: true}" class="form-control input-md">
-                                                            <option *ngFor="let item of items" [value]="item.id">{{item.code + " | " + item.name + " ("+item.unit+")" }}</option>
-                                                        </select> -->
+                                                <table style="min-width: 625px;" class="table table-bordered table-condensed table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Item</th>
+                                                                <th style="width:150px;">Qty</th>
+                                                                <th style="width:100px;">Rate</th>
+                                                                <th style="width:100px;">Amount</th>
+                                                                <th style="width:50px;">Add / Remove</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let order_detail of order.order_details; let i = index;">
+                                                                <td>{{ order_detail.item_name }}</td>
+                                                                <td>{{ order_detail.qty }}</td>
+                                                                <td>{{ order_detail.rate }}</td>
+                                                                <td>{{ order_detail.qty * order_detail.rate }}</td>
+                                                                <td>
+                                                                    <button (click)="removeItem(i)" type="button" class="btn btn-danger"><i class="fa fa-times-circle"></i></button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+            
+                                                        <tfoot>
+                                                            <tr>
+                                                                <td>
+                                                                    <!-- <select id="new_item_select" (change)="newItemChanged($event)" [(ngModel)]="new_item.id" [ngModelOptions]="{standalone: true}" class="form-control input-md">
+                                                                        <option *ngFor="let item of items" [value]="item.id">{{item.code + " | " + item.name + " ("+item.unit+")" }}</option>
+                                                                    </select> -->
+            
+                                                                    <p-dropdown (onChange)="newItemChanged($event)" [style]="{'width':'100%'}" id="new_item_select" [options]="items" optionLabel="name" [(ngModel)]="new_item" [ngModelOptions]="{standalone: true}" [filter]="true">
+            
+                                                                    </p-dropdown>
+            
+                                                                </td>
+                                                                <td>
+            
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-btn">
+                                                                            <button (click)="decreaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-minus-circle"></i> </button>
+                                                                        </span>
+                                                                        <input class="text-center" type="number" min=0 [(ngModel)]="new_item.qty" [ngModelOptions]="{standalone: true}" class="form-control input-md">
+                                                                        <span class="input-group-btn">
+                                                                            <button (click)="increaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-plus-circle"></i> </button>
+                                                                        </span>
+                                                                    </div>
+            
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" [(ngModel)]="new_item.rate" [ngModelOptions]="{standalone: true}" class="form-control input-md" readonly>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" [value]="new_item.qty * new_item.rate" class="form-control input-md" readonly>
+                                                                </td>
+                                                                <td>
+                                                                    <button type="button" (click)="addNewItem()" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
+                                                                    <button type="button" (click)="resetNewItem()" class="btn btn-primary"> <i class="fa fa-times-circle-o"></i> </button>
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
 
-                                                        <p-dropdown (onChange)="newItemChanged($event)" [style]="{'width':'100%'}" id="new_item_select" [options]="items" optionLabel="name" [(ngModel)]="new_item" [ngModelOptions]="{standalone: true}" [filter]="true">
+                                        
 
-                                                        </p-dropdown>
-
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" min=0 [(ngModel)]="new_item.qty" [ngModelOptions]="{standalone: true}" class="form-control input-md">
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" [(ngModel)]="new_item.rate" [ngModelOptions]="{standalone: true}" class="form-control input-md" readonly>
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" [value]="new_item.qty * new_item.rate" class="form-control input-md" readonly>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" (click)="addNewItem()" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
-                                                        <button type="button" (click)="resetNewItem()" class="btn btn-primary"> <i class="fa fa-times-circle-o"></i> </button>
-                                                    </td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
+                                        
 
                                     </div>
 

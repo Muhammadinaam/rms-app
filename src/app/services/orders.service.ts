@@ -39,6 +39,16 @@ export class OrdersService {
     }
   }
 
+  saveDiscount(order)
+  {
+    let fd = new FormData();
+
+    fd.append('order', JSON.stringify(order));
+
+    return this.http.post(this.config.base_url + '/api/save-order-discount', fd);
+    
+  }
+
   getOpenOrders()
   {
     return this.http.get(this.config.base_url + '/api/open-orders');

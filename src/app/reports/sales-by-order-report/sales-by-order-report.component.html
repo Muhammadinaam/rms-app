@@ -15,9 +15,9 @@
                 <div class="box-body">
 
                     <div class="hidden-print">
-                            <app-dates-filter (onShowBtnClicked)="showReport($event)"></app-dates-filter>    
+                        <app-dates-filter (onShowBtnClicked)="showReport($event)"></app-dates-filter>
                     </div>
-                    
+
 
                     <div class="box box-success">
                         <div class="box-header with-border">
@@ -25,28 +25,30 @@
                         </div>
 
                         <div class="box-body">
-                            
+
                             <table class="table table-condensed table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>Order</th>
-                                        <th class="col-md-2 text-center">Amount</th>
+                                        <th class="col-md-2 col-sm-2 text-center">Discount</th>
+                                        <th class="col-md-2 col-sm-2 text-center">Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr [class.grand-total]="row.name == null" *ngFor="let row of report_data">
+                                    <tr [class.grand-total]="row.id == null" *ngFor="let row of report_data">
                                         <td>{{row.id}}</td>
+                                        <td class="text-center">{{row.discount | currency:' '}}</td>
                                         <td class="text-center">{{row.amount | currency:' '}}</td>
                                     </tr>
                                 </tbody>
 
                                 <tfoot *ngIf="report_data == null || report_data.length == 0">
                                     <tr>
-                                        <td colspan="10">No Data Found</td>
+                                        <td colspan="10" class="text-center"><b>No Data Found</b></td>
                                     </tr>
                                 </tfoot>
                             </table>
-                            
+
                         </div>
                     </div>
 
