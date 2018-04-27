@@ -14,6 +14,7 @@ export class OpenOrderComponent implements OnInit {
   is_close_order_modal_visible=false;
   is_discount_modal_visible=false;
   received_amount=0;
+  ent_remarks='';
 
   
 
@@ -76,14 +77,14 @@ export class OpenOrderComponent implements OnInit {
     this.modalClose.emit();
   }
 
-  closeOrder(order_id, received_through)
+  closeOrder(order_id, received_through, ent_remarks)
   {
     let r = confirm('Are you Sure?');
 
     if( r != true )
       return;
 
-    this.ordersService.closeOrder(order_id, received_through)
+    this.ordersService.closeOrder(order_id, received_through, ent_remarks)
       .subscribe(data => {
         
         if(data['success'] == true)

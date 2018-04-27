@@ -63,11 +63,12 @@ export class OrdersService {
     return this.http.post(this.config.base_url + '/api/change-order-status', data);
   }
 
-  closeOrder(order_id, received_through)
+  closeOrder(order_id, received_through, ent_remarks)
   {
     let data = new FormData();
     data.append('order_id', order_id);
     data.append('received_through', received_through);
+    data.append('ent_remarks', ent_remarks);
 
     return this.http.post(this.config.base_url + '/api/close-order', data);
   }

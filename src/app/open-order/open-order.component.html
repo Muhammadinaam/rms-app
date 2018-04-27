@@ -114,9 +114,10 @@
             <div class="">
                 <select #received_through_input name="received_through" id="received_through" class="form-control" required="required">
             <option value="0">-</option>
-            <option value="Cash2"></option>
             <option value="Cash">Cash</option>
             <option value="Card">Card</option>
+            <option value="Ent">Ent</option>
+            <option value="Cash2"></option>
           </select>
 
             </div>
@@ -125,8 +126,20 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="received_amount" class="control-label">Received Through:</label>
+
+        <div *ngIf="received_through_input.value == 'Ent'" class="form-group">
+            <label for="ent_remarks" class="control-label">Ent Remarks:</label>
+            <div class="">
+                <input [(ngModel)]="ent_remarks" type="text" name="ent_remarks" id="ent_remarks" class="form-control" required="required">
+            </div>
+            <div class="validation-error" *ngIf="ent_remarks == ''">
+                Should not be empty.
+            </div>
+        </div>
+
+
+        <div *ngIf="received_through_input.value != 'Ent'" class="form-group">
+            <label for="received_amount" class="control-label">Received Amount:</label>
             <div class="">
                 <input [(ngModel)]="received_amount" type="number" name="received_amount" id="received_amount" class="form-control" value="" required="required" pattern="" title="">
             </div>
@@ -136,10 +149,11 @@
         </div>
 
 
-        <h3><small>Balance: </small> {{ received_amount - order.order_amount_inc_st | currency:'Rs.' }}</h3>
+        <h3 *ngIf="received_through_input.value != 'Ent'"><small>Balance: </small> {{ received_amount - order.order_amount_inc_st | currency:'Rs.' }}</h3>
 
         <br><br>
-        <button [disabled]="received_through_input.value == 0 || received_amount < order.order_amount_inc_st" (click)="closeOrder(order.id, received_through_input.value)" type="button" class="btn btn-block btn-primary">Close Order</button>
+        <button [disabled]="received_through_input.value == 0 || (received_through_input.value != 'Ent' && received_amount < order.order_amount_inc_st) || (received_through_input.value == 'Ent' && (ent_remarks == '') )" (click)="closeOrder(order.id, received_through_input.value, ent_remarks)"
+            type="button" class="btn btn-block btn-primary">Close Order</button>
 
 
 
