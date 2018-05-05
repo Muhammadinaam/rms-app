@@ -12,6 +12,7 @@ export class DatesFilterComponent implements OnInit {
 
   to:any;
   from:any;
+  show_actual:any=false;
 
   ngOnInit() {
   }
@@ -26,7 +27,7 @@ export class DatesFilterComponent implements OnInit {
       return;
     }
 
-    this.onShowBtnClicked.emit( { to: this.to, from:this.from } );
+    this.onShowBtnClicked.emit( { to: this.to, from:this.from, show_actual:this.show_actual } );
   }
 
 

@@ -1,0 +1,21 @@
+
+                            
+<table class="table table-bordered table-condensed table-hover">
+    <tbody>
+        <tr *ngFor="let receipt_detail of report_summary.receipt_detail">
+            <td>{{receipt_detail.received_through}} Collection</td>
+            <td>{{receipt_detail.total_received | currency:' '}}</td>
+        </tr>
+
+        <tr>
+            <td>Discount</td>
+            <td>{{report_summary.st_and_discount.total_discount | currency:' ' }}</td>
+        </tr>
+
+        <tr>
+            <td>Sales Tax</td>
+            <td>{{report_summary.st_and_discount.total_sales_tax | currency:' ' }}</td>
+        </tr>
+
+    </tbody>
+</table>

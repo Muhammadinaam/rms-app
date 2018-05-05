@@ -29,15 +29,25 @@
                             <table class="table table-condensed table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Order</th>
+                                        <th>Invoice ID</th>
+                                        <th>Order ID</th>
+                                        <th>Order Type</th>
+                                        <th>Cover</th>
+                                        <th>Received Through</th>
                                         <th class="col-md-2 col-sm-2 text-center">Discount</th>
+                                        <th>Sales Tax</th>
                                         <th class="col-md-2 col-sm-2 text-center">Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr [class.grand-total]="row.id == null" *ngFor="let row of report_data">
                                         <td>{{row.id}}</td>
+                                        <td>{{row.order_id}}</td>
+                                        <td>{{row.order_type}}</td>
+                                        <td>{{row.cover}}</td>
+                                        <td>{{row.received_through}}</td>
                                         <td class="text-center">{{row.discount | currency:' '}}</td>
+                                        <td class="text-center">{{row.sales_tax | currency:' '}}</td>
                                         <td class="text-center">{{row.amount | currency:' '}}</td>
                                     </tr>
                                 </tbody>
@@ -48,6 +58,57 @@
                                     </tr>
                                 </tfoot>
                             </table>
+
+
+
+                            <div *ngIf="ent_report_data.length > 1">
+                                <hr>
+                                <h3 class="text-center">Ent Orders</h3>
+                                <table class="table table-condensed table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Ent ID</th>
+                                                <th>Order ID</th>
+                                                <th>Order Type</th>
+                                                <th>Ent Remarks</th>
+                                                <th>Cover</th>
+                                                <th>Received Through</th>
+                                                <th class="col-md-2 col-sm-2 text-center">Discount</th>
+                                                <th>Sales Tax</th>
+                                                <th class="col-md-2 col-sm-2 text-center">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr [class.grand-total]="row.id == null" *ngFor="let row of ent_report_data">
+                                                <td>{{row.id}}</td>
+                                                <td>{{row.order_id}}</td>
+                                                <td>{{row.order_type}}</td>
+                                                <td>{{row.ent_remarks}}</td>
+                                                <td>{{row.cover}}</td>
+                                                <td>{{row.received_through}}</td>
+                                                <td class="text-center">{{row.discount | currency:' '}}</td>
+                                                <td class="text-center">{{row.sales_tax | currency:' '}}</td>
+                                                <td class="text-center">{{row.amount | currency:' '}}</td>
+                                            </tr>
+                                        </tbody>
+        
+                                        <tfoot *ngIf="report_data == null || report_data.length == 0">
+                                            <tr>
+                                                <td colspan="10" class="text-center"><b>No Data Found</b></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+            
+                            </div>
+                            
+                            
+
+
+                            <hr>
+                            <h3 class="text-center">Summary</h3>
+                            <app-summary [report_summary]="report_summary"></app-summary>
+
+
 
                         </div>
                     </div>

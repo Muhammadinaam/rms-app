@@ -9,6 +9,14 @@ import { ReportsService } from '../../services/reports.service';
 export class SalesByOrderReportComponent implements OnInit {
 
   report_data;
+  ent_report_data:any = new Array();
+  report_summary:any = {
+    'receipt_detail': [],
+    'st_and_discount': {
+      'total_sales_tax': 0,
+      'total_discount': 0,
+    }
+  };
 
   constructor(
     private reportsService: ReportsService
@@ -19,8 +27,12 @@ export class SalesByOrderReportComponent implements OnInit {
 
   showReport(event:any)
   {
-    this.reportsService.salesReportByOrder(event.from, event.to)
-      .subscribe( data => { this.report_data = data; } );
+    this.reportsService.salesReportByOrder(event.from, event.to, event.show_actual)
+      .subscribe( data => {
+        this.report_data = data['report_detail']['orders'];
+        this.ent_report_data = data['report_detail']['ent_orders'];
+        this.report_summary = data['report_summary'];
+      });
   }
 
 }

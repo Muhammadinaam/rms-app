@@ -29,3 +29,20 @@ tr.grand-total {
     background-color: lightgray;
     font-weight: bold;
 }
+
+.hidden_checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.hidden_checkbox:checked {
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    appearance: checkbox;
+    
+}

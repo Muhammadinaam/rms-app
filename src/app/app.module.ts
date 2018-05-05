@@ -48,6 +48,7 @@ import { DatesFilterComponent } from './dates-filter/dates-filter.component';
 import { SalesByItemReportComponent } from './reports/sales-by-item-report/sales-by-item-report.component';
 import { HelperService } from './services/helper.service';
 import { SalesByOrderReportComponent } from './reports/sales-by-order-report/sales-by-order-report.component';
+import { SummaryComponent } from './reports/summary/summary.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { SalesByOrderReportComponent } from './reports/sales-by-order-report/sal
     DatesFilterComponent,
     SalesByItemReportComponent,
     SalesByOrderReportComponent,
+    SummaryComponent,
   ],
   imports: [
     BrowserModule,

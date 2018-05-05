@@ -13,20 +13,32 @@ export class ReportsService {
     private h: HelperService
   ) { }
 
-  salesReportByItem(from_date, to_date) {
-    let params = { 'from_date': this.h.toSqlFormat(from_date), 'to_date': this.h.toSqlFormat(to_date) };
+  salesReportByItem(from_date, to_date, show_actual) {
+    let params = { 
+      'from_date': this.h.toSqlFormat(from_date), 
+      'to_date': this.h.toSqlFormat(to_date),  
+      's_a': show_actual,
+    };
 
     return this.http.get(this.config.base_url + '/api/sales-report-by-item', { params: params });
   }
 
-  salesReportByOrder(from_date, to_date) {
-    let params = { 'from_date': this.h.toSqlFormat(from_date), 'to_date': this.h.toSqlFormat(to_date) };
+  salesReportByOrder(from_date, to_date, show_actual) {
+    let params = { 
+      'from_date': this.h.toSqlFormat(from_date), 
+      'to_date': this.h.toSqlFormat(to_date),  
+      's_a': show_actual,
+    };
 
     return this.http.get(this.config.base_url + '/api/sales-report-by-order', { params: params });
   }
 
-  collectionReport(from_date, to_date) {
-    let params = { 'from_date': from_date, 'to_date': to_date };
+  collectionReport(from_date, to_date, show_actual) {
+    let params = { 
+      'from_date': this.h.toSqlFormat(from_date), 
+      'to_date': this.h.toSqlFormat(to_date),  
+      's_a': show_actual,
+    };
 
     this.http.get(this.config.base_url + '/api/collection-report', { params: params })
   }
