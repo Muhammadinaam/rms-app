@@ -16,6 +16,7 @@ import { CollectionReportComponent } from './reports/collection-report/collectio
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { SalesByItemReportComponent } from './reports/sales-by-item-report/sales-by-item-report.component';
 import { SalesByOrderReportComponent } from './reports/sales-by-order-report/sales-by-order-report.component';
+import { EditsAfterPrintComponent } from './reports/edits-after-print/edits-after-print.component';
 
 
 const routes: Routes = [
@@ -49,6 +50,7 @@ const routes: Routes = [
 
       { path: 'sales-by-item-report', component: SalesByItemReportComponent },
       { path: 'sales-by-order-report', component: SalesByOrderReportComponent },
+      { path: 'edits-after-print-report', component: EditsAfterPrintComponent },
       { path: 'collection-report', component: CollectionReportComponent },
 
     ]

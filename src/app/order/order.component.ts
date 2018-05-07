@@ -23,6 +23,12 @@ export class OrderComponent implements OnInit {
   order_types:any = Array();
   free_tables:any = Array();
 
+  other_info:any = {
+    'user_id': '',
+    'password': '',
+    'remarks': ''
+  };
+
   sales_tax_rate:any;
 
   new_item = {
@@ -116,7 +122,7 @@ export class OrderComponent implements OnInit {
 
     let id = this.form_type == "New" ? null : this.order.id;
 
-    this.ordersService.saveOrder(this.order, this.deleted_details, id)
+    this.ordersService.saveOrder(this.order, this.deleted_details, id, this.other_info)
       .finally(
         () => { this.is_loading = false; }
       )

@@ -49,6 +49,7 @@ import { SalesByItemReportComponent } from './reports/sales-by-item-report/sales
 import { HelperService } from './services/helper.service';
 import { SalesByOrderReportComponent } from './reports/sales-by-order-report/sales-by-order-report.component';
 import { SummaryComponent } from './reports/summary/summary.component';
+import { EditsAfterPrintComponent } from './reports/edits-after-print/edits-after-print.component';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { SummaryComponent } from './reports/summary/summary.component';
     SalesByItemReportComponent,
     SalesByOrderReportComponent,
     SummaryComponent,
+    EditsAfterPrintComponent,
   ],
   imports: [
     BrowserModule,

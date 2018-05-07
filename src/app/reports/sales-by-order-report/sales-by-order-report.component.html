@@ -33,7 +33,8 @@
                                         <th>Order ID</th>
                                         <th>Order Type</th>
                                         <th>Cover</th>
-                                        <th>Received Through</th>
+                                        <th>Payment Type</th>
+                                        <th>Closed At</th>
                                         <th class="col-md-2 col-sm-2 text-center">Discount</th>
                                         <th>Sales Tax</th>
                                         <th class="col-md-2 col-sm-2 text-center">Amount</th>
@@ -45,7 +46,8 @@
                                         <td>{{row.order_id}}</td>
                                         <td>{{row.order_type}}</td>
                                         <td>{{row.cover}}</td>
-                                        <td>{{row.received_through}}</td>
+                                        <td class="{{ row.received_through == 'Cash' ? 'cash-receipt' : 'other-receipt' }}">{{row.received_through}}</td>
+                                        <td>{{row.closing_time | date:'dd-MMM-yyyy HH:mm a'}}</td>
                                         <td class="text-center">{{row.discount | currency:' '}}</td>
                                         <td class="text-center">{{row.sales_tax | currency:' '}}</td>
                                         <td class="text-center">{{row.amount | currency:' '}}</td>
@@ -72,7 +74,8 @@
                                                 <th>Order Type</th>
                                                 <th>Ent Remarks</th>
                                                 <th>Cover</th>
-                                                <th>Received Through</th>
+                                                <th>Payment Type</th>
+                                                <th>Closed At</th>
                                                 <th class="col-md-2 col-sm-2 text-center">Discount</th>
                                                 <th>Sales Tax</th>
                                                 <th class="col-md-2 col-sm-2 text-center">Amount</th>
@@ -85,7 +88,8 @@
                                                 <td>{{row.order_type}}</td>
                                                 <td>{{row.ent_remarks}}</td>
                                                 <td>{{row.cover}}</td>
-                                                <td>{{row.received_through}}</td>
+                                                <td class="{{ row.received_through == 'Cash' ? 'cash-receipt' : 'other-receipt' }}">{{row.received_through}}</td>
+                                                <td>{{row.closing_time | date:'dd-MMM-yyyy HH:mm a'}}</td>
                                                 <td class="text-center">{{row.discount | currency:' '}}</td>
                                                 <td class="text-center">{{row.sales_tax | currency:' '}}</td>
                                                 <td class="text-center">{{row.amount | currency:' '}}</td>

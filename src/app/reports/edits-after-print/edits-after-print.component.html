@@ -1,0 +1,79 @@
+<section class="content-header">
+    <h1>
+        Edits After Print Report
+        <!-- <small>Version 2.0</small> -->
+    </h1>
+</section>
+
+<section class="content">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="box box-primary">
+
+                <div class="box-body">
+
+                    <div class="hidden-print">
+                        <app-dates-filter (onShowBtnClicked)="showReport($event)"></app-dates-filter>
+                    </div>
+
+
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Report</h3>
+                        </div>
+
+                        <div class="box-body">
+
+                            <table class="table table-condensed table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Edit Type</th>
+                                        <th>Remarks</th>
+                                        <th>Before Amount</th>
+                                        <th>After Amount</th>
+                                        <th>Edited By</th>
+                                        <th>Approved By</th>
+                                        <th>Edited At</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of report_data">
+                                        <td>{{row.order_id}}</td>
+                                        <td>{{row.edit_type}}</td>
+                                        <td>{{row.remarks}}</td>
+                                        <td>{{row.before_amount |currency:" " }}</td>
+                                        <td>{{row.after_amount |currency:" " }}</td>
+                                        <td>{{row.edited_by_name}}</td>
+                                        <td>{{row.approved_by_name}}</td>
+                                        <td>{{row.created_at | date:'dd-MMM-yyyy HH:mm a' }}</td>
+                                    </tr>
+                                </tbody>
+
+                                <tfoot *ngIf="report_data == null || report_data.length == 0">
+                                    <tr>
+                                        <td colspan="10" class="text-center"><b>No Data Found</b></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+
+
+                            
+
+                            
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>

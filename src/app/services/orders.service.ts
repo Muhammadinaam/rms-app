@@ -20,13 +20,13 @@ export class OrdersService {
 
   
 
-  saveOrder(order, deleted_details, id?)
+  saveOrder(order, deleted_details, id?, other_info?)
   {
     let fd = new FormData();
 
     fd.append('order', JSON.stringify(order));
     fd.append('deleted_details', JSON.stringify(deleted_details));
-
+    fd.append('other_info', JSON.stringify(other_info));
 
 
     if (id == null)  // new order
@@ -39,11 +39,12 @@ export class OrdersService {
     }
   }
 
-  saveDiscount(order)
+  saveDiscount(order, other_info)
   {
     let fd = new FormData();
 
     fd.append('order', JSON.stringify(order));
+    fd.append('other_info', JSON.stringify(other_info));
 
     return this.http.post(this.config.base_url + '/api/save-order-discount', fd);
     

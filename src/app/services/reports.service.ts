@@ -13,6 +13,17 @@ export class ReportsService {
     private h: HelperService
   ) { }
 
+
+  editsAfterPrintReport(from_date, to_date, show_actual) {
+    let params = { 
+      'from_date': this.h.toSqlFormat(from_date), 
+      'to_date': this.h.toSqlFormat(to_date),  
+      's_a': show_actual,
+    };
+
+    return this.http.get(this.config.base_url + '/api/edits-after-print-report', { params: params });
+  }
+
   salesReportByItem(from_date, to_date, show_actual) {
     let params = { 
       'from_date': this.h.toSqlFormat(from_date), 

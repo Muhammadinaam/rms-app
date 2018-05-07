@@ -16,7 +16,11 @@ export class OpenOrderComponent implements OnInit {
   received_amount=0;
   ent_remarks='';
 
-  
+  other_info:any = {
+    'user_id': '',
+    'password': '',
+    'remarks': ''
+  };
 
   @Output() modalOpen = new EventEmitter();
   @Output() modalClose = new EventEmitter();
@@ -149,7 +153,7 @@ export class OpenOrderComponent implements OnInit {
       return;
     }
 
-    this.ordersService.saveDiscount(this.order)
+    this.ordersService.saveDiscount(this.order, this.other_info)
       .subscribe(data => 
         { 
           alert(data['message']);
