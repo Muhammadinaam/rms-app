@@ -187,7 +187,7 @@
         <h3 *ngIf="received_through_input.value != 'Ent'"><small>Balance: </small> {{ received_amount - order.order_amount_inc_st | currency:'Rs.' }}</h3>
 
         <br><br>
-        <button [disabled]="received_through_input.value == 0 || (received_through_input.value != 'Ent' && received_amount < order.order_amount_inc_st) || (received_through_input.value == 'Ent' && (ent_remarks == '') )" (click)="closeOrder(order.id, received_through_input.value, ent_remarks)"
+        <button [disabled]=" is_loading || received_through_input.value == 0 || (received_through_input.value != 'Ent' && received_amount < order.order_amount_inc_st) || (received_through_input.value == 'Ent' && (ent_remarks == '') )" (click)="closeOrder(order.id, received_through_input.value, ent_remarks)"
             type="button" class="btn btn-block btn-primary">Close Order</button>
 
 

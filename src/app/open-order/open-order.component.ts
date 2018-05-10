@@ -16,6 +16,8 @@ export class OpenOrderComponent implements OnInit {
   received_amount=0;
   ent_remarks='';
 
+  is_loading=false;
+
   other_info:any = {
     'user_id': '',
     'password': '',
@@ -88,6 +90,8 @@ export class OpenOrderComponent implements OnInit {
     if( r != true )
       return;
 
+      this.is_loading = true;
+
     this.ordersService.closeOrder(order_id, received_through, ent_remarks)
       .subscribe(data => {
         
@@ -99,6 +103,8 @@ export class OpenOrderComponent implements OnInit {
         {
           alert(data['message']);
         }
+
+        this.is_loading = false;
       });
   }
 
