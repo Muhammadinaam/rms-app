@@ -148,7 +148,7 @@ export class OpenOrderComponent implements OnInit {
 
     this.order.order_amount_ex_st = this.order.order_amount_before_discount - this.order.discount;
     this.order.sales_tax = this.order.order_amount_ex_st * sales_tax_rate / 100;
-    this.order.order_amount_inc_st = this.order.order_amount_ex_st - this.order.sales_tax;
+    this.order.order_amount_inc_st = this.order.order_amount_ex_st + this.order.sales_tax;
   }
 
   saveDiscount()
