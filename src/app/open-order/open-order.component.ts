@@ -55,7 +55,7 @@ export class OpenOrderComponent implements OnInit {
     this.modalOpen.emit();
   }
 
-  changeStatus(order_id, status)
+  changeStatus(order_id, status, user_id, password, remarks)
   {
     let r = confirm("Are you sure?")
 
@@ -64,7 +64,7 @@ export class OpenOrderComponent implements OnInit {
       return; 
     }
 
-    this.ordersService.changeOrderStatus(order_id, status)
+    this.ordersService.changeOrderStatus(order_id, status, user_id, password, remarks)
       .subscribe( data => {
           
           if(data['success'] == true)

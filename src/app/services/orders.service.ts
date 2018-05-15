@@ -55,11 +55,14 @@ export class OrdersService {
     return this.http.get(this.config.base_url + '/api/open-orders');
   }
 
-  changeOrderStatus(order_id, status)
+  changeOrderStatus(order_id, status, user_id, password, remarks)
   {
     let data = new FormData();
     data.append('order_id', order_id);
     data.append('status', status);
+    data.append('user_id', user_id);
+    data.append('password', password);
+    data.append('remarks', remarks);
 
     return this.http.post(this.config.base_url + '/api/change-order-status', data);
   }

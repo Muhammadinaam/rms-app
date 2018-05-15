@@ -23,6 +23,7 @@
                         <thead>
                             <tr>
                                 <th>Category</th>
+                                <th>Group</th>
                                 <th>Code</th>
                                 <th>Name</th>
                                 <th>Unit</th>
@@ -33,6 +34,7 @@
                         <tbody>
                             <tr *ngFor="let item of items">
                                 <td>{{item.category}}</td>
+                                <td>{{item.item_group}}</td>
                                 <td>{{item.code}}</td>
                                 <td>{{item.name}}</td>
                                 <td>{{item.unit}}</td>

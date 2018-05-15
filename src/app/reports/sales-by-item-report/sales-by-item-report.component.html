@@ -29,6 +29,8 @@
                             <table class="table table-condensed table-bordered table-hover">
                                 <thead>
                                     <tr>
+                                        <th>Category</th>
+                                        <th>Group</th>
                                         <th>Item</th>
                                         <th class="col-md-2 text-center">Qty</th>
                                         <th class="col-md-2 text-center">Amount</th>
@@ -36,6 +38,9 @@
                                 </thead>
                                 <tbody>
                                     <tr [class.grand-total]="row.name == null" *ngFor="let row of report_data">
+
+                                        <td>{{row.category}}</td>
+                                        <td>{{row.item_group}}</td>
                                         <td>{{row.name}}</td>
                                         <td class="text-center">{{row.qty | currency:' '}}</td>
                                         <td class="text-center">{{row.amount | currency:' '}}</td>
@@ -56,6 +61,8 @@
                                 <table class="table table-condensed table-bordered table-hover">
                                     <thead>
                                         <tr>
+                                            <th>Category</th>
+                                            <th>Group</th>
                                             <th>Item</th>
                                             <th class="col-md-2 text-center">Qty</th>
                                             <th class="col-md-2 text-center">Amount</th>
@@ -63,12 +70,14 @@
                                     </thead>
                                     <tbody>
                                         <tr [class.grand-total]="row.name == null" *ngFor="let row of ent_report_data">
+                                            <td>{{row.category}}</td>
+                                            <td>{{row.item_group}}</td>
                                             <td>{{row.name}}</td>
                                             <td class="text-center">{{row.qty | currency:' '}}</td>
                                             <td class="text-center">{{row.amount | currency:' '}}</td>
                                         </tr>
                                     </tbody>
-    
+
                                     <tfoot *ngIf="ent_report_data == null || ent_report_data.length == 0">
                                         <tr>
                                             <td colspan="10" class="text-center"><b>No Data Found</b></td>

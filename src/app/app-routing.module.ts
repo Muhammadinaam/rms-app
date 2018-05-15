@@ -17,6 +17,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { SalesByItemReportComponent } from './reports/sales-by-item-report/sales-by-item-report.component';
 import { SalesByOrderReportComponent } from './reports/sales-by-order-report/sales-by-order-report.component';
 import { EditsAfterPrintComponent } from './reports/edits-after-print/edits-after-print.component';
+import { CancelledOrdersReportComponent } from './reports/cancelled-orders-report/cancelled-orders-report.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,7 @@ const routes: Routes = [
       { path: 'sales-by-item-report', component: SalesByItemReportComponent },
       { path: 'sales-by-order-report', component: SalesByOrderReportComponent },
       { path: 'edits-after-print-report', component: EditsAfterPrintComponent },
+      { path: 'cancelled-orders-report', component: CancelledOrdersReportComponent },
       { path: 'collection-report', component: CollectionReportComponent },
 
     ]

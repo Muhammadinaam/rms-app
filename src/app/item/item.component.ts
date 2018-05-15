@@ -14,6 +14,7 @@ export class ItemComponent implements OnInit {
   item:any = {
     id: null,
     category: '',
+    group: '',
     name: '',
     code: '',
     unit: '',

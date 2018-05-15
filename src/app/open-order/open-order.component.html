@@ -86,7 +86,7 @@
             </div>
 
             <div class="box-body">
-                
+
                 <table class="table table-bordered table-condensed table-hover">
                     <tbody>
                         <tr>
@@ -109,7 +109,7 @@
                         </tr>
                     </tbody>
                 </table>
-                
+
             </div>
         </div>
 
@@ -130,11 +130,34 @@
                     <option value="4">Cancel Bill</option>
                 </select>
             </div>
+        </div>
 
+        <div [hidden]="status_input.value != 4">
 
-            <button (click)="changeStatus(order.id, status_input.value)" type="button" class="btn btn-block btn-primary">Change Status</button>
+            <div class="form-group">
+                <label for="user_id" class=" control-label">User ID:</label>
+                <div class="">
+                    <input #user_id_input type="text" name="user_id" id="user_id" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class=" control-label">Password:</label>
+                <div class="">
+                    <input #password_input type="password" name="password" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="remarks" class=" control-label">Remarks:</label>
+                <div class="">
+                    <input #remarks_input type="text" name="remarks" id="remarks" class="form-control">
+                </div>
+            </div>
 
         </div>
+
+        <button (click)="changeStatus(order.id, status_input.value, user_id_input.value, password_input.value, remarks_input.value)" type="button" class="btn btn-block btn-primary">Change Status</button>
 
 
 

@@ -1,0 +1,63 @@
+<section class="content-header">
+    <h1>
+        Cancelled Orders Report
+        <!-- <small>Version 2.0</small> -->
+    </h1>
+</section>
+
+<section class="content">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="box box-primary">
+
+                <div class="box-body">
+
+                    <div class="hidden-print">
+                        <app-dates-filter (onShowBtnClicked)="showReport($event)"></app-dates-filter>
+                    </div>
+
+
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Report</h3>
+                        </div>
+
+                        <div class="box-body">
+
+                            <table class="table table-condensed table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Order Amount</th>
+                                        <th>Cancellation Remarks</th>
+                                        <th>Cancelled By</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of report_data">
+                                        <td>{{row.id}}</td>
+                                        <td>{{row.amount | currency:' '}}</td>
+                                        <td>{{row.cancellation_remarks}}</td>
+                                        <td>{{row.cancelled_by}}</td>
+                                    </tr>
+                                </tbody>
+
+
+                            </table>
+
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>

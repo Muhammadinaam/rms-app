@@ -50,6 +50,7 @@ import { HelperService } from './services/helper.service';
 import { SalesByOrderReportComponent } from './reports/sales-by-order-report/sales-by-order-report.component';
 import { SummaryComponent } from './reports/summary/summary.component';
 import { EditsAfterPrintComponent } from './reports/edits-after-print/edits-after-print.component';
+import { CancelledOrdersReportComponent } from './reports/cancelled-orders-report/cancelled-orders-report.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { EditsAfterPrintComponent } from './reports/edits-after-print/edits-afte
     SalesByOrderReportComponent,
     SummaryComponent,
     EditsAfterPrintComponent,
+    CancelledOrdersReportComponent,
   ],
   imports: [
     BrowserModule,
