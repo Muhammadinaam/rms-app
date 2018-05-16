@@ -21,42 +21,61 @@
 
                     <div class="box box-success">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Report</h3>
+                            <h3 class="box-title">Sales Report By Item</h3>
                         </div>
+
+                        <p>From: <b>{{from | date:'short'}}</b></p>
+                        <p>To: <b>{{to | date:'short'}}</b></p>
 
                         <div class="box-body">
 
-                            <table class="table table-condensed table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Category</th>
-                                        <th>Group</th>
-                                        <th>Item</th>
-                                        <th class="col-md-2 text-center">Qty</th>
-                                        <th class="col-md-2 text-center">Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr [class.grand-total]="row.name == null" *ngFor="let row of report_data">
+                            <div *ngFor="let category of report_data | groupBy: 'category' | keys">
+                                <h3 style="background-color:lightgray"><small>Category: </small>{{category}}</h3>
 
-                                        <td>{{row.category}}</td>
-                                        <td>{{row.item_group}}</td>
-                                        <td>{{row.name}}</td>
-                                        <td class="text-center">{{row.qty | currency:' '}}</td>
-                                        <td class="text-center">{{row.amount | currency:' '}}</td>
-                                    </tr>
-                                </tbody>
+                                <div *ngFor="let group of report_data | filterBy: ['category'] : category | groupBy: 'item_group' | keys">
+                                    <h4 style="background-color:lightgray"><small>Group: </small>{{group}}</h4>
 
-                                <tfoot *ngIf="report_data == null || report_data.length == 0">
-                                    <tr>
-                                        <td colspan="10" class="text-center"><b>No Data Found</b></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                    <table class="table table-condensed table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-md-2">Category</th>
+                                                <th class="col-md-2">Group</th>
+                                                <th class="col-md-4">Item</th>
+                                                <th class=" col-md-2 text-center ">Qty</th>
+                                                <th class="col-md-2 text-center ">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let row of report_data | filterBy:['category'] : category | filterBy:['item_group'] : group ">
+
+                                                <td>{{row.category}}</td>
+                                                <td>{{row.item_group}}</td>
+                                                <td>{{row.name}}</td>
+                                                <td class="text-center ">{{row.qty | currency:' '}}</td>
+                                                <td class="text-center ">{{row.amount | currency:' '}}</td>
+                                            </tr>
+
+                                            <tr class="top-bottom-borders">
+                                                <td>{{category}}</td>
+                                                <td>{{group}} Total</td>
+                                                <td></td>
+                                                <td class="text-center ">{{report_data | filterBy:['category'] : category | filterBy:['item_group'] : group | pluck:'qty' | sum | currency:' '}}</td>
+                                                <td class="text-center ">{{report_data | filterBy:['category'] : category | filterBy:['item_group'] : group | pluck:'amount' | sum | currency:' '}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="text-right">
+                                    <h3><small>Category {{category}} Total Qty: </small>{{report_data | filterBy:['category'] : category | pluck:'qty' | sum | currency:' '}}</h3>
+                                    <h3><small>Category {{category}} Total Amount: </small>{{report_data | filterBy:['category'] : category | pluck:'amount' | sum | currency:' '}}</h3>
+                                </div>
+
+                            </div>
 
                             <hr>
 
-                            <div *ngIf="ent_report_data.length > 0">
+                            <div *ngIf="ent_report_data.length> 0">
                                 <h3 class="text-center">Ent Bills</h3>
                                 <table class="table table-condensed table-bordered table-hover">
                                     <thead>

@@ -1,7 +1,6 @@
 @import "../node_modules/ng2-slim-loading-bar/style.css";
 @import "../node_modules/primeng/resources/themes/omega/theme.css";
 @import "../node_modules/primeng/resources/primeng.min.css";
-
 .validation-error {
     padding: 2px;
     background-color: #fb9191;
@@ -12,10 +11,9 @@
     border: 1px solid lightgray;
     padding: 10px;
     margin-bottom: 10px;
-
-    -webkit-box-shadow: 1px 5px 35px -6px rgba(0,0,0,0.75);
-    -moz-box-shadow: 1px 5px 35px -6px rgba(0,0,0,0.75);
-    box-shadow: 1px 5px 35px -6px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 5px 35px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 5px 35px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 5px 35px -6px rgba(0, 0, 0, 0.75);
 }
 
 .free-table {
@@ -44,5 +42,9 @@ tr.grand-total {
     -webkit-appearance: checkbox;
     -moz-appearance: checkbox;
     appearance: checkbox;
-    
+}
+
+.top-bottom-borders {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }

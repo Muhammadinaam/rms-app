@@ -10,6 +10,9 @@ export class EditsAfterPrintComponent implements OnInit {
 
   report_data;
 
+  from: '';
+  to: '';
+
   constructor(private reportsService: ReportsService) { }
 
   ngOnInit() {
@@ -19,6 +22,10 @@ export class EditsAfterPrintComponent implements OnInit {
   {
     this.reportsService.editsAfterPrintReport(event.from, event.to, event.show_actual)
       .subscribe( data => {
+
+        this.from = event.from;
+        this.to = event.to;
+
         this.report_data = data;
       });
   }

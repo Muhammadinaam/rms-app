@@ -18,6 +18,9 @@ export class SalesByOrderReportComponent implements OnInit {
     }
   };
 
+  from: '';
+  to: '';
+
   constructor(
     private reportsService: ReportsService
   ) { }
@@ -29,6 +32,10 @@ export class SalesByOrderReportComponent implements OnInit {
   {
     this.reportsService.salesReportByOrder(event.from, event.to, event.show_actual)
       .subscribe( data => {
+
+        this.from = event.from;
+        this.to = event.to;
+
         this.report_data = data['report_detail']['orders'];
         this.ent_report_data = data['report_detail']['ent_orders'];
         this.report_summary = data['report_summary'];

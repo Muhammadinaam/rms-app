@@ -10,6 +10,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
+import { NgPipesModule } from 'ngx-pipes';
 
 
 import { AppComponent } from './app.component';
@@ -94,7 +95,8 @@ import { CancelledOrdersReportComponent } from './reports/cancelled-orders-repor
     DropdownModule,
     BrowserAnimationsModule,
     ButtonModule,
-    CalendarModule
+    CalendarModule,
+    NgPipesModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true},

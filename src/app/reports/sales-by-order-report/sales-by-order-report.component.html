@@ -21,8 +21,11 @@
 
                     <div class="box box-success">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Report</h3>
+                            <h3 class="box-title">Sales Report By Order</h3>
                         </div>
+
+                        <p>From: <b>{{from | date:'short'}}</b></p>
+                        <p>To: <b>{{to | date:'short'}}</b></p>
 
                         <div class="box-body">
 
@@ -67,45 +70,45 @@
                                 <hr>
                                 <h3 class="text-center">Ent Orders</h3>
                                 <table class="table table-condensed table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Ent ID</th>
-                                                <th>Order ID</th>
-                                                <th>Order Type</th>
-                                                <th>Ent Remarks</th>
-                                                <th>Cover</th>
-                                                <th>Payment Type</th>
-                                                <th>Closed At</th>
-                                                <th class="col-md-2 col-sm-2 text-center">Discount</th>
-                                                <th>Sales Tax</th>
-                                                <th class="col-md-2 col-sm-2 text-center">Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr [class.grand-total]="row.id == null" *ngFor="let row of ent_report_data">
-                                                <td>{{row.id}}</td>
-                                                <td>{{row.order_id}}</td>
-                                                <td>{{row.order_type}}</td>
-                                                <td>{{row.ent_remarks}}</td>
-                                                <td>{{row.cover}}</td>
-                                                <td class="{{ row.received_through == 'Cash' ? 'cash-receipt' : 'other-receipt' }}">{{row.received_through}}</td>
-                                                <td>{{row.closing_time | date:'dd-MMM-yyyy HH:mm a'}}</td>
-                                                <td class="text-center">{{row.discount | currency:' '}}</td>
-                                                <td class="text-center">{{row.sales_tax | currency:' '}}</td>
-                                                <td class="text-center">{{row.amount | currency:' '}}</td>
-                                            </tr>
-                                        </tbody>
-        
-                                        <tfoot *ngIf="report_data == null || report_data.length == 0">
-                                            <tr>
-                                                <td colspan="10" class="text-center"><b>No Data Found</b></td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-            
+                                    <thead>
+                                        <tr>
+                                            <th>Ent ID</th>
+                                            <th>Order ID</th>
+                                            <th>Order Type</th>
+                                            <th>Ent Remarks</th>
+                                            <th>Cover</th>
+                                            <th>Payment Type</th>
+                                            <th>Closed At</th>
+                                            <th class="col-md-2 col-sm-2 text-center">Discount</th>
+                                            <th>Sales Tax</th>
+                                            <th class="col-md-2 col-sm-2 text-center">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr [class.grand-total]="row.id == null" *ngFor="let row of ent_report_data">
+                                            <td>{{row.id}}</td>
+                                            <td>{{row.order_id}}</td>
+                                            <td>{{row.order_type}}</td>
+                                            <td>{{row.ent_remarks}}</td>
+                                            <td>{{row.cover}}</td>
+                                            <td class="{{ row.received_through == 'Cash' ? 'cash-receipt' : 'other-receipt' }}">{{row.received_through}}</td>
+                                            <td>{{row.closing_time | date:'dd-MMM-yyyy HH:mm a'}}</td>
+                                            <td class="text-center">{{row.discount | currency:' '}}</td>
+                                            <td class="text-center">{{row.sales_tax | currency:' '}}</td>
+                                            <td class="text-center">{{row.amount | currency:' '}}</td>
+                                        </tr>
+                                    </tbody>
+
+                                    <tfoot *ngIf="report_data == null || report_data.length == 0">
+                                        <tr>
+                                            <td colspan="10" class="text-center"><b>No Data Found</b></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
                             </div>
-                            
-                            
+
+
 
 
                             <hr>
