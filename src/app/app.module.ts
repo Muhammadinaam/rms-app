@@ -52,6 +52,7 @@ import { SalesByOrderReportComponent } from './reports/sales-by-order-report/sal
 import { SummaryComponent } from './reports/summary/summary.component';
 import { EditsAfterPrintComponent } from './reports/edits-after-print/edits-after-print.component';
 import { CancelledOrdersReportComponent } from './reports/cancelled-orders-report/cancelled-orders-report.component';
+import { InvoicesPrintingComponent } from './invoices-printing/invoices-printing.component';
 
 
 @NgModule({
@@ -82,6 +83,7 @@ import { CancelledOrdersReportComponent } from './reports/cancelled-orders-repor
     SummaryComponent,
     EditsAfterPrintComponent,
     CancelledOrdersReportComponent,
+    InvoicesPrintingComponent,
   ],
   imports: [
     BrowserModule,

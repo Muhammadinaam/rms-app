@@ -18,6 +18,7 @@ import { SalesByItemReportComponent } from './reports/sales-by-item-report/sales
 import { SalesByOrderReportComponent } from './reports/sales-by-order-report/sales-by-order-report.component';
 import { EditsAfterPrintComponent } from './reports/edits-after-print/edits-after-print.component';
 import { CancelledOrdersReportComponent } from './reports/cancelled-orders-report/cancelled-orders-report.component';
+import { InvoicesPrintingComponent } from './invoices-printing/invoices-printing.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,7 @@ const routes: Routes = [
       { path: 'edits-after-print-report', component: EditsAfterPrintComponent },
       { path: 'cancelled-orders-report', component: CancelledOrdersReportComponent },
       { path: 'collection-report', component: CollectionReportComponent },
+      { path: 'invoices-printing', component: InvoicesPrintingComponent },
 
     ]
   }
