@@ -125,78 +125,87 @@
 
                                     <div class="box-body">
 
-                                        
 
-                                                <table style="min-width: 625px;" class="table table-bordered table-condensed table-hover">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Item</th>
-                                                                <th style="width:150px;">Qty / Rate / Amount</th>
-                                                                
-                                                                <!--
+
+                                        <table class="table table-bordered table-condensed table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Item</th>
+                                                    <th>Qty / Rate / Amount</th>
+
+                                                    <!--
                                                                 <th style="width:100px;">Rate</th>
                                                                 <th style="width:100px;">Amount</th>
                                                                 -->
-                                                                
-                                                                <th style="width:50px;">Add / Remove</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr *ngFor="let order_detail of order.order_details; let i = index;">
-                                                                <td>{{ order_detail.item_name }}</td>
-                                                                <td>
-                                                                    {{ order_detail.qty }}
-                                                                    <br>{{ order_detail.rate }}
-                                                                    <br>{{ order_detail.qty * order_detail.rate }}
-                                                                </td>
-                                                                <td>
-                                                                    <button (click)="removeItem(i)" type="button" class="btn btn-danger"><i class="fa fa-times-circle"></i></button>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-            
-                                                        <tfoot>
-                                                            <tr>
-                                                                <td>
-                                                                    <!-- <select id="new_item_select" (change)="newItemChanged($event)" [(ngModel)]="new_item.id" [ngModelOptions]="{standalone: true}" class="form-control input-md">
+
+                                                    <th>Add / Remove</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let order_detail of order.order_details; let i = index;">
+                                                    <td>{{ order_detail.item_name }}</td>
+                                                    <td>
+                                                        {{ order_detail.qty }}
+                                                        <br>{{ order_detail.rate }}
+                                                        <br>{{ order_detail.qty * order_detail.rate }}
+                                                    </td>
+                                                    <td>
+                                                        <button (click)="removeItem(i)" type="button" class="btn btn-danger"><i class="fa fa-times-circle"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <!-- <select id="new_item_select" (change)="newItemChanged($event)" [(ngModel)]="new_item.id" [ngModelOptions]="{standalone: true}" class="form-control input-md">
                                                                         <option *ngFor="let item of items" [value]="item.id">{{item.code + " | " + item.name + " ("+item.unit+")" }}</option>
                                                                     </select> -->
-            
-                                                                    <p-dropdown (onChange)="newItemChanged($event)" [style]="{'width':'100%'}" id="new_item_select" [options]="items" optionLabel="name" [(ngModel)]="new_item" [ngModelOptions]="{standalone: true}" [filter]="true">
-            
-                                                                    </p-dropdown>
-            
-                                                                </td>
-                                                                <td>
-            
-                                                                    <div class="input-group">
-                                                                        <span class="input-group-btn">
+
+                                                        <p-dropdown (onChange)="newItemChanged($event)" [style]="{'width':'100%'}" id="new_item_select" [options]="items" optionLabel="name" [(ngModel)]="new_item" [ngModelOptions]="{standalone: true}" [filter]="true">
+
+                                                        </p-dropdown>
+
+
+
+                                                        <div style="width:100%;" class="input-group">
+                                                            <span class="input-group-btn">
                                                                             <button (click)="decreaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-minus-circle"></i> </button>
                                                                         </span>
-                                                                        <input class="text-center" type="number" min=0 [(ngModel)]="new_item.qty" [ngModelOptions]="{standalone: true}" class="form-control input-md">
-                                                                        <span class="input-group-btn">
+                                                            <input class="text-center" type="number" min=0 [(ngModel)]="new_item.qty" [ngModelOptions]="{standalone: true}" class="form-control input-md">
+                                                            <span class="input-group-btn">
                                                                             <button (click)="increaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-plus-circle"></i> </button>
                                                                         </span>
-                                                                    </div>
+                                                        </div>
 
-                                                                    <input type="number" [(ngModel)]="new_item.rate" [ngModelOptions]="{standalone: true}" class="form-control input-md" readonly>
-            
-                                                                    <input type="number" [value]="new_item.qty * new_item.rate" class="form-control input-md" readonly>
+                                                        <div style="width:100%;" class="input-group">
+                                                            <span class="input-group-addon">
+                                                                Price
+                                                            </span>
+                                                            <input type="number" [(ngModel)]="new_item.rate" [ngModelOptions]="{standalone: true}" class="form-control input-md" readonly>
+                                                        </div>
 
-                                                                
-                                                                    
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" (click)="addNewItem()" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
-                                                                    <button type="button" (click)="resetNewItem()" class="btn btn-primary"> <i class="fa fa-times-circle-o"></i> </button>
-                                                                </td>
-                                                            </tr>
-                                                        </tfoot>
-                                                    </table>
+                                                        <div style="width: 100%;" class="input-group">
+                                                            <span class="input-group-addon">
+                                                                Total
+                                                            </span>
+                                                            <input type="number" [value]="new_item.qty * new_item.rate" class="form-control input-md" readonly>
+                                                        </div>
 
-                                        
 
-                                        
+                                                        <div class="text-right">
+                                                            <button type="button" (click)="resetNewItem()" class="btn btn-danger"> <i class="fa fa-times"></i> </button>
+                                                            <button type="button" (click)="addNewItem()" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+
+
+
+
 
                                     </div>
 
@@ -226,35 +235,34 @@
                         <div *ngIf="order.is_printed_for_customer == 1" class="box box-danger">
                             <div class="box-header with-border">
                                 <h3 class="box-title">
-                                    <i class="fa fa-key"></i>
-                                    Authentication for Editing After Printing For Customer
+                                    <i class="fa fa-key"></i> Authentication for Editing After Printing For Customer
                                 </h3>
                             </div>
 
                             <div class="box-body">
-                                
-                                
-                                    <div class="form-group">
-                                        <label for="user_id" class="col-sm-2 control-label">User ID</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" [(ngModel)]="other_info.user_id" name="user_id" id="user_id" class="form-control">
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label for="password" class="col-sm-2 control-label">Password</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" [(ngModel)]="other_info.password" name="password" id="password" class="form-control">
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label for="remarks" class="col-sm-2 control-label">Remarks</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" [(ngModel)]="other_info.remarks" name="remarks" id="remarks" class="form-control">
-                                        </div>
+                                <div class="form-group">
+                                    <label for="user_id" class="col-sm-2 control-label">User ID</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" [(ngModel)]="other_info.user_id" name="user_id" id="user_id" class="form-control">
                                     </div>
-                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" [(ngModel)]="other_info.password" name="password" id="password" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="remarks" class="col-sm-2 control-label">Remarks</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" [(ngModel)]="other_info.remarks" name="remarks" id="remarks" class="form-control">
+                                    </div>
+                                </div>
+
 
                             </div>
                         </div>
