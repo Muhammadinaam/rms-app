@@ -508,7 +508,7 @@ var SidebarComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/adminlte/sidebar/sidebar.component.html"),
             styles: [__webpack_require__("./src/app/adminlte/sidebar/sidebar.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__services_config_service__["a" /* ConfigService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__services_config_service__["a" /* ConfigService */]])
     ], SidebarComponent);
     return SidebarComponent;
 }());
@@ -606,7 +606,7 @@ var AppRoutingModule = /** @class */ (function () {
     AppRoutingModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]],
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forRoot(routes)],
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forRoot(routes, { useHash: true })],
         })
     ], AppRoutingModule);
     return AppRoutingModule;
@@ -843,7 +843,7 @@ var AppModule = /** @class */ (function () {
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
-                __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["d" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_4_ng2_slim_loading_bar__["a" /* SlimLoadingBarModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_23__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_pagination__["a" /* PaginationModule */].forRoot(),
@@ -1205,7 +1205,7 @@ var LoaderInterceptorService = /** @class */ (function () {
         this._loadingBar.start();
         return next.handle(req).do(function (event) {
             // if the event is for http response
-            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["e" /* HttpResponse */]) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["f" /* HttpResponse */]) {
                 // stop our loader here
                 _this._loadingBar.complete();
             }
@@ -1289,7 +1289,7 @@ var InvoicesPrintingComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/invoices-printing/invoices-printing.component.html"),
             styles: [__webpack_require__("./src/app/invoices-printing/invoices-printing.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */],
             __WEBPACK_IMPORTED_MODULE_2__services_config_service__["a" /* ConfigService */]])
     ], InvoicesPrintingComponent);
     return InvoicesPrintingComponent;
@@ -1581,7 +1581,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */],
             __WEBPACK_IMPORTED_MODULE_2__services_config_service__["a" /* ConfigService */],
             __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"]])
@@ -2438,7 +2438,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.getLoggedInUserInfo = function () {
         var httpOptions = {
-            headers: new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["d" /* HttpHeaders */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["e" /* HttpHeaders */]({
                 'Accept': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
             })
@@ -2463,7 +2463,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_config_service__["a" /* ConfigService */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_config_service__["a" /* ConfigService */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"]])
     ], AuthService);
     return AuthService;
 }());
@@ -2493,20 +2493,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ConfigService = /** @class */ (function () {
-    function ConfigService(http) {
-        this.http = http;
+    function ConfigService(handler) {
+        var _this = this;
+        this.handler = handler;
         this.base_url = "http://localhost/rms/public";
         this.auth_data = {
             grant_type: 'password',
             client_id: '2',
             client_secret: 'dRcXHre5hNEiIjGJXqriwykZym5Eh0NRF7OjqPCk',
         };
+        this.http = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */](handler);
         this.base_url = __WEBPACK_IMPORTED_MODULE_2__assets_config__["a" /* config */].base_url;
+        this.http.get('assets/base_url.txt')
+            .subscribe(function (data) {
+            _this.base_url = data['base_url'];
+        }, function () { alert('Unable to base_url from base_url.txt file'); });
         this.auth_data = __WEBPACK_IMPORTED_MODULE_2__assets_config__["a" /* config */].auth_data;
     }
     ConfigService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpBackend */]])
     ], ConfigService);
     return ConfigService;
 }());
@@ -2599,7 +2605,7 @@ var ItemsService = /** @class */ (function () {
     };
     ItemsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__config_service__["a" /* ConfigService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__config_service__["a" /* ConfigService */]])
     ], ItemsService);
     return ItemsService;
 }());
@@ -2685,7 +2691,7 @@ var OrdersService = /** @class */ (function () {
     };
     OrdersService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1__config_service__["a" /* ConfigService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1__config_service__["a" /* ConfigService */]])
     ], OrdersService);
     return OrdersService;
 }());
@@ -2764,7 +2770,7 @@ var ReportsService = /** @class */ (function () {
     ReportsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__config_service__["a" /* ConfigService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpClient */],
             __WEBPACK_IMPORTED_MODULE_3__helper_service__["a" /* HelperService */]])
     ], ReportsService);
     return ReportsService;
@@ -2813,7 +2819,7 @@ var SettingsService = /** @class */ (function () {
     SettingsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__config_service__["a" /* ConfigService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpClient */]])
     ], SettingsService);
     return SettingsService;
 }());
@@ -2875,7 +2881,7 @@ var TablesService = /** @class */ (function () {
     };
     TablesService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__config_service__["a" /* ConfigService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__config_service__["a" /* ConfigService */]])
     ], TablesService);
     return TablesService;
 }());
@@ -2931,7 +2937,7 @@ var UsersService = /** @class */ (function () {
     };
     UsersService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__services_config_service__["a" /* ConfigService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__services_config_service__["a" /* ConfigService */]])
     ], UsersService);
     return UsersService;
 }());
@@ -3454,7 +3460,7 @@ var UsersComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/users/users.component.css")],
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"], __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
-            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpClient */],
             __WEBPACK_IMPORTED_MODULE_4__services_config_service__["a" /* ConfigService */],
             __WEBPACK_IMPORTED_MODULE_5__services_auth_service__["a" /* AuthService */]])
     ], UsersComponent);
