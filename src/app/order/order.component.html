@@ -143,7 +143,14 @@
                                             </thead>
                                             <tbody>
                                                 <tr *ngFor="let order_detail of order.order_details; let i = index;">
-                                                    <td>{{ order_detail.item_name }}</td>
+                                                    <td>
+                                                        {{ order_detail.item_name }}
+                                                        <div *ngIf="order_detail.item_notes != null && order_detail.item_notes != '' ">
+                                                            <p class="text-danger">
+                                                                <b>Notes:</b> {{ order_detail.item_notes }}
+                                                            </p>
+                                                        </div>
+                                                    </td>
                                                     <td>
                                                         {{ order_detail.qty }}
                                                         <br>{{ order_detail.rate }}
@@ -177,6 +184,15 @@
                                                                             <button (click)="increaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-plus-circle"></i> </button>
                                                                         </span>
                                                         </div>
+
+
+                                                        <div style="width:100%;" class="input-group">
+                                                            <span class="input-group-addon">
+                                                                Notes
+                                                            </span>
+                                                            <input type="text" [(ngModel)]="new_item.item_notes" [ngModelOptions]="{standalone: true}" class="form-control input-md">
+                                                        </div>
+
 
                                                         <div style="width:100%;" class="input-group">
                                                             <span class="input-group-addon">

@@ -34,7 +34,8 @@ export class OrderComponent implements OnInit {
   new_item = {
     id:0,
     qty:1,
-    rate:0
+    rate:0,
+    item_notes: '',
   };
 
   is_loading: boolean = false;
@@ -177,6 +178,7 @@ export class OrderComponent implements OnInit {
         detail_id: null,
         item_id: this.new_item.id,
         item_name: item.name,
+        item_notes: this.new_item.item_notes,
         qty: this.new_item.qty,
         rate: this.new_item.rate,
       }
@@ -195,7 +197,8 @@ export class OrderComponent implements OnInit {
     this.new_item = {
       id:0,
       qty:1,
-      rate:0
+      rate:0,
+      item_notes: '',
     };
   }
 
