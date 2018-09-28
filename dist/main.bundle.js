@@ -286,6 +286,66 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/adminlte-components/box/box.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/adminlte-components/box/box.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"box box-{{type}}\">\n  <div *ngIf=\"title != ''\" class=\"box-header with-border\">\n    <h3 class=\"box-title\">{{title}}</h3>\n  </div>\n  <div class=\"box-body\">\n      <ng-content></ng-content>\n  </div>  \n</div>"
+
+/***/ }),
+
+/***/ "./src/app/adminlte-components/box/box.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BoxComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var BoxComponent = /** @class */ (function () {
+    function BoxComponent() {
+        this.type = "";
+        this.title = "";
+    }
+    BoxComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", String)
+    ], BoxComponent.prototype, "type", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", String)
+    ], BoxComponent.prototype, "title", void 0);
+    BoxComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-box',
+            template: __webpack_require__("./src/app/adminlte-components/box/box.component.html"),
+            styles: [__webpack_require__("./src/app/adminlte-components/box/box.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], BoxComponent);
+    return BoxComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/adminlte/content/content.component.css":
 /***/ (function(module, exports) {
 
@@ -543,12 +603,16 @@ var SidebarComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__reports_edits_after_print_edits_after_print_component__ = __webpack_require__("./src/app/reports/edits-after-print/edits-after-print.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__reports_cancelled_orders_report_cancelled_orders_report_component__ = __webpack_require__("./src/app/reports/cancelled-orders-report/cancelled-orders-report.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__invoices_printing_invoices_printing_component__ = __webpack_require__("./src/app/invoices-printing/invoices-printing.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__reports_x_report_x_report_component__ = __webpack_require__("./src/app/reports/x-report/x-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__reports_top_least_items_report_top_least_items_report_component__ = __webpack_require__("./src/app/reports/top-least-items-report/top-least-items-report.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -597,6 +661,8 @@ var routes = [
             { path: 'cancelled-orders-report', component: __WEBPACK_IMPORTED_MODULE_19__reports_cancelled_orders_report_cancelled_orders_report_component__["a" /* CancelledOrdersReportComponent */] },
             { path: 'collection-report', component: __WEBPACK_IMPORTED_MODULE_14__reports_collection_report_collection_report_component__["a" /* CollectionReportComponent */] },
             { path: 'invoices-printing', component: __WEBPACK_IMPORTED_MODULE_20__invoices_printing_invoices_printing_component__["a" /* InvoicesPrintingComponent */] },
+            { path: 'top-least-selling-items-report', component: __WEBPACK_IMPORTED_MODULE_22__reports_top_least_items_report_top_least_items_report_component__["a" /* TopLeastItemsReportComponent */] },
+            { path: 'x-report', component: __WEBPACK_IMPORTED_MODULE_21__reports_x_report_x_report_component__["a" /* XReportComponent */] },
         ]
     }
 ];
@@ -707,46 +773,53 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_primeng_calendar__ = __webpack_require__("./node_modules/primeng/calendar.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_primeng_calendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_primeng_calendar__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ngx_pipes__ = __webpack_require__("./node_modules/ngx-pipes/ngx-pipes.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__adminlte_header_header_component__ = __webpack_require__("./src/app/adminlte/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__adminlte_sidebar_sidebar_component__ = __webpack_require__("./src/app/adminlte/sidebar/sidebar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__adminlte_footer_footer_component__ = __webpack_require__("./src/app/adminlte/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__adminlte_content_content_component__ = __webpack_require__("./src/app/adminlte/content/content.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_config_service__ = __webpack_require__("./src/app/services/config.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__interceptors_loader_interceptor_service__ = __webpack_require__("./src/app/interceptors/loader-interceptor.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__interceptors_auth_interceptor_service__ = __webpack_require__("./src/app/interceptors/auth-interceptor.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__tables_and_orders_tables_and_orders_component__ = __webpack_require__("./src/app/tables-and-orders/tables-and-orders.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_auth_guard_service__ = __webpack_require__("./src/app/services/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__users_users_component__ = __webpack_require__("./src/app/users/users.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__user_form_user_form_component__ = __webpack_require__("./src/app/user-form/user-form.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__services_users_service__ = __webpack_require__("./src/app/services/users.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__keys_pipe__ = __webpack_require__("./src/app/keys.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__tables_tables_component__ = __webpack_require__("./src/app/tables/tables.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__table_table_component__ = __webpack_require__("./src/app/table/table.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__services_tables_service__ = __webpack_require__("./src/app/services/tables.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__services_items_service__ = __webpack_require__("./src/app/services/items.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__items_items_component__ = __webpack_require__("./src/app/items/items.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__item_item_component__ = __webpack_require__("./src/app/item/item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__order_order_component__ = __webpack_require__("./src/app/order/order.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__services_orders_service__ = __webpack_require__("./src/app/services/orders.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__open_order_open_order_component__ = __webpack_require__("./src/app/open-order/open-order.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__settings_settings_component__ = __webpack_require__("./src/app/settings/settings.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_settings_service__ = __webpack_require__("./src/app/services/settings.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__reports_collection_report_collection_report_component__ = __webpack_require__("./src/app/reports/collection-report/collection-report.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__services_reports_service__ = __webpack_require__("./src/app/services/reports.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__change_password_change_password_component__ = __webpack_require__("./src/app/change-password/change-password.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__dates_filter_dates_filter_component__ = __webpack_require__("./src/app/dates-filter/dates-filter.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__reports_sales_by_item_report_sales_by_item_report_component__ = __webpack_require__("./src/app/reports/sales-by-item-report/sales-by-item-report.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__services_helper_service__ = __webpack_require__("./src/app/services/helper.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__reports_sales_by_order_report_sales_by_order_report_component__ = __webpack_require__("./src/app/reports/sales-by-order-report/sales-by-order-report.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__reports_summary_summary_component__ = __webpack_require__("./src/app/reports/summary/summary.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__reports_edits_after_print_edits_after_print_component__ = __webpack_require__("./src/app/reports/edits-after-print/edits-after-print.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__reports_cancelled_orders_report_cancelled_orders_report_component__ = __webpack_require__("./src/app/reports/cancelled-orders-report/cancelled-orders-report.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__invoices_printing_invoices_printing_component__ = __webpack_require__("./src/app/invoices-printing/invoices-printing.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts__ = __webpack_require__("./node_modules/@swimlane/ngx-charts/release/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_primeng_chart__ = __webpack_require__("./node_modules/primeng/chart.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_primeng_chart___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_primeng_chart__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__adminlte_header_header_component__ = __webpack_require__("./src/app/adminlte/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__adminlte_sidebar_sidebar_component__ = __webpack_require__("./src/app/adminlte/sidebar/sidebar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__adminlte_footer_footer_component__ = __webpack_require__("./src/app/adminlte/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__adminlte_content_content_component__ = __webpack_require__("./src/app/adminlte/content/content.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_config_service__ = __webpack_require__("./src/app/services/config.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__interceptors_loader_interceptor_service__ = __webpack_require__("./src/app/interceptors/loader-interceptor.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__interceptors_auth_interceptor_service__ = __webpack_require__("./src/app/interceptors/auth-interceptor.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__tables_and_orders_tables_and_orders_component__ = __webpack_require__("./src/app/tables-and-orders/tables-and-orders.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_auth_guard_service__ = __webpack_require__("./src/app/services/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__users_users_component__ = __webpack_require__("./src/app/users/users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__user_form_user_form_component__ = __webpack_require__("./src/app/user-form/user-form.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__services_users_service__ = __webpack_require__("./src/app/services/users.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__keys_pipe__ = __webpack_require__("./src/app/keys.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__tables_tables_component__ = __webpack_require__("./src/app/tables/tables.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__table_table_component__ = __webpack_require__("./src/app/table/table.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__services_tables_service__ = __webpack_require__("./src/app/services/tables.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__services_items_service__ = __webpack_require__("./src/app/services/items.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__items_items_component__ = __webpack_require__("./src/app/items/items.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__item_item_component__ = __webpack_require__("./src/app/item/item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__order_order_component__ = __webpack_require__("./src/app/order/order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__services_orders_service__ = __webpack_require__("./src/app/services/orders.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__open_order_open_order_component__ = __webpack_require__("./src/app/open-order/open-order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__settings_settings_component__ = __webpack_require__("./src/app/settings/settings.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__services_settings_service__ = __webpack_require__("./src/app/services/settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__reports_collection_report_collection_report_component__ = __webpack_require__("./src/app/reports/collection-report/collection-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__services_reports_service__ = __webpack_require__("./src/app/services/reports.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__change_password_change_password_component__ = __webpack_require__("./src/app/change-password/change-password.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__dates_filter_dates_filter_component__ = __webpack_require__("./src/app/dates-filter/dates-filter.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__reports_sales_by_item_report_sales_by_item_report_component__ = __webpack_require__("./src/app/reports/sales-by-item-report/sales-by-item-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__services_helper_service__ = __webpack_require__("./src/app/services/helper.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__reports_sales_by_order_report_sales_by_order_report_component__ = __webpack_require__("./src/app/reports/sales-by-order-report/sales-by-order-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__reports_summary_summary_component__ = __webpack_require__("./src/app/reports/summary/summary.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__reports_edits_after_print_edits_after_print_component__ = __webpack_require__("./src/app/reports/edits-after-print/edits-after-print.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__reports_cancelled_orders_report_cancelled_orders_report_component__ = __webpack_require__("./src/app/reports/cancelled-orders-report/cancelled-orders-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__invoices_printing_invoices_printing_component__ = __webpack_require__("./src/app/invoices-printing/invoices-printing.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__reports_top_least_items_report_top_least_items_report_component__ = __webpack_require__("./src/app/reports/top-least-items-report/top-least-items-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__reports_x_report_x_report_component__ = __webpack_require__("./src/app/reports/x-report/x-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__adminlte_components_box_box_component__ = __webpack_require__("./src/app/adminlte-components/box/box.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -806,46 +879,54 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__adminlte_header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__adminlte_sidebar_sidebar_component__["a" /* SidebarComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__adminlte_footer_footer_component__["a" /* FooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__adminlte_content_content_component__["a" /* ContentComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__tables_and_orders_tables_and_orders_component__["a" /* TablesAndOrdersComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__users_users_component__["a" /* UsersComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__user_form_user_form_component__["a" /* UserFormComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__keys_pipe__["a" /* KeysPipe */],
-                __WEBPACK_IMPORTED_MODULE_30__tables_tables_component__["a" /* TablesComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__table_table_component__["a" /* TableComponent */],
-                __WEBPACK_IMPORTED_MODULE_34__items_items_component__["a" /* ItemsComponent */],
-                __WEBPACK_IMPORTED_MODULE_35__item_item_component__["a" /* ItemComponent */],
-                __WEBPACK_IMPORTED_MODULE_36__order_order_component__["a" /* OrderComponent */],
-                __WEBPACK_IMPORTED_MODULE_38__open_order_open_order_component__["a" /* OpenOrderComponent */],
-                __WEBPACK_IMPORTED_MODULE_39__settings_settings_component__["a" /* SettingsComponent */],
-                __WEBPACK_IMPORTED_MODULE_41__home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_42__reports_collection_report_collection_report_component__["a" /* CollectionReportComponent */],
-                __WEBPACK_IMPORTED_MODULE_44__change_password_change_password_component__["a" /* ChangePasswordComponent */],
-                __WEBPACK_IMPORTED_MODULE_45__dates_filter_dates_filter_component__["a" /* DatesFilterComponent */],
-                __WEBPACK_IMPORTED_MODULE_46__reports_sales_by_item_report_sales_by_item_report_component__["a" /* SalesByItemReportComponent */],
-                __WEBPACK_IMPORTED_MODULE_48__reports_sales_by_order_report_sales_by_order_report_component__["a" /* SalesByOrderReportComponent */],
-                __WEBPACK_IMPORTED_MODULE_49__reports_summary_summary_component__["a" /* SummaryComponent */],
-                __WEBPACK_IMPORTED_MODULE_50__reports_edits_after_print_edits_after_print_component__["a" /* EditsAfterPrintComponent */],
-                __WEBPACK_IMPORTED_MODULE_51__reports_cancelled_orders_report_cancelled_orders_report_component__["a" /* CancelledOrdersReportComponent */],
-                __WEBPACK_IMPORTED_MODULE_52__invoices_printing_invoices_printing_component__["a" /* InvoicesPrintingComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__adminlte_header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__adminlte_sidebar_sidebar_component__["a" /* SidebarComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__adminlte_footer_footer_component__["a" /* FooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__adminlte_content_content_component__["a" /* ContentComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__tables_and_orders_tables_and_orders_component__["a" /* TablesAndOrdersComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__users_users_component__["a" /* UsersComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__user_form_user_form_component__["a" /* UserFormComponent */],
+                __WEBPACK_IMPORTED_MODULE_31__keys_pipe__["a" /* KeysPipe */],
+                __WEBPACK_IMPORTED_MODULE_32__tables_tables_component__["a" /* TablesComponent */],
+                __WEBPACK_IMPORTED_MODULE_33__table_table_component__["a" /* TableComponent */],
+                __WEBPACK_IMPORTED_MODULE_36__items_items_component__["a" /* ItemsComponent */],
+                __WEBPACK_IMPORTED_MODULE_37__item_item_component__["a" /* ItemComponent */],
+                __WEBPACK_IMPORTED_MODULE_38__order_order_component__["a" /* OrderComponent */],
+                __WEBPACK_IMPORTED_MODULE_40__open_order_open_order_component__["a" /* OpenOrderComponent */],
+                __WEBPACK_IMPORTED_MODULE_41__settings_settings_component__["a" /* SettingsComponent */],
+                __WEBPACK_IMPORTED_MODULE_43__home_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_44__reports_collection_report_collection_report_component__["a" /* CollectionReportComponent */],
+                __WEBPACK_IMPORTED_MODULE_46__change_password_change_password_component__["a" /* ChangePasswordComponent */],
+                __WEBPACK_IMPORTED_MODULE_47__dates_filter_dates_filter_component__["a" /* DatesFilterComponent */],
+                __WEBPACK_IMPORTED_MODULE_48__reports_sales_by_item_report_sales_by_item_report_component__["a" /* SalesByItemReportComponent */],
+                __WEBPACK_IMPORTED_MODULE_50__reports_sales_by_order_report_sales_by_order_report_component__["a" /* SalesByOrderReportComponent */],
+                __WEBPACK_IMPORTED_MODULE_51__reports_summary_summary_component__["a" /* SummaryComponent */],
+                __WEBPACK_IMPORTED_MODULE_52__reports_edits_after_print_edits_after_print_component__["a" /* EditsAfterPrintComponent */],
+                __WEBPACK_IMPORTED_MODULE_53__reports_cancelled_orders_report_cancelled_orders_report_component__["a" /* CancelledOrdersReportComponent */],
+                __WEBPACK_IMPORTED_MODULE_54__invoices_printing_invoices_printing_component__["a" /* InvoicesPrintingComponent */],
+                __WEBPACK_IMPORTED_MODULE_55__reports_top_least_items_report_top_least_items_report_component__["a" /* TopLeastItemsReportComponent */],
+                __WEBPACK_IMPORTED_MODULE_56__reports_x_report_x_report_component__["a" /* XReportComponent */],
+                __WEBPACK_IMPORTED_MODULE_57__adminlte_components_box_box_component__["a" /* BoxComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
                 __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["d" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_4_ng2_slim_loading_bar__["a" /* SlimLoadingBarModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_23__app_routing_module__["a" /* AppRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_25__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_pagination__["a" /* PaginationModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["DataTableModule"],
                 __WEBPACK_IMPORTED_MODULE_7_primeng_dialog__["DialogModule"],
@@ -853,17 +934,19 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_10_primeng_button__["ButtonModule"],
                 __WEBPACK_IMPORTED_MODULE_11_primeng_calendar__["CalendarModule"],
-                __WEBPACK_IMPORTED_MODULE_12_ngx_pipes__["a" /* NgPipesModule */]
+                __WEBPACK_IMPORTED_MODULE_12_ngx_pipes__["a" /* NgPipesModule */],
+                __WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts__["NgxChartsModule"],
+                __WEBPACK_IMPORTED_MODULE_14_primeng_chart__["ChartModule"]
             ],
             providers: [
-                { provide: __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HTTP_INTERCEPTORS */], useClass: __WEBPACK_IMPORTED_MODULE_20__interceptors_loader_interceptor_service__["a" /* LoaderInterceptorService */], multi: true },
-                { provide: __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HTTP_INTERCEPTORS */], useClass: __WEBPACK_IMPORTED_MODULE_21__interceptors_auth_interceptor_service__["a" /* AuthInterceptorService */], multi: true },
-                __WEBPACK_IMPORTED_MODULE_19__services_config_service__["a" /* ConfigService */],
-                __WEBPACK_IMPORTED_MODULE_22__services_auth_service__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_25__services_auth_guard_service__["a" /* AuthGuardService */],
-                __WEBPACK_IMPORTED_MODULE_28__services_users_service__["a" /* UsersService */], __WEBPACK_IMPORTED_MODULE_32__services_tables_service__["a" /* TablesService */], __WEBPACK_IMPORTED_MODULE_33__services_items_service__["a" /* ItemsService */], __WEBPACK_IMPORTED_MODULE_37__services_orders_service__["a" /* OrdersService */], __WEBPACK_IMPORTED_MODULE_40__services_settings_service__["a" /* SettingsService */], __WEBPACK_IMPORTED_MODULE_43__services_reports_service__["a" /* ReportsService */], __WEBPACK_IMPORTED_MODULE_47__services_helper_service__["a" /* HelperService */]
+                { provide: __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HTTP_INTERCEPTORS */], useClass: __WEBPACK_IMPORTED_MODULE_22__interceptors_loader_interceptor_service__["a" /* LoaderInterceptorService */], multi: true },
+                { provide: __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HTTP_INTERCEPTORS */], useClass: __WEBPACK_IMPORTED_MODULE_23__interceptors_auth_interceptor_service__["a" /* AuthInterceptorService */], multi: true },
+                __WEBPACK_IMPORTED_MODULE_21__services_config_service__["a" /* ConfigService */],
+                __WEBPACK_IMPORTED_MODULE_24__services_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_27__services_auth_guard_service__["a" /* AuthGuardService */],
+                __WEBPACK_IMPORTED_MODULE_30__services_users_service__["a" /* UsersService */], __WEBPACK_IMPORTED_MODULE_34__services_tables_service__["a" /* TablesService */], __WEBPACK_IMPORTED_MODULE_35__services_items_service__["a" /* ItemsService */], __WEBPACK_IMPORTED_MODULE_39__services_orders_service__["a" /* OrdersService */], __WEBPACK_IMPORTED_MODULE_42__services_settings_service__["a" /* SettingsService */], __WEBPACK_IMPORTED_MODULE_45__services_reports_service__["a" /* ReportsService */], __WEBPACK_IMPORTED_MODULE_49__services_helper_service__["a" /* HelperService */]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -940,7 +1023,7 @@ module.exports = ""
 /***/ "./src/app/dates-filter/dates-filter.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"box box-danger\">\r\n    <!-- <div class=\"box-header with-border\">\r\n        <i class=\"fa fa-filter\"></i>\r\n        <h3 class=\"box-title\">Filter</h3>\r\n        <input class=\"hidden_checkbox\" type=\"checkbox\" [(ngModel)]=\"show_actual\" [ngModelOptions]=\"{standalone: true}\">\r\n    </div> -->\r\n\r\n    <div class=\"box-body\">\r\n        <div class=\"text-right\">\r\n            <input style=\"margin-right: -40px;\" class=\"hidden_checkbox\" type=\"checkbox\" [(ngModel)]=\"show_actual\" [ngModelOptions]=\"{standalone: true}\">\r\n        </div>\r\n        <div class=\"row\">\r\n\r\n            <div class=\"col-sm-6\">\r\n                <div class=\"col-md-4\">\r\n                    <label>From:</label>\r\n                </div>\r\n                <div class=\"col-md-8\">\r\n                    <p-calendar [(ngModel)]=\"from\" showTime=\"true\" showIcon=\"true\" hourFormat=\"12\"></p-calendar>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-sm-6\">\r\n                <div class=\"col-md-4\">\r\n                    <label>To:</label>\r\n                </div>\r\n                <div class=\"col-md-8\">\r\n                    <p-calendar [(ngModel)]=\"to\" showTime=\"true\" showIcon=\"true\" hourFormat=\"12\"></p-calendar>\r\n                </div>\r\n            </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <div class=\"col-md-12\">\r\n                    <p-button (onClick)=\"onClicked()\" label=\"Show\"></p-button>\r\n                </div>\r\n\r\n            </div>\r\n        </div>\r\n\r\n\r\n\r\n\r\n    </div>\r\n\r\n\r\n\r\n</div>"
+module.exports = "<div class=\"box box-danger\">\r\n    <!-- <div class=\"box-header with-border\">\r\n        <i class=\"fa fa-filter\"></i>\r\n        <h3 class=\"box-title\">Filter</h3>\r\n        <input class=\"hidden_checkbox\" type=\"checkbox\" [(ngModel)]=\"show_actual\" [ngModelOptions]=\"{standalone: true}\">\r\n    </div> -->\r\n\r\n    <div class=\"box-body\">\r\n        <div class=\"text-right\">\r\n            <input style=\"position: absolute; top: -40px; right: 450px;\" class=\"hidden_checkbox\" type=\"checkbox\" [(ngModel)]=\"show_actual\" [ngModelOptions]=\"{standalone: true}\">\r\n        </div>\r\n        <div class=\"row\">\r\n\r\n            <div class=\"col-sm-6\">\r\n                <div class=\"col-md-4\">\r\n                    <label>From:</label>\r\n                </div>\r\n                <div class=\"col-md-8\">\r\n                    <p-calendar [(ngModel)]=\"from\" showTime=\"true\" showIcon=\"true\" hourFormat=\"12\"></p-calendar>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-sm-6\">\r\n                <div class=\"col-md-4\">\r\n                    <label>To:</label>\r\n                </div>\r\n                <div class=\"col-md-8\">\r\n                    <p-calendar [(ngModel)]=\"to\" showTime=\"true\" showIcon=\"true\" hourFormat=\"12\"></p-calendar>\r\n                </div>\r\n            </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <div class=\"col-md-12\">\r\n                    <p-button (onClick)=\"onClicked()\" label=\"Show\"></p-button>\r\n                </div>\r\n\r\n            </div>\r\n        </div>\r\n\r\n\r\n\r\n\r\n    </div>\r\n\r\n\r\n\r\n</div>"
 
 /***/ }),
 
@@ -2348,6 +2431,150 @@ var SummaryComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/reports/top-least-items-report/top-least-items-report.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/reports/top-least-items-report/top-least-items-report.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"content-header\">\n  <h1>\n      Top and Least Items Report\n      <!-- <small>Version 2.0</small> -->\n  </h1>\n</section>\n\n<section class=\"content\">\n\n  <div class=\"row\">\n\n      <div class=\"col-md-12\">\n          <div class=\"box box-primary\">\n\n              <div class=\"box-body\">\n\n                  <div class=\"hidden-print\">\n                      <app-dates-filter (onShowBtnClicked)=\"showReport($event)\"></app-dates-filter>\n                  </div>\n\n                  <app-box [type]=\"'default'\" [title]=\"'Top and Least Items Report'\">\n                      <p>From: <b>{{from | date:'short'}}</b></p>\n                      <p>To: <b>{{to | date:'short'}}</b></p>\n\n                      <app-box [type]=\"'success'\" [title]=\"'Top Selling Items'\">\n                        \n                        <div class=\"col-md-6\">\n                            <app-box [type]=\"'default'\" [title]=\"'By Qty'\">\n                                <p-chart type=\"pie\" [data]=\"top_by_qty_chart_data\"></p-chart>\n                            </app-box>  \n                        </div>\n\n                        <div class=\"col-md-6\">\n                            <app-box [type]=\"'default'\" [title]=\"'By Amount'\">\n                                <p-chart type=\"pie\" [data]=\"top_by_amount_chart_data\"></p-chart>\n                            </app-box>  \n                        </div>\n\n                      </app-box>\n\n                      <app-box [type]=\"'danger'\" [title]=\"'Least Selling Items'\">\n                        \n                        <div class=\"col-md-6\">\n                            <app-box [type]=\"'default'\" [title]=\"'By Qty'\">\n                                <p-chart type=\"pie\" [data]=\"least_by_qty_chart_data\"></p-chart>\n                            </app-box>  \n                        </div>\n\n                        <div class=\"col-md-6\">\n                            <app-box [type]=\"'default'\" [title]=\"'By Amount'\">\n                                <p-chart type=\"pie\" [data]=\"least_by_amount_chart_data\"></p-chart>\n                            </app-box>  \n                        </div>\n\n                      </app-box>\n\n                      \n\n                  </app-box>\n\n              </div>\n          </div>\n\n      </div>\n  </div>\n\n</section>"
+
+/***/ }),
+
+/***/ "./src/app/reports/top-least-items-report/top-least-items-report.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TopLeastItemsReportComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_reports_service__ = __webpack_require__("./src/app/services/reports.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TopLeastItemsReportComponent = /** @class */ (function () {
+    function TopLeastItemsReportComponent(reportsService) {
+        this.reportsService = reportsService;
+        this.top_by_qty_chart_data = null;
+        this.top_by_amount_chart_data = null;
+        this.least_by_qty_chart_data = null;
+        this.least_by_amount_chart_data = null;
+    }
+    TopLeastItemsReportComponent.prototype.ngOnInit = function () {
+    };
+    TopLeastItemsReportComponent.prototype.generatePieChartData = function (dataArray) {
+        var pie_chart_data = {
+            labels: [],
+            datasets: [
+                {
+                    data: [],
+                    backgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                        "green",
+                        "gray"
+                    ],
+                    hoverBackgroundColor: []
+                }
+            ]
+        };
+        pie_chart_data.datasets[0].data = new Array();
+        dataArray.forEach(function (element) {
+            pie_chart_data.labels.push(element.name);
+            pie_chart_data.datasets[0].data.push(+element.value);
+        });
+        return pie_chart_data;
+    };
+    TopLeastItemsReportComponent.prototype.showReport = function (event) {
+        var _this = this;
+        this.reportsService.topAndLeastItemsReport(event.from, event.to, event.show_actual)
+            .subscribe(function (data) {
+            _this.from = event.from;
+            _this.to = event.to;
+            _this.report_data = data;
+            _this.top_by_qty_chart_data = _this.generatePieChartData(_this.report_data.top_selling_items_by_qty);
+            _this.top_by_amount_chart_data = _this.generatePieChartData(_this.report_data.top_selling_items_by_amount);
+            _this.least_by_qty_chart_data = _this.generatePieChartData(_this.report_data.least_selling_items_by_qty);
+            _this.least_by_amount_chart_data = _this.generatePieChartData(_this.report_data.least_selling_items_by_amount);
+        });
+    };
+    TopLeastItemsReportComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-top-least-items-report',
+            template: __webpack_require__("./src/app/reports/top-least-items-report/top-least-items-report.component.html"),
+            styles: [__webpack_require__("./src/app/reports/top-least-items-report/top-least-items-report.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_reports_service__["a" /* ReportsService */]])
+    ], TopLeastItemsReportComponent);
+    return TopLeastItemsReportComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/reports/x-report/x-report.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/reports/x-report/x-report.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  x-report works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/reports/x-report/x-report.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return XReportComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var XReportComponent = /** @class */ (function () {
+    function XReportComponent() {
+    }
+    XReportComponent.prototype.ngOnInit = function () {
+    };
+    XReportComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-x-report',
+            template: __webpack_require__("./src/app/reports/x-report/x-report.component.html"),
+            styles: [__webpack_require__("./src/app/reports/x-report/x-report.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], XReportComponent);
+    return XReportComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/auth-guard.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2731,29 +2958,25 @@ var ReportsService = /** @class */ (function () {
         this.http = http;
         this.h = h;
     }
-    ReportsService.prototype.editsAfterPrintReport = function (from_date, to_date, show_actual) {
+    ReportsService.prototype.getReportData = function (from_date, to_date, show_actual, url) {
         var params = {
             'from_date': this.h.toSqlFormat(from_date),
             'to_date': this.h.toSqlFormat(to_date),
             's_a': show_actual,
         };
-        return this.http.get(this.config.base_url + '/api/edits-after-print-report', { params: params });
+        return this.http.get(this.config.base_url + '/api/' + url, { params: params });
+    };
+    ReportsService.prototype.topAndLeastItemsReport = function (from_date, to_date, show_actual) {
+        return this.getReportData(from_date, to_date, show_actual, 'top-least-selling-items-report');
+    };
+    ReportsService.prototype.editsAfterPrintReport = function (from_date, to_date, show_actual) {
+        return this.getReportData(from_date, to_date, show_actual, 'edits-after-print-report');
     };
     ReportsService.prototype.salesReportByItem = function (from_date, to_date, show_actual) {
-        var params = {
-            'from_date': this.h.toSqlFormat(from_date),
-            'to_date': this.h.toSqlFormat(to_date),
-            's_a': show_actual,
-        };
-        return this.http.get(this.config.base_url + '/api/sales-report-by-item', { params: params });
+        return this.getReportData(from_date, to_date, show_actual, 'sales-report-by-item');
     };
     ReportsService.prototype.salesReportByOrder = function (from_date, to_date, show_actual) {
-        var params = {
-            'from_date': this.h.toSqlFormat(from_date),
-            'to_date': this.h.toSqlFormat(to_date),
-            's_a': show_actual,
-        };
-        return this.http.get(this.config.base_url + '/api/sales-report-by-order', { params: params });
+        return this.getReportData(from_date, to_date, show_actual, 'sales-report-by-order');
     };
     ReportsService.prototype.cancelledOrdersReport = function (from_date, to_date) {
         var params = {

@@ -6,7 +6,7 @@ import { HelperService } from './helper.service';
 
 @Injectable()
 export class ReportsService {
-
+  
   constructor(
     private config: ConfigService,
     private http: HttpClient,
@@ -14,34 +14,31 @@ export class ReportsService {
   ) { }
 
 
-  editsAfterPrintReport(from_date, to_date, show_actual) {
+  getReportData(from_date, to_date, show_actual, url)
+  {
     let params = { 
       'from_date': this.h.toSqlFormat(from_date), 
       'to_date': this.h.toSqlFormat(to_date),  
       's_a': show_actual,
     };
 
-    return this.http.get(this.config.base_url + '/api/edits-after-print-report', { params: params });
+    return this.http.get(this.config.base_url + '/api/' + url, { params: params });
+  }
+
+  topAndLeastItemsReport(from_date, to_date, show_actual) {
+    return this.getReportData(from_date, to_date, show_actual, 'top-least-selling-items-report');
+  }
+
+  editsAfterPrintReport(from_date, to_date, show_actual) {
+    return this.getReportData(from_date, to_date, show_actual, 'edits-after-print-report');
   }
 
   salesReportByItem(from_date, to_date, show_actual) {
-    let params = { 
-      'from_date': this.h.toSqlFormat(from_date), 
-      'to_date': this.h.toSqlFormat(to_date),  
-      's_a': show_actual,
-    };
-
-    return this.http.get(this.config.base_url + '/api/sales-report-by-item', { params: params });
+    return this.getReportData(from_date, to_date, show_actual, 'sales-report-by-item');
   }
 
   salesReportByOrder(from_date, to_date, show_actual) {
-    let params = {
-      'from_date': this.h.toSqlFormat(from_date),
-      'to_date': this.h.toSqlFormat(to_date),
-      's_a': show_actual,
-    };
-
-    return this.http.get(this.config.base_url + '/api/sales-report-by-order', { params: params });
+    return this.getReportData(from_date, to_date, show_actual, 'sales-report-by-order');
   }
 
   cancelledOrdersReport(from_date, to_date) {

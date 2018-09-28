@@ -11,7 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { NgPipesModule } from 'ngx-pipes';
-
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {ChartModule} from 'primeng/chart';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './adminlte/header/header.component';
@@ -53,6 +54,9 @@ import { SummaryComponent } from './reports/summary/summary.component';
 import { EditsAfterPrintComponent } from './reports/edits-after-print/edits-after-print.component';
 import { CancelledOrdersReportComponent } from './reports/cancelled-orders-report/cancelled-orders-report.component';
 import { InvoicesPrintingComponent } from './invoices-printing/invoices-printing.component';
+import { TopLeastItemsReportComponent } from './reports/top-least-items-report/top-least-items-report.component';
+import { XReportComponent } from './reports/x-report/x-report.component';
+import { BoxComponent } from './adminlte-components/box/box.component';
 
 
 @NgModule({
@@ -84,6 +88,9 @@ import { InvoicesPrintingComponent } from './invoices-printing/invoices-printing
     EditsAfterPrintComponent,
     CancelledOrdersReportComponent,
     InvoicesPrintingComponent,
+    TopLeastItemsReportComponent,
+    XReportComponent,
+    BoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,7 +105,9 @@ import { InvoicesPrintingComponent } from './invoices-printing/invoices-printing
     BrowserAnimationsModule,
     ButtonModule,
     CalendarModule,
-    NgPipesModule
+    NgPipesModule,
+    NgxChartsModule,
+    ChartModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true},

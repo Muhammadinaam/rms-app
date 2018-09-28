@@ -1,0 +1,67 @@
+<section class="content-header">
+  <h1>
+      Top and Least Items Report
+      <!-- <small>Version 2.0</small> -->
+  </h1>
+</section>
+
+<section class="content">
+
+  <div class="row">
+
+      <div class="col-md-12">
+          <div class="box box-primary">
+
+              <div class="box-body">
+
+                  <div class="hidden-print">
+                      <app-dates-filter (onShowBtnClicked)="showReport($event)"></app-dates-filter>
+                  </div>
+
+                  <app-box [type]="'default'" [title]="'Top and Least Items Report'">
+                      <p>From: <b>{{from | date:'short'}}</b></p>
+                      <p>To: <b>{{to | date:'short'}}</b></p>
+
+                      <app-box [type]="'success'" [title]="'Top Selling Items'">
+                        
+                        <div class="col-md-6">
+                            <app-box [type]="'default'" [title]="'By Qty'">
+                                <p-chart type="pie" [data]="top_by_qty_chart_data"></p-chart>
+                            </app-box>  
+                        </div>
+
+                        <div class="col-md-6">
+                            <app-box [type]="'default'" [title]="'By Amount'">
+                                <p-chart type="pie" [data]="top_by_amount_chart_data"></p-chart>
+                            </app-box>  
+                        </div>
+
+                      </app-box>
+
+                      <app-box [type]="'danger'" [title]="'Least Selling Items'">
+                        
+                        <div class="col-md-6">
+                            <app-box [type]="'default'" [title]="'By Qty'">
+                                <p-chart type="pie" [data]="least_by_qty_chart_data"></p-chart>
+                            </app-box>  
+                        </div>
+
+                        <div class="col-md-6">
+                            <app-box [type]="'default'" [title]="'By Amount'">
+                                <p-chart type="pie" [data]="least_by_amount_chart_data"></p-chart>
+                            </app-box>  
+                        </div>
+
+                      </app-box>
+
+                      
+
+                  </app-box>
+
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+</section>

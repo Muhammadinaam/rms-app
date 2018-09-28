@@ -19,6 +19,8 @@ import { SalesByOrderReportComponent } from './reports/sales-by-order-report/sal
 import { EditsAfterPrintComponent } from './reports/edits-after-print/edits-after-print.component';
 import { CancelledOrdersReportComponent } from './reports/cancelled-orders-report/cancelled-orders-report.component';
 import { InvoicesPrintingComponent } from './invoices-printing/invoices-printing.component';
+import { XReportComponent } from './reports/x-report/x-report.component';
+import { TopLeastItemsReportComponent } from './reports/top-least-items-report/top-least-items-report.component';
 
 
 const routes: Routes = [
@@ -56,6 +58,8 @@ const routes: Routes = [
       { path: 'cancelled-orders-report', component: CancelledOrdersReportComponent },
       { path: 'collection-report', component: CollectionReportComponent },
       { path: 'invoices-printing', component: InvoicesPrintingComponent },
+      { path: 'top-least-selling-items-report', component: TopLeastItemsReportComponent },
+      { path: 'x-report', component: XReportComponent },
 
     ]
   }
