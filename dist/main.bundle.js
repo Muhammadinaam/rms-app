@@ -605,12 +605,16 @@ var SidebarComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__invoices_printing_invoices_printing_component__ = __webpack_require__("./src/app/invoices-printing/invoices-printing.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__reports_x_report_x_report_component__ = __webpack_require__("./src/app/reports/x-report/x-report.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__reports_top_least_items_report_top_least_items_report_component__ = __webpack_require__("./src/app/reports/top-least-items-report/top-least-items-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__reports_rating_report_rating_report_component__ = __webpack_require__("./src/app/reports/rating-report/rating-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__reports_rating_add_edit_rating_add_edit_component__ = __webpack_require__("./src/app/reports/rating-add-edit/rating-add-edit.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -663,6 +667,8 @@ var routes = [
             { path: 'invoices-printing', component: __WEBPACK_IMPORTED_MODULE_20__invoices_printing_invoices_printing_component__["a" /* InvoicesPrintingComponent */] },
             { path: 'top-least-selling-items-report', component: __WEBPACK_IMPORTED_MODULE_22__reports_top_least_items_report_top_least_items_report_component__["a" /* TopLeastItemsReportComponent */] },
             { path: 'x-report', component: __WEBPACK_IMPORTED_MODULE_21__reports_x_report_x_report_component__["a" /* XReportComponent */] },
+            { path: 'rating-report', component: __WEBPACK_IMPORTED_MODULE_23__reports_rating_report_rating_report_component__["a" /* RatingReportComponent */] },
+            { path: 'rating-add-edit', component: __WEBPACK_IMPORTED_MODULE_24__reports_rating_add_edit_rating_add_edit_component__["a" /* RatingAddEditComponent */] },
         ]
     }
 ];
@@ -733,8 +739,17 @@ var AppComponent = /** @class */ (function () {
             });
         });
     }
+    AppComponent.prototype.clearLocalStorage = function (event) {
+        localStorage.clear();
+    };
     AppComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"])("window:onbeforeunload", ["$event"]),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], AppComponent.prototype, "clearLocalStorage", null);
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
@@ -820,12 +835,16 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__reports_top_least_items_report_top_least_items_report_component__ = __webpack_require__("./src/app/reports/top-least-items-report/top-least-items-report.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__reports_x_report_x_report_component__ = __webpack_require__("./src/app/reports/x-report/x-report.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__adminlte_components_box_box_component__ = __webpack_require__("./src/app/adminlte-components/box/box.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__reports_rating_report_rating_report_component__ = __webpack_require__("./src/app/reports/rating-report/rating-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__reports_rating_add_edit_rating_add_edit_component__ = __webpack_require__("./src/app/reports/rating-add-edit/rating-add-edit.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -920,6 +939,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_55__reports_top_least_items_report_top_least_items_report_component__["a" /* TopLeastItemsReportComponent */],
                 __WEBPACK_IMPORTED_MODULE_56__reports_x_report_x_report_component__["a" /* XReportComponent */],
                 __WEBPACK_IMPORTED_MODULE_57__adminlte_components_box_box_component__["a" /* BoxComponent */],
+                __WEBPACK_IMPORTED_MODULE_58__reports_rating_report_rating_report_component__["a" /* RatingReportComponent */],
+                __WEBPACK_IMPORTED_MODULE_59__reports_rating_add_edit_rating_add_edit_component__["a" /* RatingAddEditComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
@@ -2222,6 +2243,106 @@ var EditsAfterPrintComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/reports/rating-add-edit/rating-add-edit.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/reports/rating-add-edit/rating-add-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"content-header\">\n  <h1>\n      X Report\n  </h1>\n\n</section>\n\n<section class=\"content\">\n\n  <div class=\"row\">\n\n      <div class=\"col-md-12\">\n          <div class=\"box box-primary\">\n\n              <div class=\"box-body\">\n\n                  \n\n              </div>\n\n          </div>\n      </div>\n\n  </div>\n\n</section>"
+
+/***/ }),
+
+/***/ "./src/app/reports/rating-add-edit/rating-add-edit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RatingAddEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var RatingAddEditComponent = /** @class */ (function () {
+    function RatingAddEditComponent() {
+    }
+    RatingAddEditComponent.prototype.ngOnInit = function () {
+    };
+    RatingAddEditComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-rating-add-edit',
+            template: __webpack_require__("./src/app/reports/rating-add-edit/rating-add-edit.component.html"),
+            styles: [__webpack_require__("./src/app/reports/rating-add-edit/rating-add-edit.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], RatingAddEditComponent);
+    return RatingAddEditComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/reports/rating-report/rating-report.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/reports/rating-report/rating-report.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"content-header\">\n  <h1>\n      Reporting Report\n  </h1>\n\n</section>\n\n<section class=\"content\">\n\n  <div class=\"row\">\n\n      <div class=\"col-md-12\">\n          <div class=\"box box-primary\">\n\n              <div class=\"box-body\">\n\n                  <h1 class=\"text-danger\">Error Occurred While loading this Page</h1>\n\n              </div>\n\n          </div>\n      </div>\n\n  </div>\n\n</section>"
+
+/***/ }),
+
+/***/ "./src/app/reports/rating-report/rating-report.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RatingReportComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var RatingReportComponent = /** @class */ (function () {
+    function RatingReportComponent() {
+    }
+    RatingReportComponent.prototype.ngOnInit = function () {
+    };
+    RatingReportComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-rating-report',
+            template: __webpack_require__("./src/app/reports/rating-report/rating-report.component.html"),
+            styles: [__webpack_require__("./src/app/reports/rating-report/rating-report.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], RatingReportComponent);
+    return RatingReportComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/reports/sales-by-item-report/sales-by-item-report.component.css":
 /***/ (function(module, exports) {
 
@@ -2535,7 +2656,7 @@ module.exports = ""
 /***/ "./src/app/reports/x-report/x-report.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  x-report works!\n</p>\n"
+module.exports = "<section class=\"content-header\">\n  <h1>\n      X Report\n  </h1>\n\n</section>\n\n<section class=\"content\">\n\n  <div class=\"row\">\n\n      <div class=\"col-md-12\">\n          <div class=\"box box-primary\">\n\n            <div class=\"box-body\">\n\n              <div class=\"hidden-print\">\n                  <app-dates-filter (onShowBtnClicked)=\"showReport($event)\"></app-dates-filter>\n              </div>\n\n\n              <div class=\"box box-success\">\n                  <div class=\"box-header with-border\">\n                      <h3 class=\"box-title\">X Report</h3>\n                  </div>\n\n                  <p>From: <b>{{from | date:'short'}}</b></p>\n                  <p>To: <b>{{to | date:'short'}}</b></p>\n\n                  <div class=\"box-body\">\n\n                      <div *ngFor=\"let category of report_data | groupBy: 'category' | keys\">\n                          <h3 style=\"background-color:lightgray\"><small>Category: </small>{{category}}</h3>\n\n\n                          <div class=\"text-right\">\n                              <h3><small>Category {{category}} Total Qty: </small>{{report_data | filterBy:['category'] : category | pluck:'qty' | sum | currency:' '}}</h3>\n                              <h3><small>Category {{category}} Total Amount: </small>{{report_data | filterBy:['category'] : category | pluck:'amount' | sum | currency:' '}}</h3>\n                          </div>\n\n                      </div>\n\n                      <h3 style=\"background-color:lightgray\">Total Sales</h3>\n                      <div class=\"text-right\">\n                        <h3><small>Category {{category}} Total Qty: </small>{{report_data  | pluck:'qty' | sum | currency:' '}}</h3>\n                        <h3><small>Category {{category}} Total Amount: </small>{{report_data | pluck:'amount' | sum | currency:' '}}</h3>\n                    </div>\n\n                      <hr>\n\n                      <div *ngIf=\"ent_report_data.length> 0\">\n                          <h3 class=\"text-center\">Ent Bills</h3>\n                          <table class=\"table table-condensed table-bordered table-hover\">\n                              <thead>\n                                  <tr>\n                                      <th>Category</th>\n                                      <th>Group</th>\n                                      <th>Item</th>\n                                      <th class=\"col-md-2 text-center\">Qty</th>\n                                      <th class=\"col-md-2 text-center\">Amount</th>\n                                  </tr>\n                              </thead>\n                              <tbody>\n                                  <tr [class.grand-total]=\"row.name == null\" *ngFor=\"let row of ent_report_data\">\n                                      <td>{{row.category}}</td>\n                                      <td>{{row.item_group}}</td>\n                                      <td>{{row.name}}</td>\n                                      <td class=\"text-center\">{{row.qty | currency:' '}}</td>\n                                      <td class=\"text-center\">{{row.amount | currency:' '}}</td>\n                                  </tr>\n                              </tbody>\n\n                              <tfoot *ngIf=\"ent_report_data == null || ent_report_data.length == 0\">\n                                  <tr>\n                                      <td colspan=\"10\" class=\"text-center\"><b>No Data Found</b></td>\n                                  </tr>\n                              </tfoot>\n                          </table>\n                      </div>\n\n\n                      <hr>\n                      <h3 class=\"text-center\">Collection Summary</h3>\n                      <app-summary [report_summary]=\"report_summary\"></app-summary>\n\n                  </div>\n              </div>\n\n          </div>\n\n          </div>\n      </div>\n\n  </div>\n\n</section>"
 
 /***/ }),
 
@@ -2545,6 +2666,7 @@ module.exports = "<p>\n  x-report works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return XReportComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_reports_service__ = __webpack_require__("./src/app/services/reports.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2555,10 +2677,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var XReportComponent = /** @class */ (function () {
-    function XReportComponent() {
+    function XReportComponent(reportsService) {
+        this.reportsService = reportsService;
+        this.ent_report_data = new Array();
+        this.report_summary = {
+            'receipt_detail': [],
+            'st_and_discount': {
+                'total_sales_tax': 0,
+                'total_discount': 0,
+            }
+        };
     }
     XReportComponent.prototype.ngOnInit = function () {
+    };
+    XReportComponent.prototype.showReport = function (event) {
+        var _this = this;
+        this.reportsService.salesReportByItem(event.from, event.to, event.show_actual)
+            .subscribe(function (data) {
+            _this.from = event.from;
+            _this.to = event.to;
+            _this.report_data = data['report_detail']['orders'];
+            _this.ent_report_data = data['report_detail']['ent_orders'];
+            _this.report_summary = data['report_summary'];
+            _this.report_data.forEach(function (element) {
+                element.qty = +element.qty;
+                element.amount = +element.amount;
+            });
+        });
     };
     XReportComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -2566,7 +2713,7 @@ var XReportComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/reports/x-report/x-report.component.html"),
             styles: [__webpack_require__("./src/app/reports/x-report/x-report.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_reports_service__["a" /* ReportsService */]])
     ], XReportComponent);
     return XReportComponent;
 }());

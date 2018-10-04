@@ -1,3 +1,96 @@
-<p>
-  x-report works!
-</p>
+<section class="content-header">
+  <h1>
+      X Report
+  </h1>
+
+</section>
+
+<section class="content">
+
+  <div class="row">
+
+      <div class="col-md-12">
+          <div class="box box-primary">
+
+            <div class="box-body">
+
+              <div class="hidden-print">
+                  <app-dates-filter (onShowBtnClicked)="showReport($event)"></app-dates-filter>
+              </div>
+
+
+              <div class="box box-success">
+                  <div class="box-header with-border">
+                      <h3 class="box-title">X Report</h3>
+                  </div>
+
+                  <p>From: <b>{{from | date:'short'}}</b></p>
+                  <p>To: <b>{{to | date:'short'}}</b></p>
+
+                  <div class="box-body">
+
+                      <div *ngFor="let category of report_data | groupBy: 'category' | keys">
+                          <h3 style="background-color:lightgray"><small>Category: </small>{{category}}</h3>
+
+
+                          <div class="text-right">
+                              <h3><small>Category {{category}} Total Qty: </small>{{report_data | filterBy:['category'] : category | pluck:'qty' | sum | currency:' '}}</h3>
+                              <h3><small>Category {{category}} Total Amount: </small>{{report_data | filterBy:['category'] : category | pluck:'amount' | sum | currency:' '}}</h3>
+                          </div>
+
+                      </div>
+
+                      <h3 style="background-color:lightgray">Total Sales</h3>
+                      <div class="text-right">
+                        <h3><small>Category {{category}} Total Qty: </small>{{report_data  | pluck:'qty' | sum | currency:' '}}</h3>
+                        <h3><small>Category {{category}} Total Amount: </small>{{report_data | pluck:'amount' | sum | currency:' '}}</h3>
+                    </div>
+
+                      <hr>
+
+                      <div *ngIf="ent_report_data.length> 0">
+                          <h3 class="text-center">Ent Bills</h3>
+                          <table class="table table-condensed table-bordered table-hover">
+                              <thead>
+                                  <tr>
+                                      <th>Category</th>
+                                      <th>Group</th>
+                                      <th>Item</th>
+                                      <th class="col-md-2 text-center">Qty</th>
+                                      <th class="col-md-2 text-center">Amount</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr [class.grand-total]="row.name == null" *ngFor="let row of ent_report_data">
+                                      <td>{{row.category}}</td>
+                                      <td>{{row.item_group}}</td>
+                                      <td>{{row.name}}</td>
+                                      <td class="text-center">{{row.qty | currency:' '}}</td>
+                                      <td class="text-center">{{row.amount | currency:' '}}</td>
+                                  </tr>
+                              </tbody>
+
+                              <tfoot *ngIf="ent_report_data == null || ent_report_data.length == 0">
+                                  <tr>
+                                      <td colspan="10" class="text-center"><b>No Data Found</b></td>
+                                  </tr>
+                              </tfoot>
+                          </table>
+                      </div>
+
+
+                      <hr>
+                      <h3 class="text-center">Collection Summary</h3>
+                      <app-summary [report_summary]="report_summary"></app-summary>
+
+                  </div>
+              </div>
+
+          </div>
+
+          </div>
+      </div>
+
+  </div>
+
+</section>

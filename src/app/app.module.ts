@@ -57,6 +57,8 @@ import { InvoicesPrintingComponent } from './invoices-printing/invoices-printing
 import { TopLeastItemsReportComponent } from './reports/top-least-items-report/top-least-items-report.component';
 import { XReportComponent } from './reports/x-report/x-report.component';
 import { BoxComponent } from './adminlte-components/box/box.component';
+import { RatingReportComponent } from './reports/rating-report/rating-report.component';
+import { RatingAddEditComponent } from './reports/rating-add-edit/rating-add-edit.component';
 
 
 @NgModule({
@@ -91,6 +93,8 @@ import { BoxComponent } from './adminlte-components/box/box.component';
     TopLeastItemsReportComponent,
     XReportComponent,
     BoxComponent,
+    RatingReportComponent,
+    RatingAddEditComponent,
   ],
   imports: [
     BrowserModule,
