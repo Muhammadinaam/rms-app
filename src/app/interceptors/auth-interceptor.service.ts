@@ -89,9 +89,15 @@ export class AuthInterceptorService implements HttpInterceptor {
                           }
                           else
                           {
-                            console.log(error);
-                            alert(error.message);
+                            // added this code for major rizwan
+                            this.authService.logout();
+                            this.router.navigate(['login']);
                             return Observable.throw(error);
+
+                            // commented this code for major rizwan
+                            //console.log(error);
+                            //alert(error.message);
+                            //return Observable.throw(error);
                           }
                         }
                       } //(error.status === 429) ? Observable.throw(error) : Observable.of(error)
