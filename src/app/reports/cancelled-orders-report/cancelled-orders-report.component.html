@@ -29,6 +29,8 @@
 
                         <div class="box-body">
 
+                            <app-items-list-dialog [show_action_columns]="false" [items_detail]="order_data.order_details" [(dialogVisibility)]="is_order_modal_visible"></app-items-list-dialog>
+
                             <table class="table table-condensed table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -40,7 +42,9 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let row of report_data">
-                                        <td>{{row.id}}</td>
+                                        <td>
+                                            <a style="cursor: pointer;" (click)="showOrder(row.id)">{{row.id}}</a>
+                                        </td>
                                         <td>{{row.amount | currency:' '}}</td>
                                         <td>{{row.cancellation_remarks}}</td>
                                         <td>{{row.cancelled_by}}</td>

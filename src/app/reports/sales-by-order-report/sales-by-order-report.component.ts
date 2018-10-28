@@ -21,6 +21,12 @@ export class SalesByOrderReportComponent implements OnInit {
   from: '';
   to: '';
 
+  is_invoice_modal_visible = false;
+  is_actual = false;
+  invoice_data:any = {
+    'invoice_details': [],
+  };
+
   constructor(
     private reportsService: ReportsService
   ) { }
@@ -30,6 +36,7 @@ export class SalesByOrderReportComponent implements OnInit {
 
   showReport(event:any)
   {
+    this.is_actual = event.show_actual;
     this.reportsService.salesReportByOrder(event.from, event.to, event.show_actual)
       .subscribe( data => {
 
@@ -39,6 +46,17 @@ export class SalesByOrderReportComponent implements OnInit {
         this.report_data = data['report_detail']['orders'];
         this.ent_report_data = data['report_detail']['ent_orders'];
         this.report_summary = data['report_summary'];
+      });
+  }
+
+  showInvoice(invoice_id, invoice_datetime)
+  {
+    this.invoice_data.invoice_details = [];
+    this.is_invoice_modal_visible = true;
+    this.reportsService.getInvoiceData(invoice_id, invoice_datetime, this.is_actual)
+      .subscribe(data =>{
+        this.invoice_data.invoice_details = data;
+        console.log(this.invoice_data);
       });
   }
 

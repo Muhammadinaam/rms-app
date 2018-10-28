@@ -6,9 +6,10 @@
     </div> -->
 
     <div class="box-body">
-        <div class="text-right">
+        <div *ngIf="hidden_checkbox_available" class="text-right">
             <input style="position: absolute; top: -40px; right: 450px;" class="hidden_checkbox" type="checkbox" [(ngModel)]="show_actual" [ngModelOptions]="{standalone: true}">
         </div>
+
         <div class="row">
 
             <div class="col-sm-6">

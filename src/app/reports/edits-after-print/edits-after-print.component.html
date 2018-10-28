@@ -14,6 +14,8 @@
 
                 <div class="box-body">
 
+                    <app-items-list-dialog [show_action_columns]="true" [items_detail]="edit_data.edit_details" [(dialogVisibility)]="is_edit_detail_modal_visible"></app-items-list-dialog>
+
                     <div class="hidden-print">
                         <app-dates-filter (onShowBtnClicked)="showReport($event)"></app-dates-filter>
                     </div>
@@ -44,7 +46,10 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let row of report_data">
-                                        <td>{{row.order_id}}</td>
+                                        <td>
+                                            <div *ngIf="row.to_edit_id == null">{{row.order_id}}</div>
+                                            <a *ngIf="row.to_edit_id != null" style="cursor: pointer;" (click)="showEditDetail(row.to_edit_id)">{{row.order_id}}</a>
+                                        </td>
                                         <td>{{row.edit_type}}</td>
                                         <td>{{row.remarks}}</td>
                                         <td>{{row.before_amount |currency:" " }}</td>

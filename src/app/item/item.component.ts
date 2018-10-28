@@ -14,11 +14,12 @@ export class ItemComponent implements OnInit {
   item:any = {
     id: null,
     category: '',
-    group: '',
+    item_group: '',
     name: '',
     code: '',
     unit: '',
     price: '',
+    is_activated: false,
   };
 
   is_loading:boolean = false;

@@ -170,13 +170,13 @@
         <div class="form-group">
             <label for="received_through" class="control-label">Received Through:</label>
             <div class="">
-                <select #received_through_input name="received_through" id="received_through" class="form-control" required="required">
-            <option value="0">-</option>
-            <option value="Cash">Cash</option>
-            <option value="Card">Card</option>
-            <option value="Ent">Ent</option>
-            <option value="Cash2"></option>
-          </select>
+                <select style="font-size: 40px; height: 60px; color:crimson;" #received_through_input name="received_through" id="received_through" class="form-control" required="required">
+                    <option value="0">-</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Card">Card</option>
+                    <option value="Ent">Ent</option>
+                    <option value="Cash2"></option>
+                </select>
 
             </div>
             <div class="validation-error" *ngIf="received_through_input.value == 0">

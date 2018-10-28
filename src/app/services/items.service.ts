@@ -7,9 +7,11 @@ export class ItemsService {
 
   constructor(private http: HttpClient, private config: ConfigService) { }
 
-  getItems()
+  getItems(show_inactive_also = 0)
   {
-    return this.http.get(this.config.base_url + '/api/items');
+    let url = '/api/items';
+    url += show_inactive_also == 1 ? '?show_inactive_also=1' : '?show_inactive_also=0';
+    return this.http.get(this.config.base_url + url);
   }
 
   getItemById(id)

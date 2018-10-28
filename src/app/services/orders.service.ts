@@ -8,6 +8,11 @@ export class OrdersService {
 
   constructor(private http: HttpClient, private config: ConfigService) { }
 
+  getOrderEditById(id)
+  {
+    return this.http.get(this.config.base_url + '/api/get_order_edit/' + id);
+  }
+
   getOrderById(id)
   {
     return this.http.get(this.config.base_url + '/api/orders/' + id + '/edit');

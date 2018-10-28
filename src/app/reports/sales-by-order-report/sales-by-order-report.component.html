@@ -29,15 +29,19 @@
 
                         <div class="box-body">
 
+                            <app-items-list-dialog [show_action_columns]="false" [items_detail]="invoice_data.invoice_details" [(dialogVisibility)]="is_invoice_modal_visible"></app-items-list-dialog>
+
                             <table class="table table-condensed table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>Invoice ID</th>
                                         <th>Order ID</th>
                                         <th>Order Type</th>
+                                        <th>Order Date/Time</th>
                                         <th>Cover</th>
                                         <th>Payment Type</th>
                                         <th>Closed At</th>
+                                        <th>Order Taker</th>
                                         <th class="col-md-2 col-sm-2 text-center">Discount</th>
                                         <th>Sales Tax</th>
                                         <th class="col-md-2 col-sm-2 text-center">Amount</th>
@@ -45,12 +49,16 @@
                                 </thead>
                                 <tbody>
                                     <tr [class.grand-total]="row.id == null" *ngFor="let row of report_data">
-                                        <td>{{row.id}}</td>
+                                        <td>
+                                            <a style="cursor: pointer;" (click)="showInvoice(row.id, row.order_datetime)">{{row.id}}</a>
+                                        </td>
                                         <td>{{row.order_id}}</td>
                                         <td>{{row.order_type}}</td>
+                                        <td>{{row.order_datetime | date:'dd-MMM-yyyy HH:mm a'}}</td>
                                         <td>{{row.cover}}</td>
                                         <td class="{{ row.received_through == 'Cash' ? 'cash-receipt' : 'other-receipt' }}">{{row.received_through}}</td>
                                         <td>{{row.closing_time | date:'dd-MMM-yyyy HH:mm a'}}</td>
+                                        <td>{{row.created_by}}</td>
                                         <td class="text-center">{{row.discount | currency:' '}}</td>
                                         <td class="text-center">{{row.sales_tax | currency:' '}}</td>
                                         <td class="text-center">{{row.amount | currency:' '}}</td>

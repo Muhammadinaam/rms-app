@@ -20,7 +20,7 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.itemsService.getItems()
+    this.itemsService.getItems(1)
       .subscribe( data => { this.items = data; } );
 
     this.authService.hasPermission('add-new-item')

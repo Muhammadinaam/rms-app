@@ -1,0 +1,25 @@
+<p-dialog header="Detail" [modal]="true" [(visible)]="dialogVisibility">
+    <h4>Items</h4>
+    
+    <table class="table table-bordered table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Rate</th>
+                <th>Amount</th>
+                <th *ngIf="show_action_columns">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of items_detail">
+                <td>{{row.item_name}}</td>
+                <td>{{row.qty | currency:' '}}</td>
+                <td>{{row.rate | currency:' '}}</td>
+                <td>{{row.amount | currency:' '}}</td>
+                <td *ngIf="show_action_columns">{{row.action}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</p-dialog>

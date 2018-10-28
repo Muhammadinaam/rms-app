@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportsService } from '../../services/reports.service';
+import { OrdersService } from '../../services/orders.service';
 
 @Component({
   selector: 'app-cancelled-orders-report',
@@ -13,7 +14,12 @@ export class CancelledOrdersReportComponent implements OnInit {
   from: '';
   to: '';
 
-  constructor(private reportsService: ReportsService) { }
+  is_order_modal_visible=false;
+  order_data:any={
+    order_details:[],
+  }
+
+  constructor(private reportsService: ReportsService, private orderService: OrdersService) { }
 
   ngOnInit() {
   }
@@ -27,6 +33,24 @@ export class CancelledOrdersReportComponent implements OnInit {
 
         this.report_data = data;
       });
+  }
+
+  showOrder(order_id){
+    this.order_data.order_details = [];
+    this.is_order_modal_visible = true;
+    this.orderService.getOrderById(order_id)
+    .subscribe(data => {
+
+      data['order_details'].forEach(order_detail => {
+        this.order_data.order_details.push({
+          item_name: order_detail.item_name,
+          qty: order_detail.qty,
+          rate: order_detail.rate,
+          amount: order_detail.qty * order_detail.rate,
+        })
+      });
+
+    });
   }
 
 }

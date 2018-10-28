@@ -14,6 +14,7 @@ export class ReportsService {
   ) { }
 
 
+
   getReportData(from_date, to_date, show_actual, url)
   {
     let params = { 
@@ -23,6 +24,11 @@ export class ReportsService {
     };
 
     return this.http.get(this.config.base_url + '/api/' + url, { params: params });
+  }
+
+  ratingsReport(from_date, to_date, show_actual)
+  {
+    return this.getReportData(from_date, to_date, show_actual, 'ratings-report');
   }
 
   topAndLeastItemsReport(from_date, to_date, show_actual) {
@@ -39,6 +45,17 @@ export class ReportsService {
 
   salesReportByOrder(from_date, to_date, show_actual) {
     return this.getReportData(from_date, to_date, show_actual, 'sales-report-by-order');
+  }
+
+  getInvoiceData(invoice_id, invoice_datetime, show_actual)
+  {
+    let params = { 
+      'invoice_id': invoice_id, 
+      'invoice_datetime': invoice_datetime,
+      's_a': show_actual,
+    };
+
+    return this.http.get(this.config.base_url + '/api/' + 'get-invoice-data', { params: params });
   }
 
   cancelledOrdersReport(from_date, to_date) {

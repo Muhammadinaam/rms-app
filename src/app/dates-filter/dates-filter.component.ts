@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 
 @Component({
@@ -13,6 +13,9 @@ export class DatesFilterComponent implements OnInit {
   to:any;
   from:any;
   show_actual:any=false;
+
+  @Input()
+  hidden_checkbox_available=true;
 
   ngOnInit() {
   }
