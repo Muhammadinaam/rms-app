@@ -1237,20 +1237,22 @@ var AuthInterceptorService = /** @class */ (function () {
                     return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].throw(error);
                 }
                 else {
-                    attempts++;
-                    if (attempts < 5) {
-                        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].of(error);
+                    console.log(error);
+                    alert(error.message);
+                    return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].throw(error);
+                    /* Following is retry code
+                    attempts++
+                    if(attempts < 5)
+                    {
+                      return Observable.of(error)
                     }
-                    else {
-                        // added this code for major rizwan
-                        //this.authService.logout();
-                        //this.router.navigate(['login']);
-                        //return Observable.throw(error);
-                        // commented this code for major rizwan
-                        console.log(error);
-                        alert(error.message);
-                        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].throw(error);
+                    else
+                    {
+                      console.log(error);
+                      alert(error.message);
+                      return Observable.throw(error);
                     }
+                    */
                 }
             } //(error.status === 429) ? Observable.throw(error) : Observable.of(error)
             )
@@ -1812,7 +1814,11 @@ var OpenOrderComponent = /** @class */ (function () {
     };
     OpenOrderComponent.prototype.printForCustomer = function (order_id) {
         this.ordersService.printForCustomer(order_id)
-            .subscribe();
+            .subscribe(function (data) {
+            if (data['success'] == false) {
+                alert(data['message']);
+            }
+        });
     };
     OpenOrderComponent.prototype.reprintForKitchens = function (order_id) {
         var r = confirm("Are you sure to reprint order for kitchens?");
@@ -1989,9 +1995,10 @@ var OrderComponent = /** @class */ (function () {
             _this.order.order_details.forEach(function (element) {
                 _this.order.order_amount_ex_st += element.qty * element.rate;
             });
+            _this.order.sales_tax_rate = _this.sales_tax_rate;
             _this.order.sales_tax = _this.order.order_amount_ex_st * _this.sales_tax_rate / 100;
             _this.order.order_amount_inc_st = _this.order.order_amount_ex_st + _this.order.sales_tax;
-        }, 100);
+        }, 50);
     };
     OrderComponent.prototype.ngOnDestroy = function () {
         if (this.total_order_amount_interval) {

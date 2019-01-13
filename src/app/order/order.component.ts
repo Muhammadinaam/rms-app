@@ -104,10 +104,11 @@ export class OrderComponent implements OnInit {
         this.order.order_amount_ex_st += element.qty * element.rate;
       });
 
+      this.order.sales_tax_rate = this.sales_tax_rate;
       this.order.sales_tax = this.order.order_amount_ex_st * this.sales_tax_rate / 100;
       this.order.order_amount_inc_st = this.order.order_amount_ex_st + this.order.sales_tax;
 
-    }, 100);
+    }, 50);
   }
 
   ngOnDestroy()

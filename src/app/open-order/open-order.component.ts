@@ -111,7 +111,12 @@ export class OpenOrderComponent implements OnInit {
   printForCustomer(order_id)
   {
     this.ordersService.printForCustomer(order_id)
-      .subscribe();
+      .subscribe(data => {
+        if(data['success'] == false)
+        {
+          alert(data['message']);
+        }
+      });
   }
 
   reprintForKitchens(order_id)
