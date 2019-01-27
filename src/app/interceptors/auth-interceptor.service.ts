@@ -82,13 +82,8 @@ export class AuthInterceptorService implements HttpInterceptor {
                         // }
                         else
                         {
-
-                          console.log(error);
-                          alert(error.message);
-                          return Observable.throw(error);
-
-
-                          /* Following is retry code
+                          
+                          
                           attempts++
                           if(attempts < 5)
                           {
@@ -100,7 +95,8 @@ export class AuthInterceptorService implements HttpInterceptor {
                             alert(error.message);
                             return Observable.throw(error);
                           }
-                          */
+
+
 
 
                         }

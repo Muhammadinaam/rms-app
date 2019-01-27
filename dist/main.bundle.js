@@ -1237,22 +1237,15 @@ var AuthInterceptorService = /** @class */ (function () {
                     return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].throw(error);
                 }
                 else {
-                    console.log(error);
-                    alert(error.message);
-                    return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].throw(error);
-                    /* Following is retry code
-                    attempts++
-                    if(attempts < 5)
-                    {
-                      return Observable.of(error)
+                    attempts++;
+                    if (attempts < 5) {
+                        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].of(error);
                     }
-                    else
-                    {
-                      console.log(error);
-                      alert(error.message);
-                      return Observable.throw(error);
+                    else {
+                        console.log(error);
+                        alert(error.message);
+                        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].throw(error);
                     }
-                    */
                 }
             } //(error.status === 429) ? Observable.throw(error) : Observable.of(error)
             )
