@@ -517,7 +517,7 @@ module.exports = ""
 /***/ "./src/app/adminlte/sidebar/sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Left side column. contains the logo and sidebar -->\r\n<aside class=\"main-sidebar\">\r\n    <!-- sidebar: style can be found in sidebar.less -->\r\n    <section class=\"sidebar\">\r\n        <!-- Sidebar user panel -->\r\n        <div class=\"user-panel\">\r\n            <div class=\"pull-left image\">\r\n                <img src=\"assets/dist/img/user2-160x160.jpg\" class=\"img-circle\" alt=\"User Image\">\r\n            </div>\r\n            <div class=\"pull-left info\">\r\n                <p>{{user?.name}}</p>\r\n                <a href=\"#\"><i class=\"fa fa-circle text-success\"></i> Online</a>\r\n            </div>\r\n        </div>\r\n\r\n\r\n        <!-- sidebar menu: : style can be found in sidebar.less -->\r\n        <ul class=\"sidebar-menu\" data-widget=\"tree\">\r\n\r\n            <!-- <li class=\"header\">MAIN NAVIGATION</li> -->\r\n\r\n            <ng-template [ngIf]=\"menus != null\">\r\n                <ng-container *ngFor=\"let menu of menus\">\r\n\r\n                    <ng-template [ngIf]=\"menu.children == null\">\r\n                        <li>\r\n                            <a routerLink=\"/{{menu.url}}\">\r\n                                <i class=\"{{menu.icon}}\"></i> <span>{{menu.name}}</span>\r\n                            </a>\r\n                        </li>\r\n                    </ng-template>\r\n\r\n                    <ng-template [ngIf]=\"menu.children != null\">\r\n                        <li class=\"treeview\">\r\n                            <a href=\"#\">\r\n                                <i class=\"{{menu.icon}}\"></i> <span>{{menu.name}}</span>\r\n                            </a>\r\n                            <ul class=\"treeview-menu\">\r\n\r\n                                <ng-container *ngFor=\"let child_menu of menu.children\">\r\n                                    <li><a routerLink=\"/{{child_menu.url}}\"><i class=\"{{child_menu.icon}}\"></i> {{child_menu.name}}</a></li>\r\n                                </ng-container>\r\n\r\n                            </ul>\r\n                        </li>\r\n                    </ng-template>\r\n\r\n                </ng-container>\r\n            </ng-template>\r\n\r\n\r\n\r\n            <!-- \r\n      <li class=\"treeview\">\r\n        <a href=\"#\">\r\n          <i class=\"fa fa-dashboard\"></i> <span>Dashboard</span>\r\n        </a>\r\n        <ul class=\"treeview-menu\">\r\n          <li><a href=\"index.html\"><i class=\"fa fa-circle-o\"></i> Dashboard v1</a></li>\r\n          <li><a href=\"index2.html\"><i class=\"fa fa-circle-o\"></i> Dashboard v2</a></li>\r\n        </ul>\r\n      </li>\r\n      \r\n      <li>\r\n        <a href=\"https://adminlte.io/docs\">\r\n          <i class=\"fa fa-book\"></i> <span>Documentation</span>\r\n        </a>\r\n      </li> \r\n      -->\r\n\r\n        </ul>\r\n    </section>\r\n    <!-- /.sidebar -->\r\n</aside>"
+module.exports = "<!-- Left side column. contains the logo and sidebar -->\r\n<aside class=\"main-sidebar\">\r\n    <!-- sidebar: style can be found in sidebar.less -->\r\n    <section class=\"sidebar\">\r\n        <!-- Sidebar user panel -->\r\n        <div class=\"user-panel\">\r\n            <div class=\"pull-left image\">\r\n                <img src=\"assets/dist/img/user2-160x160.jpg\" class=\"img-circle\" alt=\"User Image\">\r\n            </div>\r\n            <div class=\"pull-left info\">\r\n                <p>{{user?.name}}</p>\r\n                <a><i class=\"fa fa-circle text-success\"></i> Online</a>\r\n            </div>\r\n        </div>\r\n\r\n\r\n        <!-- sidebar menu: : style can be found in sidebar.less -->\r\n        <ul class=\"sidebar-menu\" data-widget=\"tree\">\r\n\r\n            <!-- <li class=\"header\">MAIN NAVIGATION</li> -->\r\n\r\n            <ng-template [ngIf]=\"menus != null\">\r\n                <ng-container *ngFor=\"let menu of menus\">\r\n\r\n                    <ng-template [ngIf]=\"menu.children == null\">\r\n                        <li>\r\n                            <a routerLink=\"/{{menu.url}}\">\r\n                                <i class=\"{{menu.icon}}\"></i> <span>{{menu.name}}</span>\r\n                            </a>\r\n                        </li>\r\n                    </ng-template>\r\n\r\n                    <ng-template [ngIf]=\"menu.children != null\">\r\n                        <li class=\"treeview\">\r\n                            <a>\r\n                                <i class=\"{{menu.icon}}\"></i> <span>{{menu.name}}</span>\r\n                            </a>\r\n                            <ul class=\"treeview-menu\">\r\n\r\n                                <ng-container *ngFor=\"let child_menu of menu.children\">\r\n                                    <li><a routerLink=\"/{{child_menu.url}}\"><i class=\"{{child_menu.icon}}\"></i> {{child_menu.name}}</a></li>\r\n                                </ng-container>\r\n\r\n                            </ul>\r\n                        </li>\r\n                    </ng-template>\r\n\r\n                </ng-container>\r\n            </ng-template>\r\n\r\n\r\n\r\n            <!-- \r\n      <li class=\"treeview\">\r\n        <a href=\"#\">\r\n          <i class=\"fa fa-dashboard\"></i> <span>Dashboard</span>\r\n        </a>\r\n        <ul class=\"treeview-menu\">\r\n          <li><a href=\"index.html\"><i class=\"fa fa-circle-o\"></i> Dashboard v1</a></li>\r\n          <li><a href=\"index2.html\"><i class=\"fa fa-circle-o\"></i> Dashboard v2</a></li>\r\n        </ul>\r\n      </li>\r\n      \r\n      <li>\r\n        <a href=\"https://adminlte.io/docs\">\r\n          <i class=\"fa fa-book\"></i> <span>Documentation</span>\r\n        </a>\r\n      </li> \r\n      -->\r\n\r\n        </ul>\r\n    </section>\r\n    <!-- /.sidebar -->\r\n</aside>"
 
 /***/ }),
 
@@ -711,6 +711,7 @@ module.exports = "<ng2-slim-loading-bar></ng2-slim-loading-bar>\r\n<router-outle
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_slim_loading_bar__ = __webpack_require__("./node_modules/ng2-slim-loading-bar/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_config_service__ = __webpack_require__("./src/app/services/config.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -724,12 +725,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent(_loadingBar, authService, router) {
+    function AppComponent(_loadingBar, authService, router, configService) {
         var _this = this;
         this._loadingBar = _loadingBar;
         this.authService = authService;
         this.router = router;
+        this.configService = configService;
         this.title = 'app';
         this.is_logged_in = false;
         this.router.events.subscribe(function (event) {
@@ -743,6 +746,7 @@ var AppComponent = /** @class */ (function () {
         localStorage.clear();
     };
     AppComponent.prototype.ngOnInit = function () {
+        this.configService.Init();
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"])("window:onbeforeunload", ["$event"]),
@@ -756,7 +760,10 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/app.component.html"),
             styles: [__webpack_require__("./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ng2_slim_loading_bar__["b" /* SlimLoadingBarService */], __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ng2_slim_loading_bar__["b" /* SlimLoadingBarService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"],
+            __WEBPACK_IMPORTED_MODULE_4__services_config_service__["a" /* ConfigService */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -1223,6 +1230,9 @@ var AuthInterceptorService = /** @class */ (function () {
                 if (error.status == 401) {
                     _this.authService.logout();
                     _this.router.navigate(['login']);
+                    return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].throw(error);
+                }
+                else if (error.status == 500) {
                     return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].throw(error);
                 }
                 else if (error.status == 422) {
@@ -3068,7 +3078,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ConfigService = /** @class */ (function () {
     function ConfigService(handler) {
-        var _this = this;
         this.handler = handler;
         this.base_url = "http://rms.devzonesolutions.com/public";
         this.auth_data = {
@@ -3077,13 +3086,16 @@ var ConfigService = /** @class */ (function () {
             client_secret: 'dRcXHre5hNEiIjGJXqriwykZym5Eh0NRF7OjqPCk',
         };
         this.http = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */](handler);
-        this.base_url = __WEBPACK_IMPORTED_MODULE_2__assets_config__["a" /* config */].base_url;
+        this.Init();
+    }
+    ConfigService.prototype.Init = function () {
+        var _this = this;
         this.http.get('assets/base_url.txt')
             .subscribe(function (data) {
             _this.base_url = data['base_url'];
         }, function () { alert('Unable to base_url from base_url.txt file'); });
         this.auth_data = __WEBPACK_IMPORTED_MODULE_2__assets_config__["a" /* config */].auth_data;
-    }
+    };
     ConfigService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpBackend */]])
@@ -4065,7 +4077,7 @@ var UsersComponent = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return config; });
 var config = {
     //base_url: "http://192.168.100.7/rms/public",
-    base_url: "http://localhost/rms/public",
+    //base_url: "http://localhost/rms/public",
     auth_data: {
         grant_type: 'password',
         client_id: '2',

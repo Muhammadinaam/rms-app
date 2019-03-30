@@ -2,6 +2,7 @@ import { Component, HostListener , OnInit } from '@angular/core';
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
+import { ConfigService } from './services/config.service';
 declare var $:any;
 
 
@@ -21,7 +22,11 @@ export class AppComponent {
     localStorage.clear();
   }
 
-  constructor(private _loadingBar: SlimLoadingBarService, private authService: AuthService, private router: Router) { 
+  constructor(
+    private _loadingBar: SlimLoadingBarService, 
+    private authService: AuthService, 
+    private router: Router,
+    private configService: ConfigService) { 
 
     this.router.events.subscribe(
       (event)=>{
@@ -36,7 +41,7 @@ export class AppComponent {
 
   ngOnInit() {
     
-    
+    this.configService.Init();
 
   }
 

@@ -20,9 +20,12 @@ export class ConfigService {
   ) {
 
     this.http = new HttpClient(handler);
-  
-    this.base_url = config.base_url;
+    this.Init();
 
+  }
+
+  Init()
+  {
     this.http.get('assets/base_url.txt')
       .subscribe((data)=>{
           this.base_url = data['base_url'];
@@ -31,7 +34,6 @@ export class ConfigService {
       );
 
     this.auth_data = config.auth_data;
-
   }
 
 }

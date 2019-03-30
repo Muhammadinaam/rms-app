@@ -60,6 +60,10 @@ export class AuthInterceptorService implements HttpInterceptor {
                           this.router.navigate(['login']);
                           return Observable.throw(error);
                         }
+                        else if( error.status == 500 )
+                        {
+                          return Observable.throw(error);
+                        }
                         else if( error.status == 422 )
                         {
                           
