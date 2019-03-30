@@ -5,7 +5,7 @@ import { config } from '../../assets/config';
 @Injectable()
 export class ConfigService {
 
-  base_url = "http://localhost/rms/public";
+  base_url = "http://rms.devzonesolutions.com/public/";
 
   auth_data = {
     grant_type: 'password',

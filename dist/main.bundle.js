@@ -3068,7 +3068,7 @@ var ConfigService = /** @class */ (function () {
     function ConfigService(handler) {
         var _this = this;
         this.handler = handler;
-        this.base_url = "http://localhost/rms/public";
+        this.base_url = "http://rms.devzonesolutions.com/public/";
         this.auth_data = {
             grant_type: 'password',
             client_id: '2',
