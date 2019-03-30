@@ -1204,6 +1204,8 @@ var AuthInterceptorService = /** @class */ (function () {
         console.log("intercepted request ... ");
         // Clone the request to add the new header.
         var headers = { "Access-Control-Allow-Origin": this.configService.base_url, };
+        console.log('CORS headers');
+        console.log(headers);
         if (this.authService.isLoggedIn()) {
             headers['Accept'] = 'application/json';
             headers['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');

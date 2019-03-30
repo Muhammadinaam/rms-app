@@ -28,6 +28,8 @@ export class AuthInterceptorService implements HttpInterceptor {
     // Clone the request to add the new header.
 
     let headers = { "Access-Control-Allow-Origin": this.configService.base_url, };
+    console.log('CORS headers');
+    console.log(headers);
 
     if(this.authService.isLoggedIn())
     {
