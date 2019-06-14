@@ -42,8 +42,8 @@
 
                       <h3 style="background-color:lightgray">Total Sales</h3>
                       <div class="text-right">
-                        <h3><small>Category {{category}} Total Qty: </small>{{report_data  | pluck:'qty' | sum | currency:' '}}</h3>
-                        <h3><small>Category {{category}} Total Amount: </small>{{report_data | pluck:'amount' | sum | currency:' '}}</h3>
+                        <h3><small>Total Qty: </small>{{report_data  | pluck:'qty' | sum | currency:' '}}</h3>
+                        <h3><small>Total Amount: </small>{{report_data | pluck:'amount' | sum | currency:' '}}</h3>
                     </div>
 
                       <hr>
