@@ -179,6 +179,8 @@ export class OpenOrderComponent implements OnInit {
           {
             this.is_discount_modal_visible = false;
           }
+        }, error => {
+          alert('Error occurred. Discount was not saved.');
         }
       );
   }
