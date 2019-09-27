@@ -149,18 +149,18 @@ export class OpenOrderComponent implements OnInit {
 
   calculateOrderAmounts()
   {
-    /*  ORIGINAL CODE
+    //  ORIGINAL CODE
     let sales_tax_rate = this.order.sales_tax / this.order.order_amount_ex_st * 100;
     this.order.order_amount_ex_st = this.order.order_amount_before_discount - this.order.discount;
     this.order.sales_tax = this.order.order_amount_ex_st * sales_tax_rate / 100;
     this.order.order_amount_inc_st = this.order.order_amount_ex_st + this.order.sales_tax;
-    */
+    
 
     //  BLVD CODE
-    let sales_tax_rate = this.order.sales_tax / this.order.order_amount_before_discount * 100;
-    this.order.order_amount_ex_st = this.order.order_amount_before_discount;
-    this.order.sales_tax = this.order.order_amount_before_discount * sales_tax_rate / 100;
-    this.order.order_amount_inc_st = this.order.order_amount_ex_st + this.order.sales_tax - this.order.discount;
+    // let sales_tax_rate = this.order.sales_tax / this.order.order_amount_before_discount * 100;
+    // this.order.order_amount_ex_st = this.order.order_amount_before_discount;
+    // this.order.sales_tax = this.order.order_amount_before_discount * sales_tax_rate / 100;
+    // this.order.order_amount_inc_st = this.order.order_amount_ex_st + this.order.sales_tax - this.order.discount;
   }
 
   saveDiscount()
