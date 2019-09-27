@@ -5,8 +5,8 @@ import { config } from '../../assets/config';
 @Injectable()
 export class ConfigService {
 
-  // base_url = "http://localhost/rms/public";
-  base_url = "http://192.168.100.7/rms/public";
+   base_url = "http://localhost/rms/public";
+  //base_url = "http://192.168.100.7/rms/public";
 
   auth_data = {
     grant_type: 'password',
