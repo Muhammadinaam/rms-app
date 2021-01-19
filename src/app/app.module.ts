@@ -60,6 +60,7 @@ import { BoxComponent } from './adminlte-components/box/box.component';
 import { RatingReportComponent } from './reports/rating-report/rating-report.component';
 import { RatingAddEditComponent } from './reports/rating-add-edit/rating-add-edit.component';
 import { ItemsListDialogComponent } from './reports/items-list-dialog/items-list-dialog.component';
+import { ItemsSelectorComponent } from './items-selector/items-selector.component';
 
 
 @NgModule({
@@ -97,6 +98,7 @@ import { ItemsListDialogComponent } from './reports/items-list-dialog/items-list
     RatingReportComponent,
     RatingAddEditComponent,
     ItemsListDialogComponent,
+    ItemsSelectorComponent,
   ],
   imports: [
     BrowserModule,

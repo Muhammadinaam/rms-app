@@ -16,7 +16,7 @@ export class OrderComponent implements OnInit {
   form_type = "New";
   order: any = {
     id: null,
-    order_type: 1,
+    order_type: '',
     order_details: Array(),
   };
   deleted_details:any = Array();
@@ -70,33 +70,51 @@ export class OrderComponent implements OnInit {
 
               }
             );
+        } else {
+          
         }
 
+        this.is_loading = true;
+        this.ordersService.getOrderTypes()
+          .subscribe( data => { 
+            this.order_types = data; this.is_loading = false;
+            
+    
+            if(this.form_type != 'Edit') {
+              this.is_loading = true;
+              this.settingsService.getSettingBySlug('default_order_type')
+                .subscribe(data => {
+                  this.is_loading = false;
+                  let found = this.order_types.find(x => x.name == data['value'])
+                  if(found) {
+                    this.order.order_type = found.id;
+                  }
+                });
+            }
+            
+          } );
+    
+        this.is_loading = true;
+        this.tablesService.getFreeTables()
+          .subscribe(data => { this.free_tables = data; this.is_loading = false; });
+    
+        this.is_loading = true;
+        this.itemsService.getItems()
+          .subscribe(data => {
+            this.items = data; 
+            this.items.splice(0,0,this.new_item);
+            this.is_loading = false;
+          });
+    
+        this.is_loading = true;
+        this.settingsService.getSettingBySlug('sales_tax_rate')
+          .subscribe(data => {
+            this.is_loading = false;
+            this.sales_tax_rate = data['value'];
+          });
       }
     );
 
-    this.is_loading = true;
-    this.ordersService.getOrderTypes()
-      .subscribe( data => { this.order_types = data; this.is_loading = false; } );
-
-    this.is_loading = true;
-    this.tablesService.getFreeTables()
-      .subscribe(data => { this.free_tables = data; this.is_loading = false; });
-
-    this.is_loading = true;
-    this.itemsService.getItems()
-      .subscribe(data => {
-        this.items = data; 
-        this.items.splice(0,0,this.new_item);
-        this.is_loading = false;
-      });
-
-    this.is_loading = true;
-    this.settingsService.getSettingBySlug('sales_tax_rate')
-      .subscribe(data => {
-        this.is_loading = false;
-        this.sales_tax_rate = data['value'];
-      });
 
     this.total_order_amount_interval = setInterval(()=>{
       this.order.order_amount_ex_st = 0;
@@ -174,16 +192,29 @@ export class OrderComponent implements OnInit {
 
     
     let item = this.items.filter(item => parseInt(item.id) == this.new_item.id )[0];
-    this.order.order_details.push(
-      {
-        detail_id: null,
-        item_id: this.new_item.id,
-        item_name: item.name,
-        item_notes: this.new_item.item_notes,
-        qty: this.new_item.qty,
-        rate: this.new_item.rate,
-      }
-    );
+
+    let itemToBeAdded = {
+      recently_added: true,
+      detail_id: null,
+      item_id: this.new_item.id,
+      item_name: item.name,
+      item_notes: this.new_item.item_notes,
+      qty: this.new_item.qty,
+      rate: this.new_item.rate,
+    }
+
+    let existingItem = this.order.order_details.find(ei => {
+      return ei.recently_added &&
+      ei.item_id == itemToBeAdded.item_id &&
+      ei.item_notes == itemToBeAdded.item_notes &&
+      ei.rate == itemToBeAdded.rate
+    });
+
+    if(existingItem) {
+      existingItem.qty += itemToBeAdded.qty;
+    } else {
+      this.order.order_details.push(itemToBeAdded);
+    }
 
     this.new_item.qty = 1;
 
@@ -218,5 +249,10 @@ export class OrderComponent implements OnInit {
     this.new_item.qty++;
   }
 
-
+  itemClicked(item) {
+    this.new_item = item;
+    this.new_item.qty = 1;
+    this.new_item.rate = item.price;
+    this.addNewItem();
+  }
 }

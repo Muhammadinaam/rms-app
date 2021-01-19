@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ItemsService } from '../services/items.service';
+import { ConfigService } from '../services/config.service';
 
 
 @Component({
@@ -13,10 +14,14 @@ export class ItemsComponent implements OnInit {
   items;
   can_add_new=false;
   can_edit=false;
+  baseImagePath: string;
 
   constructor(private authService: AuthService,
-    private itemsService: ItemsService
-  ) { }
+    private itemsService: ItemsService,
+    private config: ConfigService
+  ) { 
+    this.baseImagePath = this.config.base_url + "/storage/";
+  }
 
   ngOnInit() {
 

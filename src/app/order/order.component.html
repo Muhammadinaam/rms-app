@@ -1,308 +1,330 @@
-<section class="content-header">
+<!-- <section class="content-header">
     <h1>
         Order
-        <!-- <small>Version 2.0</small> -->
+     
 
     </h1>
 
-</section>
+</section> -->
 
-<section class="content">
+<section class="">
 
     <div class="row">
 
-        <div class="col-md-12">
-            <div class="box box-primary">
+        <div class="col-md-4" style="padding-right: 0px;">
 
-                <div style="background-color:#ecf0f5;" class="box-body">
 
-                    <form #f="ngForm" (ngSubmit)="onSubmit(f.value, form_type)" (keydown.enter)="$event.preventDefault()" class="form-horizontal" role="form">
+            <div style="background-color:#ecf0f5;" class="box-body">
 
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="box box-success">
+                <form #f="ngForm" (ngSubmit)="onSubmit(f.value, form_type)" (keydown.enter)="$event.preventDefault()" class="form-horizontal" role="form">
+
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="box box-warning">
+
+                                <!-- <div class="box-header with-border">
+                                    <h3 class="box-title">Items</h3>
+                                </div> -->
+
+                                <div class="box-body">
+
+
+
+                                    <table class="table table-bordered table-condensed table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Qty / Rate / Amount</th>
+
+                                                <!--
+                                                            <th style="width:100px;">Rate</th>
+                                                            <th style="width:100px;">Amount</th>
+                                                            -->
+
+                                                <th>Add / Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let order_detail of order.order_details; let i = index;">
+                                                <td>
+                                                    {{ order_detail.item_name }}
+                                                    <div *ngIf="order_detail.item_notes != null && order_detail.item_notes != '' && !order_detail.recently_added">
+                                                        <p class="text-danger">
+                                                            <b>Notes:</b> {{ order_detail.item_notes }}
+                                                            <input *ngIf="order_detail.recently_added" type="text" [(ngModel)]="order_detail.item_notes">
+                                                        </p>
+                                                    </div>
+
+                                                    <p *ngIf="order_detail.recently_added" class="text-danger">
+                                                        <b>Notes:</b>
+                                                        <input *ngIf="order_detail.recently_added" type="text" [(ngModel)]="order_detail.item_notes" [ngModelOptions]="{standalone: true}">
+                                                    </p>
+
+                                                </td>
+                                                <td>
+                                                    {{ order_detail.qty }}
+                                                    <br>{{ order_detail.rate }}
+                                                    <br>{{ order_detail.qty * order_detail.rate }}
+                                                </td>
+                                                <td>
+                                                    <button (click)="removeItem(i)" type="button" class="btn btn-danger"><i class="fa fa-times-circle"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <!-- <select id="new_item_select" (change)="newItemChanged($event)" [(ngModel)]="new_item.id" [ngModelOptions]="{standalone: true}" class="form-control input-sm">
+                                                                    <option *ngFor="let item of items" [value]="item.id">{{item.code + " | " + item.name + " ("+item.unit+")" }}</option>
+                                                                </select> -->
+
+                                                    <p-dropdown (onChange)="newItemChanged($event)" [style]="{'width':'100%'}" id="new_item_select" [options]="items" optionLabel="name" [(ngModel)]="new_item" [ngModelOptions]="{standalone: true}" [filter]="true">
+
+                                                    </p-dropdown>
+
+
+
+                                                    <div style="width:100%;" class="input-group">
+                                                        <span class="input-group-btn">
+                                                                        <button (click)="decreaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-minus-circle"></i> </button>
+                                                                    </span>
+                                                        <input class="text-center" type="number" min=0 [(ngModel)]="new_item.qty" [ngModelOptions]="{standalone: true}" class="form-control input-md">
+                                                        <span class="input-group-btn">
+                                                                        <button (click)="increaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-plus-circle"></i> </button>
+                                                                    </span>
+                                                    </div>
+
+
+                                                    <div style="width:100%;" class="input-group">
+                                                        <span class="input-group-addon">
+                                                            Notes
+                                                        </span>
+                                                        <input type="text" [(ngModel)]="new_item.item_notes" [ngModelOptions]="{standalone: true}" class="form-control input-sm">
+                                                    </div>
+
+
+                                                    <div style="width:100%;" class="input-group">
+                                                        <span class="input-group-addon">
+                                                            Price
+                                                        </span>
+                                                        <input type="number" [(ngModel)]="new_item.rate" [ngModelOptions]="{standalone: true}" class="form-control input-sm" readonly>
+                                                    </div>
+
+                                                    <div style="width: 100%;" class="input-group">
+                                                        <span class="input-group-addon">
+                                                            Total
+                                                        </span>
+                                                        <input type="number" [value]="new_item.qty * new_item.rate" class="form-control input-sm" readonly>
+                                                    </div>
+
+
+                                                    <div class="text-right">
+                                                        <button type="button" (click)="resetNewItem()" class="btn btn-danger"> <i class="fa fa-times"></i> </button>
+                                                        <button type="button" (click)="addNewItem()" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Order Information</h3>
+                                </div>
+
+                                <div class="box-body">
+
+                                    <div class="form-group">
+                                        <label for="order_type" class="col-sm-4 control-label">Order Type:</label>
+                                        <div class="col-sm-8">
+                                            <select name="order_type" id="order_type" class="form-control input-sm" [(ngModel)]="order.order_type" required="required" #order_type_input=ngModel>
+                                                    <option value=""></option>
+                                                    <option *ngFor="let order_type of order_types" [value]="order_type.id">{{order_type.name}}</option>
+                                                </select>
+                                                <div class="validation-error" *ngIf="order_type_input.errors?.required">
+                                                    Should not be empty.
+                                                </div>
+                                        </div>
+                                    </div>
+
+                                    <ng-template let-table_required [ngTemplateOutletContext]="{ $implicit: order_type_input.value == '1' }" [ngTemplateOutlet]="table" #table>
+                                        <div *ngIf="table_required" class="form-group">
+                                            <label for="table" class="col-sm-4 control-label">Table:</label>
+                                            <div class="col-sm-8">
+                                                <select name="table" id="table" class="form-control input-sm" [(ngModel)]="order.table" #table_input=ngModel [required]="table_required">
+                                                        <option *ngIf="order.id != null && order.table != null" [value]="order.table">{{order.table_portion + ' | ' + order.table_name}}</option>
+                                                        <option *ngFor="let free_table of free_tables" [value]="free_table.id">{{ free_table.portion + ' | ' + free_table.name }}</option>
+                                                    </select>
+                                                <div class="validation-error" *ngIf="table_input.errors?.required">
+                                                    Should not be empty.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+
+                                    <div class="form-group">
+                                        <label for="cover" class="col-sm-4 control-label">Cover:</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" min="0" name="cover" id="cover" class="form-control input-sm" [(ngModel)]="order.cover">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <ng-template let-cust_info_required [ngTemplateOutletContext]="{ $implicit: order_type_input.value == '2' || order_type_input.value == '3' }" [ngTemplateOutlet]="customer" #customer>
+                            <div *ngIf="cust_info_required" class="col-sm-12">
+                                <div class="box box-danger">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title">Order Information</h3>
+                                        <h3 class="box-title">Customer Information</h3>
                                     </div>
 
                                     <div class="box-body">
 
                                         <div class="form-group">
-                                            <label for="order_type" class="col-sm-2 control-label">Order Type:</label>
+                                            <label class="control-label col-sm-2" for="deliver_to_name">Name</label>
                                             <div class="col-sm-10">
-                                                <select name="order_type" id="order_type" class="form-control input-md" [(ngModel)]="order.order_type" required="required" #order_type_input=ngModel>
-                                                        <option *ngFor="let order_type of order_types" [value]="order_type.id">{{order_type.name}}</option>
-                                                    </select>
-                                            </div>
-                                        </div>
-
-                                        <ng-template let-table_required [ngTemplateOutletContext]="{ $implicit: order_type_input.value == '1' }" [ngTemplateOutlet]="table" #table>
-                                            <div *ngIf="table_required" class="form-group">
-                                                <label for="table" class="col-sm-2 control-label">Table:</label>
-                                                <div class="col-sm-10">
-                                                    <select name="table" id="table" class="form-control input-md" [(ngModel)]="order.table" #table_input=ngModel [required]="table_required">
-                                                            <option *ngIf="order.id != null && order.table != null" [value]="order.table">{{order.table_portion + ' | ' + order.table_name}}</option>
-                                                            <option *ngFor="let free_table of free_tables" [value]="free_table.id">{{ free_table.portion + ' | ' + free_table.name }}</option>
-                                                        </select>
-                                                    <div class="validation-error" *ngIf="table_input.errors?.required">
-                                                        Should not be empty.
-                                                    </div>
+                                                <input type="text" class="form-control input-sm" id="deliver_to_name" name="deliver_to_name" [(ngModel)]="order.deliver_to_name" #deliver_to_name_input=ngModel [required]="cust_info_required">
+                                                <div class="validation-error" *ngIf="deliver_to_name_input.errors?.required">
+                                                    Should not be empty.
                                                 </div>
                                             </div>
-                                        </ng-template>
-
-                                        <div class="form-group">
-                                            <label for="cover" class="col-sm-2 control-label">Cover:</label>
-                                            <div class="col-sm-10">
-                                                <input type="number" min="0" name="cover" id="cover" class="form-control input-md" [(ngModel)]="order.cover">
-                                            </div>
                                         </div>
 
-                                    </div>
-                                </div>
-                            </div>
-
-                            <ng-template let-cust_info_required [ngTemplateOutletContext]="{ $implicit: order_type_input.value == '2' || order_type_input.value == '3' }" [ngTemplateOutlet]="customer" #customer>
-                                <div *ngIf="cust_info_required" class="col-sm-6">
-                                    <div class="box box-danger">
-                                        <div class="box-header with-border">
-                                            <h3 class="box-title">Customer Information</h3>
-                                        </div>
-
-                                        <div class="box-body">
+                                        <ng-template let-delivery_info_required [ngTemplateOutletContext]="{ $implicit: order_type_input.value == '3' }" [ngTemplateOutlet]="delivery" #delivery>
 
                                             <div class="form-group">
-                                                <label class="control-label col-sm-2" for="deliver_to_name">Name</label>
+                                                <label class="control-label col-sm-2" for="deliver_to_phone">Phone</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control input-md" id="deliver_to_name" name="deliver_to_name" [(ngModel)]="order.deliver_to_name" #deliver_to_name_input=ngModel [required]="cust_info_required">
-                                                    <div class="validation-error" *ngIf="deliver_to_name_input.errors?.required">
+                                                    <input type="text" class="form-control input-sm" id="deliver_to_phone" name="deliver_to_phone" [(ngModel)]="order.deliver_to_phone" #deliver_to_phone_input=ngModel [required]="delivery_info_required">
+                                                    <div class="validation-error" *ngIf="deliver_to_phone_input.errors?.required">
                                                         Should not be empty.
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <ng-template let-delivery_info_required [ngTemplateOutletContext]="{ $implicit: order_type_input.value == '3' }" [ngTemplateOutlet]="delivery" #delivery>
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="deliver_to_phone">Phone</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control input-md" id="deliver_to_phone" name="deliver_to_phone" [(ngModel)]="order.deliver_to_phone" #deliver_to_phone_input=ngModel [required]="delivery_info_required">
-                                                        <div class="validation-error" *ngIf="deliver_to_phone_input.errors?.required">
-                                                            Should not be empty.
-                                                        </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2" for="deliver_to_address">Address</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control input-sm" id="deliver_to_address" name="deliver_to_address" [(ngModel)]="order.deliver_to_address" #deliver_to_address_input=ngModel [required]="delivery_info_required">
+                                                    <div class="validation-error" *ngIf="deliver_to_address_input.errors?.required">
+                                                        Should not be empty.
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="deliver_to_address">Address</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control input-md" id="deliver_to_address" name="deliver_to_address" [(ngModel)]="order.deliver_to_address" #deliver_to_address_input=ngModel [required]="delivery_info_required">
-                                                        <div class="validation-error" *ngIf="deliver_to_address_input.errors?.required">
-                                                            Should not be empty.
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </ng-template>
+                                        </ng-template>
 
 
 
 
-                                        </div>
                                     </div>
                                 </div>
-                            </ng-template>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12">
-
-                                <div class="box box-warning">
-
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Items</h3>
-                                    </div>
-
-                                    <div class="box-body">
-
-
-
-                                        <table class="table table-bordered table-condensed table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Item</th>
-                                                    <th>Qty / Rate / Amount</th>
-
-                                                    <!--
-                                                                <th style="width:100px;">Rate</th>
-                                                                <th style="width:100px;">Amount</th>
-                                                                -->
-
-                                                    <th>Add / Remove</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let order_detail of order.order_details; let i = index;">
-                                                    <td>
-                                                        {{ order_detail.item_name }}
-                                                        <div *ngIf="order_detail.item_notes != null && order_detail.item_notes != '' ">
-                                                            <p class="text-danger">
-                                                                <b>Notes:</b> {{ order_detail.item_notes }}
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        {{ order_detail.qty }}
-                                                        <br>{{ order_detail.rate }}
-                                                        <br>{{ order_detail.qty * order_detail.rate }}
-                                                    </td>
-                                                    <td>
-                                                        <button (click)="removeItem(i)" type="button" class="btn btn-danger"><i class="fa fa-times-circle"></i></button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-
-                                            <tfoot>
-                                                <tr>
-                                                    <td colspan="3">
-                                                        <!-- <select id="new_item_select" (change)="newItemChanged($event)" [(ngModel)]="new_item.id" [ngModelOptions]="{standalone: true}" class="form-control input-md">
-                                                                        <option *ngFor="let item of items" [value]="item.id">{{item.code + " | " + item.name + " ("+item.unit+")" }}</option>
-                                                                    </select> -->
-
-                                                        <p-dropdown (onChange)="newItemChanged($event)" [style]="{'width':'100%'}" id="new_item_select" [options]="items" optionLabel="name" [(ngModel)]="new_item" [ngModelOptions]="{standalone: true}" [filter]="true">
-
-                                                        </p-dropdown>
-
-
-
-                                                        <div style="width:100%;" class="input-group">
-                                                            <span class="input-group-btn">
-                                                                            <button (click)="decreaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-minus-circle"></i> </button>
-                                                                        </span>
-                                                            <input class="text-center" type="number" min=0 [(ngModel)]="new_item.qty" [ngModelOptions]="{standalone: true}" class="form-control input-md">
-                                                            <span class="input-group-btn">
-                                                                            <button (click)="increaseNewQty()" type="button" class="btn btn-default"> <i class="fa fa-plus-circle"></i> </button>
-                                                                        </span>
-                                                        </div>
-
-
-                                                        <div style="width:100%;" class="input-group">
-                                                            <span class="input-group-addon">
-                                                                Notes
-                                                            </span>
-                                                            <input type="text" [(ngModel)]="new_item.item_notes" [ngModelOptions]="{standalone: true}" class="form-control input-md">
-                                                        </div>
-
-
-                                                        <div style="width:100%;" class="input-group">
-                                                            <span class="input-group-addon">
-                                                                Price
-                                                            </span>
-                                                            <input type="number" [(ngModel)]="new_item.rate" [ngModelOptions]="{standalone: true}" class="form-control input-md" readonly>
-                                                        </div>
-
-                                                        <div style="width: 100%;" class="input-group">
-                                                            <span class="input-group-addon">
-                                                                Total
-                                                            </span>
-                                                            <input type="number" [value]="new_item.qty * new_item.rate" class="form-control input-md" readonly>
-                                                        </div>
-
-
-                                                        <div class="text-right">
-                                                            <button type="button" (click)="resetNewItem()" class="btn btn-danger"> <i class="fa fa-times"></i> </button>
-                                                            <button type="button" (click)="addNewItem()" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
-                                                        </div>
-
-                                                    </td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-
-
-
-
-
-                                    </div>
-
-                                </div>
-
                             </div>
-                        </div>
+                        </ng-template>
+                    </div>
 
-                        <div class="text-right">
-                            <h3>
-                                <small>Total Amount:</small> {{ order.order_amount_ex_st | currency:'Rs.' }}
-                            </h3>
+                    <div class="text-right">
+                        <h3>
+                            <small>Total Amount:</small> {{ order.order_amount_ex_st | currency:'Rs.' }}
+                        </h3>
 
-                            <h3>
-                                <small>Sales Tax:</small> {{ order.sales_tax | currency:'Rs.' }}
-                            </h3>
+                        <h3>
+                            <small>Sales Tax:</small> {{ order.sales_tax | currency:'Rs.' }}
+                        </h3>
 
-                            <h3>
-                                <small>Total Amount Including Sales Tax:</small> {{ order.order_amount_inc_st | currency:'Rs.' }}
+                        <h3>
+                            <small>Total Amount Including Sales Tax:</small> {{ order.order_amount_inc_st | currency:'Rs.' }}
+                        </h3>
+                    </div>
+
+
+
+
+
+                    <div *ngIf="order.is_printed_for_customer == 1" class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                <i class="fa fa-key"></i> Authentication for Editing After Printing For Customer
                             </h3>
                         </div>
 
+                        <div class="box-body">
 
 
-
-
-                        <div *ngIf="order.is_printed_for_customer == 1" class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">
-                                    <i class="fa fa-key"></i> Authentication for Editing After Printing For Customer
-                                </h3>
+                            <div class="form-group">
+                                <label for="user_id" class="col-sm-2 control-label">User ID</label>
+                                <div class="col-sm-10">
+                                    <input type="text" [(ngModel)]="other_info.user_id" name="user_id" id="user_id" class="form-control">
+                                </div>
                             </div>
 
-                            <div class="box-body">
-
-
-                                <div class="form-group">
-                                    <label for="user_id" class="col-sm-2 control-label">User ID</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" [(ngModel)]="other_info.user_id" name="user_id" id="user_id" class="form-control">
-                                    </div>
+                            <div class="form-group">
+                                <label for="password" class="col-sm-2 control-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" [(ngModel)]="other_info.password" name="password" id="password" class="form-control">
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="password" class="col-sm-2 control-label">Password</label>
-                                    <div class="col-sm-10">
-                                        <input type="password" [(ngModel)]="other_info.password" name="password" id="password" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="remarks" class="col-sm-2 control-label">Remarks</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" [(ngModel)]="other_info.remarks" name="remarks" id="remarks" class="form-control">
-                                    </div>
-                                </div>
-
-
                             </div>
-                        </div>
 
-
-
-
-                        <div class="form-group">
-                            <div class="col-sm-12 text-right">
-                                <button type="submit" [disabled]="!f.form.valid || is_loading || new_item.id != 0 || order.order_details.length == 0" class="btn btn-primary"> <i class="fa fa-save"></i> Save</button>
+                            <div class="form-group">
+                                <label for="remarks" class="col-sm-2 control-label">Remarks</label>
+                                <div class="col-sm-10">
+                                    <input type="text" [(ngModel)]="other_info.remarks" name="remarks" id="remarks" class="form-control">
+                                </div>
                             </div>
-                        </div>
-                        <div *ngIf="new_item.id != 0 " class="text-danger text-right">
-                            Please Add or Clear Last Item to enable save button
-                        </div>
 
-                        <div *ngIf="order.order_details.length == 0" class="text-danger text-right">
-                            Please Add Items
+
                         </div>
+                    </div>
 
-                    </form>
 
+
+
+                    <div class="form-group">
+                        <div class="col-sm-12 text-right">
+                            <button type="submit" [disabled]="!f.form.valid || is_loading || new_item.id != 0 || order.order_details.length == 0" class="btn btn-primary"> <i class="fa fa-save"></i> Save</button>
+                        </div>
+                    </div>
+                    <div *ngIf="new_item.id != 0 " class="text-danger text-right">
+                        Please Add or Clear Last Item to enable save button
+                    </div>
+
+                    <div *ngIf="order.order_details.length == 0" class="text-danger text-right">
+                        Please Add Items
+                    </div>
+
+                </form>
+
+            </div>
+
+            
+        </div>
+
+        <div class="col-md-8" style="padding-left: 0px;">
+            <div class="box-body" style="padding-left: 0px;">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <items-selector (itemClickedEvent)="itemClicked($event)"></items-selector>
+                    </div>
                 </div>
-
             </div>
         </div>
 

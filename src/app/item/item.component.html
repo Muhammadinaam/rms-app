@@ -20,6 +20,16 @@
 
                     <form #f="ngForm" (ngSubmit)="onSubmit(f.value, form_type)" class="form-horizontal" role="form">
 
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="picture">Picture</label>
+                            <div class="col-sm-10">
+                                <div *ngIf="url">
+                                    <img [src]="url" class="img-thumbnail" style="width: 150px;">
+                                    <button type="button" class="btn btn-danger" (click)="fileInput.value = ''; onDeleteImageClicked()">Delete image</button>
+                                </div>
+                                <input #fileInput type="file" id="picture" name="picture" accept="image/*" (change)="onFileChanged($event)" />
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="category">Category</label>

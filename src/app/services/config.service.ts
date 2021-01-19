@@ -31,7 +31,10 @@ export class ConfigService {
       .subscribe((data)=>{
           this.base_url = data['base_url'];
         },
-        ()=>{ alert('Unable to base_url from base_url.txt file'); }
+        (error)=>{
+          console.error(error); 
+          alert('Unable to get base_url from base_url.txt file. Error: ' + error.message); 
+        }
       );
 
     this.auth_data = config.auth_data;
