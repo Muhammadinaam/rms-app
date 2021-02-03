@@ -220,7 +220,6 @@
     <p-dialog width="350" (onShow)="onModalShow($event)" (onHide)="onModalHide($event)" header="Print for customer" [modal]="true" [(visible)]="is_print_for_customer_modal_visible">
 
         <div *ngIf="isSalesTaxRateDifferent">
-            
             <div class="form-group">
                 <label for="input" class="control-label">Select:</label>
                 <div class="">
@@ -232,10 +231,9 @@
                     </select>
                 </div>
             </div>
-
-            <button (click)="printForCustomer()" class="btn btn-sm btn-primary btn-block">Print</button>
-            
         </div>
+        
+        <button (click)="printForCustomer()" class="btn btn-sm btn-primary btn-block">Print</button>
 
     </p-dialog>
 
