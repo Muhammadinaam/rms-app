@@ -82,9 +82,9 @@ export class OrdersService {
     return this.http.post(this.config.base_url + '/api/close-order', data);
   }
 
-  printForCustomer(order_id)
+  printForCustomer(order_id, sales_tax_rate)
   {
-    return this.http.post(this.config.base_url + '/api/print-for-customer/' + order_id, null);
+    return this.http.post(this.config.base_url + '/api/print-for-customer/' + order_id + '/' + sales_tax_rate, null);
   }
 
   reprintForKitchens(order_id)

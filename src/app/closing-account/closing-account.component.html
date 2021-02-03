@@ -1,0 +1,115 @@
+<section class="content-header">
+  <h1>
+    Closing Account
+  </h1>
+
+</section>
+
+<section class="content">
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="box box-primary">
+
+        <div class="box-body">
+
+          <form #f="ngForm" (ngSubmit)="onSubmit(f.value, form_type)" class="form-horizontal" role="form">
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="order">Sequence:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="order" name="order" [(ngModel)]="closingAccount.order"
+                  #order_input=ngModel required>
+                <div class="validation-error" *ngIf="order_input.errors?.required">
+                  Should not be empty.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="name">Name:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="closingAccount.name"
+                  #name_input=ngModel required>
+                <div class="validation-error" *ngIf="name_input.errors?.required">
+                  Should not be empty.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="sales_tax_rate">Sales Tax Rate:</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="sales_tax_rate" name="sales_tax_rate" [(ngModel)]="closingAccount.sales_tax_rate"
+                  #sales_tax_rate_input=ngModel required>
+                <div class="validation-error" *ngIf="sales_tax_rate_input.errors?.required">
+                  Should not be empty.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="show_amount_received_input">Show Amount Received Input:</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="show_amount_received_input" [(ngModel)]="closingAccount.show_amount_received_input" name="show_amount_received_input">
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">Additional Information Fields</h3>
+              </div>
+              <div class="box-body">
+                <table class="table table-borderd">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Required</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let field of closingAccount.additional_information_fields; let i = index">
+                      <td>
+                        <input class="form-control" [(ngModel)]="field.name" [ngModelOptions]="{standalone: true}"
+                          #a_name_input=ngModel required>
+                        <div class="validation-error" *ngIf="a_name_input.errors?.required">
+                          Should not be empty.
+                        </div>
+                      </td>
+                      <td>
+                        <select class="form-control" [(ngModel)]="field.required" [ngModelOptions]="{standalone: true}">
+                          <option value="0">No</option>
+                          <option value="1">Yes</option>
+                        </select>
+                      </td>
+                      <td>
+                        <button type="button" (click)="removeAdditionalInformationField(i)" class="btn btn-danger">
+                          <i class="fa fa-times"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button type="button" (click)="addAdditionalInformationField()" class="btn btn-sm btn-info">Add Field</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-10 col-sm-offset-2">
+                <button type="submit" [disabled]="!f.form.valid || is_loading" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>

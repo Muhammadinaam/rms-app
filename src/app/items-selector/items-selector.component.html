@@ -12,7 +12,7 @@
           role="tabpanel" 
           class="tab-pane {{ i == 0 ? 'active' : '' }}" 
           id="{{tabTitle | slugify}}">
-            <div style="display: flex;">
+            <div style="display: flex; flex-wrap: wrap;">
 
               <div 
                 *ngFor="let item of groupedItems[tabTitle]" 

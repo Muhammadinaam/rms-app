@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { TablesService } from '../services/tables.service';
 import { ItemsService } from '../services/items.service';
 import { SettingsService } from '../services/settings.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-order',
@@ -29,7 +30,9 @@ export class OrderComponent implements OnInit {
     'remarks': ''
   };
 
-  sales_tax_rate:any;
+  showItems = false;
+
+  sales_tax_rate:any = 0;
 
   new_item = {
     id:0,
@@ -51,7 +54,8 @@ export class OrderComponent implements OnInit {
     private tablesService: TablesService,
     private authService: AuthService,
     private itemsService: ItemsService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -67,7 +71,7 @@ export class OrderComponent implements OnInit {
               (data) => {
                 this.order = data;
                 this.is_loading = false;
-
+                this.sales_tax_rate = this.order.sales_tax / this.order.order_amount_ex_st * 100;
               }
             );
         } else {
@@ -104,13 +108,6 @@ export class OrderComponent implements OnInit {
             this.items = data; 
             this.items.splice(0,0,this.new_item);
             this.is_loading = false;
-          });
-    
-        this.is_loading = true;
-        this.settingsService.getSettingBySlug('sales_tax_rate')
-          .subscribe(data => {
-            this.is_loading = false;
-            this.sales_tax_rate = data['value'];
           });
       }
     );
@@ -254,5 +251,15 @@ export class OrderComponent implements OnInit {
     this.new_item.qty = 1;
     this.new_item.rate = item.price;
     this.addNewItem();
+
+    this.toastr.success(
+      item.name, 
+      'Item Added',
+      {
+        progressBar: true,
+        timeOut: 4000,
+        positionClass: 'toast-bottom-left'
+      }
+    );
   }
 }

@@ -61,6 +61,10 @@ import { RatingReportComponent } from './reports/rating-report/rating-report.com
 import { RatingAddEditComponent } from './reports/rating-add-edit/rating-add-edit.component';
 import { ItemsListDialogComponent } from './reports/items-list-dialog/items-list-dialog.component';
 import { ItemsSelectorComponent } from './items-selector/items-selector.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ClosingAccountsComponent } from './closing-accounts/closing-accounts.component';
+import { ClosingAccountComponent } from './closing-account/closing-account.component';
+import { ClosingAccountsService } from './closing-accounts.service';
 
 
 @NgModule({
@@ -99,6 +103,8 @@ import { ItemsSelectorComponent } from './items-selector/items-selector.componen
     RatingAddEditComponent,
     ItemsListDialogComponent,
     ItemsSelectorComponent,
+    ClosingAccountsComponent,
+    ClosingAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,7 +121,8 @@ import { ItemsSelectorComponent } from './items-selector/items-selector.componen
     CalendarModule,
     NgPipesModule,
     NgxChartsModule,
-    ChartModule
+    ChartModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true},
@@ -123,7 +130,14 @@ import { ItemsSelectorComponent } from './items-selector/items-selector.componen
     ConfigService, 
     AuthService, 
     AuthGuardService, 
-    UsersService, TablesService, ItemsService, OrdersService, SettingsService, ReportsService, HelperService
+    UsersService, 
+    TablesService, 
+    ItemsService, 
+    OrdersService, 
+    SettingsService, 
+    ReportsService, 
+    HelperService,
+    ClosingAccountsService,
   ],
   bootstrap: [AppComponent]
 })

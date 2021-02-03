@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OrdersService } from '../services/orders.service';
+import { ClosingAccountsService } from '../closing-accounts.service';
 
 @Component({
   selector: 'app-open-order',
@@ -13,10 +14,15 @@ export class OpenOrderComponent implements OnInit {
   is_change_status_modal_visible=false;
   is_close_order_modal_visible=false;
   is_discount_modal_visible=false;
+  is_print_for_customer_modal_visible=false;
   received_amount=0;
   ent_remarks='';
+  salesTaxRateForPrintForCustomer = -1;
+
+  orderIdForPrintForCustomer = '';
 
   is_loading=false;
+  showItems = false;
 
   other_info:any = {
     'user_id': '',
@@ -26,13 +32,28 @@ export class OpenOrderComponent implements OnInit {
 
   @Output() modalOpen = new EventEmitter();
   @Output() modalClose = new EventEmitter();
+  closingAccounts: Object;
+  isSalesTaxRateDifferent: boolean;
 
   constructor(
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private closingAccountsService: ClosingAccountsService
   ) { }
 
   ngOnInit() {
-    
+    this.closingAccountsService.getData()
+      .subscribe(data => {
+        this.isSalesTaxRateDifferent = false;
+        let arrayData = <Array<any>>data;
+        arrayData.forEach(el1 => {
+          arrayData.forEach(el2 => {
+            if(el1.sales_tax_rate != el2.sales_tax_rate)
+            this.isSalesTaxRateDifferent = true;
+          });
+        });
+
+        this.closingAccounts = data;
+      });
   }
 
   showChangeStatusModal()
@@ -108,14 +129,19 @@ export class OpenOrderComponent implements OnInit {
       });
   }
 
-  printForCustomer(order_id)
+  printForCustomer()
   {
-    this.ordersService.printForCustomer(order_id)
+    if(this.isSalesTaxRateDifferent && this.salesTaxRateForPrintForCustomer == -1) {
+      alert('Please select account');
+      return;
+    }
+
+    this.salesTaxRateForPrintForCustomer = this.salesTaxRateForPrintForCustomer == -1 ? 0 : this.salesTaxRateForPrintForCustomer;
+
+    this.ordersService.printForCustomer(this.orderIdForPrintForCustomer, this.salesTaxRateForPrintForCustomer)
       .subscribe(data => {
-        if(data['success'] == false)
-        {
-          alert(data['message']);
-        }
+        alert(data['message']);
+        this.is_print_for_customer_modal_visible = false;
       });
   }
 

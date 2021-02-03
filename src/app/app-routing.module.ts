@@ -23,6 +23,8 @@ import { XReportComponent } from './reports/x-report/x-report.component';
 import { TopLeastItemsReportComponent } from './reports/top-least-items-report/top-least-items-report.component';
 import { RatingReportComponent } from './reports/rating-report/rating-report.component';
 import { RatingAddEditComponent } from './reports/rating-add-edit/rating-add-edit.component';
+import { ClosingAccountsComponent } from './closing-accounts/closing-accounts.component';
+import { ClosingAccountComponent } from './closing-account/closing-account.component';
 
 
 const routes: Routes = [
@@ -49,6 +51,14 @@ const routes: Routes = [
       { path: 'tables', component: TablesComponent},
       { path: 'table', component: TableComponent},
       { path: 'table/:id', component: TableComponent},
+
+      { path: 'tables', component: TablesComponent},
+      { path: 'table', component: TableComponent},
+      { path: 'table/:id', component: TableComponent},
+
+      { path: 'closing-accounts', component: ClosingAccountsComponent},
+      { path: 'closing-account', component: ClosingAccountComponent},
+      { path: 'closing-account/:id', component: ClosingAccountComponent},
 
       { path: 'items', component: ItemsComponent},
       { path: 'item', component: ItemComponent},
