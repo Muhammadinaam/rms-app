@@ -78,7 +78,7 @@
                                                                 <option *ngFor="let item of items" [value]="item.id">{{item.code + " | " + item.name + " ("+item.unit+")" }}</option>
                                                             </select> -->
 
-                                                <p-dropdown (onChange)="newItemChanged($event)" [style]="{'width':'100%'}" id="new_item_select" [options]="items" optionLabel="name" [(ngModel)]="new_item" [ngModelOptions]="{standalone: true}" [filter]="true">
+                                                <p-dropdown (onChange)="newItemChanged($event)" [style]="{'width':'100%', 'max-width': '250px'}" id="new_item_select" [options]="items" optionLabel="name" [(ngModel)]="new_item" [ngModelOptions]="{standalone: true}" [filter]="true">
 
                                                 </p-dropdown>
 

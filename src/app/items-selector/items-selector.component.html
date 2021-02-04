@@ -16,11 +16,11 @@
 
               <div 
                 *ngFor="let item of groupedItems[tabTitle]" 
-                style="width: 150px; height: 170px; text-align: center; margin: 2px; cursor: pointer;"
+                style="width: 150px; text-align: center; margin: 2px; cursor: pointer;"
                 (click)="itemClicked(item)">
                   <img [src]="baseImagePath + item.picture" style="width: 150px; height: 150px; object-fit: cover;">
-                  <small>
-                    {{item.name | shorten : 25 : '..'}}
+                  <small style="width: 150px;">
+                    {{item.name}}
                   </small>
               </div>
 
