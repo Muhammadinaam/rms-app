@@ -172,7 +172,7 @@
             <div class="">
                 <select style="font-size: 20px; height: 60px; color:crimson;" #received_through_input name="received_through" id="received_through" class="form-control" required="required">
                     <option value="0">-</option>
-                    <option *ngFor="let closingAccount of closingAccounts;" value="closingAccount.name">
+                    <option *ngFor="let closingAccount of closingAccounts;" [value]="closingAccount.name">
                         {{closingAccount.name}} - ({{closingAccount.sales_tax_rate}}%)
                     </option>
                 </select>

@@ -61,7 +61,7 @@
                                         <td>{{row.closing_time | date:'dd-MMM-yyyy HH:mm a'}}</td>
                                         <td>{{row.created_by}}</td>
                                         <td class="text-center">
-                                            {{row.amount - row.discount - row.sales_tax | currency:' '}}
+                                            {{+row.amount + +row.discount - +row.sales_tax | currency:' '}}
                                         </td>
                                         <td class="text-center">{{row.discount | currency:' '}}</td>
                                         <td class="text-center">{{row.sales_tax | currency:' '}}</td>
