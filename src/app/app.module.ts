@@ -65,6 +65,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { ClosingAccountsComponent } from './closing-accounts/closing-accounts.component';
 import { ClosingAccountComponent } from './closing-account/closing-account.component';
 import { ClosingAccountsService } from './closing-accounts.service';
+import { PriceGroupsComponent } from './price-groups/price-groups.component';
+import { PriceGroupComponent } from './price-group/price-group.component';
+import { PriceGroupService } from './price-group.service';
 
 
 @NgModule({
@@ -105,6 +108,8 @@ import { ClosingAccountsService } from './closing-accounts.service';
     ItemsSelectorComponent,
     ClosingAccountsComponent,
     ClosingAccountComponent,
+    PriceGroupsComponent,
+    PriceGroupComponent,
   ],
   imports: [
     BrowserModule,
@@ -138,6 +143,7 @@ import { ClosingAccountsService } from './closing-accounts.service';
     ReportsService, 
     HelperService,
     ClosingAccountsService,
+    PriceGroupService
   ],
   bootstrap: [AppComponent]
 })

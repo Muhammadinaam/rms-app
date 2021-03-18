@@ -1,0 +1,53 @@
+<section class="content-header">
+  <h1>
+      Price Groups
+      <!-- <small>Version 2.0</small> -->
+
+      <a *ngIf="can_add_new" class="btn btn-sm btn-primary" routerLink="/item" role="button"><i class="fa fa-plus-circle"></i> Add New</a>
+
+  </h1>
+
+</section>
+
+<section class="content">
+
+  <div class="row">
+
+      <div class="col-md-12">
+          <div class="box box-primary">
+
+              <div class="box-body">
+
+
+                  <table class="table table-bordered table-condensed table-hover">
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Multiplying Factor</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let priceGroup of priceGroups">
+                              <td>{{priceGroup.name}}</td>
+                              <td>{{priceGroup.multiplying_factor}}</td>
+
+                              <td>
+                                  <a *ngIf="can_edit" class="btn btn-xs btn-primary" routerLink="/item/{{priceGroup.id}}" role="button">
+                                      <i class="fa fa-edit"></i> Edit
+                                  </a>
+                              </td>
+
+                          </tr>
+                      </tbody>
+                  </table>
+
+
+              </div>
+
+          </div>
+      </div>
+
+  </div>
+
+</section>

@@ -25,6 +25,8 @@ import { RatingReportComponent } from './reports/rating-report/rating-report.com
 import { RatingAddEditComponent } from './reports/rating-add-edit/rating-add-edit.component';
 import { ClosingAccountsComponent } from './closing-accounts/closing-accounts.component';
 import { ClosingAccountComponent } from './closing-account/closing-account.component';
+import { PriceGroupsComponent } from './price-groups/price-groups.component';
+import { PriceGroupComponent } from './price-group/price-group.component';
 
 
 const routes: Routes = [
@@ -59,6 +61,10 @@ const routes: Routes = [
       { path: 'closing-accounts', component: ClosingAccountsComponent},
       { path: 'closing-account', component: ClosingAccountComponent},
       { path: 'closing-account/:id', component: ClosingAccountComponent},
+
+      { path: 'price-groups', component: PriceGroupsComponent},
+      { path: 'price-group', component: PriceGroupComponent},
+      { path: 'price-group/:id', component: PriceGroupComponent},
 
       { path: 'items', component: ItemsComponent},
       { path: 'item', component: ItemComponent},

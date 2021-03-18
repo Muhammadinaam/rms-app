@@ -54,12 +54,20 @@
                         </div>
 
                         <div class="box-body">
-                            <div class="row">
-                                <div *ngFor="let table of free_tables" class="col-sm-3">
-                                    <div>
-                                        <div class="free-table text-center">
-                                            <p>Portion/Floor: <b>{{table.portion}}</b></p>
-                                            <h2>{{table.name}}</h2>
+                            <div *ngFor="let portion of free_tables | groupBy: 'portion' | keys" class="box box-primary">
+                                <div class="box-header with-border">
+                                    <i class="fa fa-table"></i>
+                                    <h3 class="box-title">{{portion}}</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div *ngFor="let table of free_tables | filterBy: ['portion'] : portion" class="col-sm-3">
+                                            <div>
+                                                <div class="free-table text-center">
+                                                    <p>Portion/Floor: <b>{{table.portion}}</b></p>
+                                                    <h2>{{table.name}}</h2>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -9,6 +9,8 @@ import { ClosingAccountsService } from '../closing-accounts.service';
 })
 export class OpenOrderComponent implements OnInit {
 
+  math = Math;
+
   @Input() order:any;
   @Input() closingAccounts: Object;
   @Input() isSalesTaxRateDifferent: boolean;
