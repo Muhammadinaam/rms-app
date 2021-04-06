@@ -1,3 +1,88 @@
-<p>
-  price-group works!
-</p>
+<section class="content-header">
+  <h1>
+      Price Group
+      <!-- <small>Version 2.0</small> -->
+
+
+
+  </h1>
+
+</section>
+
+<section class="content">
+
+  <div class="row">
+
+      <div class="col-md-12">
+          <div class="box box-primary">
+
+              <div class="box-body">
+
+                  <form #f="ngForm" (ngSubmit)="onSubmit(f.value, form_type)" class="form-horizontal" role="form">
+
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" for="name">Name</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="priceGroup.name" #name_input=ngModel required>
+                              <div class="validation-error" *ngIf="name_input.errors?.required">
+                                  Should not be empty.
+                              </div>
+                          </div>
+                      </div>
+
+                      
+
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" for="multiplying_factor">Multiplying Factor</label>
+                          <div class="col-sm-10">
+                              <input type="number" class="form-control" id="multiplying_factor" name="multiplying_factor" [(ngModel)]="priceGroup.multiplying_factor" #multiplying_factor_input=ngModel required>
+                              <div class="validation-error" *ngIf="multiplying_factor_input.errors?.required">
+                                  Should not be empty.
+                              </div>
+                          </div>
+                      </div>
+
+                      <table class="table table-bordered">
+                        <thead>
+                          <th>Item</th>
+                          <th class="col-md-1">Price</th>
+                          <th class="col-md-1"></th>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of priceGroup.items; let i = index;">
+                            <td>
+                              <select class="form-control" [(ngModel)]="priceGroup.items[i].item_id" [ngModelOptions]="{standalone: true}">
+                                <option *ngFor="let itm of items" value="{{itm.id}}">{{itm.name}}</option>
+                              </select>
+                            </td>
+                            <td>
+                              <input type="number" class="form-control" [(ngModel)]="priceGroup.items[i].price" [ngModelOptions]="{standalone: true}">
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-sm btn-danger" (click)="removeItem(i)">
+                                <i class="fa fa-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <button type="button" (click)="addItem()" class="btn btn-sm btn-info">Add</button>
+
+
+
+
+                      <div class="form-group">
+                          <div class="col-sm-10 col-sm-offset-2">
+                              <button type="submit" [disabled]="!f.form.valid || is_loading" class="btn btn-primary">Submit</button>
+                          </div>
+                      </div>
+                  </form>
+
+              </div>
+
+          </div>
+      </div>
+
+  </div>
+
+</section>

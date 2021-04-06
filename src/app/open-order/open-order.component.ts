@@ -36,6 +36,7 @@ export class OpenOrderComponent implements OnInit {
 
   @Output() modalOpen = new EventEmitter();
   @Output() modalClose = new EventEmitter();
+  additionalInfoFields = [];
 
   constructor(
     private ordersService: OrdersService
@@ -198,6 +199,13 @@ export class OpenOrderComponent implements OnInit {
           alert('Error occurred. Discount was not saved.');
         }
       );
+  }
+
+  receivedThroughChanged(received_through) {
+    if(this.closingAccounts) {
+      let closingAccount = (<Array<any>>this.closingAccounts).find(ca => ca.name == received_through)
+      this.additionalInfoFields = JSON.parse(closingAccount.additional_information_fields)
+    }
   }
 
 }

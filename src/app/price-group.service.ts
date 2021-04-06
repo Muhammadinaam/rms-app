@@ -4,6 +4,11 @@ import { ConfigService } from './services/config.service';
 
 @Injectable()
 export class PriceGroupService {
+  delete(index: any) {
+    let fd = new FormData()
+    fd.append('_method', 'delete');
+    return this.http.post(this.config.base_url + '/api/price-groups/' + index, fd)
+  }
 
   constructor(private http: HttpClient, private config: ConfigService) { }
 
@@ -13,7 +18,7 @@ export class PriceGroupService {
     return this.http.get(this.config.base_url + url);
   }
 
-  getItemById(id)
+  getById(id)
   {
     return this.http.get(this.config.base_url + '/api/price-groups/' + id + '/edit');
   }

@@ -6,6 +6,7 @@ import { TablesService } from '../services/tables.service';
 import { ItemsService } from '../services/items.service';
 import { SettingsService } from '../services/settings.service';
 import { ToastrService } from 'ngx-toastr';
+import { PriceGroupService } from '../price-group.service';
 
 @Component({
   selector: 'app-order',
@@ -19,6 +20,7 @@ export class OrderComponent implements OnInit {
     id: null,
     order_type: '',
     order_details: Array(),
+    price_group_id: null,
   };
   deleted_details:any = Array();
   order_types:any = Array();
@@ -46,6 +48,7 @@ export class OrderComponent implements OnInit {
   total_order_amount_interval:any;
 
   items:any = Array();
+  priceGroups:any = [];
 
   constructor(
     private router: Router,
@@ -55,7 +58,8 @@ export class OrderComponent implements OnInit {
     private authService: AuthService,
     private itemsService: ItemsService,
     private settingsService: SettingsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private priceGroupService: PriceGroupService
   ) { }
 
   ngOnInit() {
@@ -109,6 +113,13 @@ export class OrderComponent implements OnInit {
             this.items.splice(0,0,this.new_item);
             this.is_loading = false;
           });
+
+        this.is_loading = true;
+        this.priceGroupService.getPriceGroups()
+          .subscribe(data => {
+            this.priceGroups = data;
+            this.is_loading = false
+          })
       }
     );
 
@@ -218,6 +229,8 @@ export class OrderComponent implements OnInit {
     
     this.resetNewItem();
 
+    this.updateRatesAccordingToPriceGroup();
+
 
   }
 
@@ -261,5 +274,36 @@ export class OrderComponent implements OnInit {
         positionClass: 'toast-bottom-left'
       }
     );
+  }
+
+  priceGroupChanged() {
+    this.updateRatesAccordingToPriceGroup()
+  }
+  
+  updateRatesAccordingToPriceGroup() {
+    let priceGroupId = this.order.price_group_id;
+    if (!priceGroupId) {
+      this.order.order_details.forEach((detail, index) => {
+        let itemId = detail.item_id;
+        let item = this.items.find(i => i.id == itemId)
+        this.order.order_details[index]['rate'] = item.price;
+      });
+    } else {
+      this.order.order_details.forEach((detail, index) => {
+        let itemId = detail.item_id;
+        let priceGroup = this.priceGroups.find(pg => pg.id == priceGroupId);
+        let priceGroupItems = priceGroup.price_group_items;
+
+        let defaultItem = this.items.find(i => i.id == itemId)
+
+        debugger
+        let item = priceGroupItems.find(pgi => pgi.item_id == itemId)
+        if (item) {
+          this.order.order_details[index]['rate'] = item.price;
+        } else {
+          this.order.order_details[index]['rate'] = defaultItem.price * priceGroup.multiplying_factor;
+        }
+      });
+    }
   }
 }

@@ -3,7 +3,7 @@
       Price Groups
       <!-- <small>Version 2.0</small> -->
 
-      <a *ngIf="can_add_new" class="btn btn-sm btn-primary" routerLink="/item" role="button"><i class="fa fa-plus-circle"></i> Add New</a>
+      <a *ngIf="can_add_new" class="btn btn-sm btn-primary" routerLink="/price-group" role="button"><i class="fa fa-plus-circle"></i> Add New</a>
 
   </h1>
 
@@ -28,14 +28,17 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr *ngFor="let priceGroup of priceGroups">
+                          <tr *ngFor="let priceGroup of priceGroups; let i = index;">
                               <td>{{priceGroup.name}}</td>
                               <td>{{priceGroup.multiplying_factor}}</td>
 
                               <td>
-                                  <a *ngIf="can_edit" class="btn btn-xs btn-primary" routerLink="/item/{{priceGroup.id}}" role="button">
+                                  <a *ngIf="can_edit" class="btn btn-xs btn-primary" routerLink="/price-group/{{priceGroup.id}}" role="button">
                                       <i class="fa fa-edit"></i> Edit
                                   </a>
+                                  <button type="button" class="btn btn-xs btn-danger" (click)="delete(i)">
+                                    <i class="fa fa-trash"></i> Delete
+                                  </button>
                               </td>
 
                           </tr>
