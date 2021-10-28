@@ -24,8 +24,9 @@
               <tr>
                 <th>Sequence</th>
                 <th>Name</th>
-                <th>Sales Tax Rate</th>
-                <th>Show Amount Received Input</th>
+                <th>Sales tax rate</th>
+                <th>Show amount received input</th>
+                <th>Show on print for customer</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -35,6 +36,7 @@
                 <td>{{item.name}}</td>
                 <td>{{item.sales_tax_rate}}</td>
                 <td>{{item.show_amount_received_input ? 'Yes' : 'No'}}</td>
+                <td>{{item.show_on_print_for_customer ? 'Yes' : 'No'}}</td>
                 <td>
                   <a *ngIf="can_edit" class="btn btn-xs btn-primary" routerLink="/closing-account/{{item.id}}" role="button">
                     <i class="fa fa-edit"></i> Edit

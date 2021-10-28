@@ -49,7 +49,7 @@
                                                         <th style="width:100px;">Amount</th>
                                                         -->
 
-                                            <th>Add / Remove</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,7 +75,8 @@
                                                 <br>{{ order_detail.qty * order_detail.rate }}
                                             </td>
                                             <td>
-                                                <button (click)="removeItem(i)" type="button" class="btn btn-danger"><i class="fa fa-times-circle"></i></button>
+                                                <button (click)="editItem(i)" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></button>
+                                                <button (click)="removeItem(i)" type="button" class="btn btn-sm btn-danger"><i class="fa fa-times-circle"></i></button>
                                             </td>
                                         </tr>
                                     </tbody>

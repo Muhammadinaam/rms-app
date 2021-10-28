@@ -121,14 +121,7 @@ export class OpenOrderComponent implements OnInit {
 
   printForCustomer()
   {
-    if(this.isSalesTaxRateDifferent && this.salesTaxRateForPrintForCustomer == -1) {
-      alert('Please select account');
-      return;
-    }
-
-    this.salesTaxRateForPrintForCustomer = this.salesTaxRateForPrintForCustomer == -1 ? 0 : this.salesTaxRateForPrintForCustomer;
-
-    this.ordersService.printForCustomer(this.orderIdForPrintForCustomer, this.salesTaxRateForPrintForCustomer)
+    this.ordersService.printForCustomer(this.order.id, 0)
       .subscribe(data => {
         alert(data['message']);
         this.is_print_for_customer_modal_visible = false;
@@ -202,10 +195,18 @@ export class OpenOrderComponent implements OnInit {
   }
 
   receivedThroughChanged(received_through) {
+    let sales_tax_rate = 0;
     if(this.closingAccounts) {
       let closingAccount = (<Array<any>>this.closingAccounts).find(ca => ca.name == received_through)
+      
+      sales_tax_rate = closingAccount.sales_tax_rate;
+      
       this.additionalInfoFields = JSON.parse(closingAccount.additional_information_fields)
     }
+
+    this.order.sales_tax = this.order.order_amount_ex_st * sales_tax_rate / 100;
+    this.order.order_amount_inc_st = this.order.order_amount_ex_st + this.order.sales_tax;
+    this.calculateOrderAmounts()
   }
 
 }

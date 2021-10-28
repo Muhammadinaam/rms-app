@@ -33,7 +33,7 @@
 
     <a (click)="showDiscountModal()" class="btn btn-danger btn-xs btn-block" role="button">Discount</a>
 
-    <a (click)="orderIdForPrintForCustomer = order.id; is_print_for_customer_modal_visible = true;" class="btn btn-primary btn-xs btn-block" role="button">Print for Customer</a>
+    <a (click)="printForCustomer()" class="btn btn-primary btn-xs btn-block" role="button">Print for Customer</a>
     <a (click)="showCloseOrderModal()" class="btn btn-primary btn-xs btn-block" role="button">Close Order</a>
 
     <p-dialog width="350" (onShow)="onModalShow($event)" (onHide)="onModalHide($event)" header="Discount" [modal]="true" [(visible)]="is_discount_modal_visible">
@@ -231,27 +231,5 @@
 
 
     </p-dialog>
-
-    <p-dialog width="350" (onShow)="onModalShow($event)" (onHide)="onModalHide($event)" header="Print for customer" [modal]="true" [(visible)]="is_print_for_customer_modal_visible">
-
-        <div *ngIf="isSalesTaxRateDifferent">
-            <div class="form-group">
-                <label for="input" class="control-label">Select:</label>
-                <div class="">
-                    <select name="" id="input" class="form-control" [(ngModel)]="salesTaxRateForPrintForCustomer">
-                        <option value="-1"></option>
-                        <option *ngFor="let closingAccount of closingAccounts" [value]="closingAccount.sales_tax_rate">
-                            {{closingAccount.name}} - ({{closingAccount.sales_tax_rate}}%)
-                        </option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        
-        <button (click)="printForCustomer()" class="btn btn-sm btn-primary btn-block">Print</button>
-
-    </p-dialog>
-
-
 
 </div>

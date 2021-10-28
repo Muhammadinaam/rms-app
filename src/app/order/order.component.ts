@@ -176,13 +176,33 @@ export class OrderComponent implements OnInit {
     // this.new_item.rate = item.price;
   }
 
-  removeItem(i)
-  {
-    let r = confirm("Are you sure to delete the item?");
+  editItem(i) {
+    
+    let itemClone = {...this.order.order_details[i]};
 
-    if( r != true )
+    let newQty = prompt("Enter qty for '"+itemClone['item_name']+"'", itemClone['qty']);
+    let newNotes = prompt("Enter notes for '"+itemClone['item_name']+"' (optional)", itemClone['item_notes'] ? itemClone['item_notes'] : '' );
+
+    if ( newQty != itemClone['qty'] || newNotes !=  itemClone['item_notes'])
     {
-      return; 
+      itemClone['qty'] = newQty;
+      itemClone['item_notes'] = newNotes;
+      
+      this.removeItem(i)
+      this.order.order_details.splice(i, 0, itemClone);
+    }
+
+  }
+
+  removeItem(i, withoutConfirmation = false)
+  {
+    if (withoutConfirmation) {
+      let r = confirm("Are you sure to delete the item?");
+  
+      if( r != true )
+      {
+        return; 
+      }
     }
 
     let removed_items = this.order.order_details.splice(i, 1);
