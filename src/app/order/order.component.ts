@@ -189,6 +189,7 @@ export class OrderComponent implements OnInit {
       itemClone['item_notes'] = newNotes;
       
       this.removeItem(i)
+      itemClone['detail_id'] = null;
       this.order.order_details.splice(i, 0, itemClone);
     }
 
