@@ -24,7 +24,7 @@
     "@swimlane/ngx-charts": "^9.0.0",
     "chart.js": "^2.7.2",
     "core-js": "^2.4.1",
-    "moment": "^2.22.0",
+    "moment": "^2.29.4",
     "ng2-slim-loading-bar": "^4.0.0",
     "ngx-bootstrap": "^2.0.3",
     "ngx-pagination": "^3.1.0",
